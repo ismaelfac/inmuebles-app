@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 //:ANGULAR MATERIAL
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 //:APPLICATION
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +28,9 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
