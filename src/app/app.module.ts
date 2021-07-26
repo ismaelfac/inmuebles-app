@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 //:APPLICATION
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +31,8 @@ import { LoginComponent } from './components/login/login.component';
     MatTableModule,
     MatTabsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
