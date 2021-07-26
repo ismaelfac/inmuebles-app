@@ -1,15 +1,17 @@
 <div class="body">
     <div class="login">
-        <img class="img" src="./assets/images/profile.png" alt="">
-        <h1>Login</h1>
-        <mat-form-field class="width-form" appearance="fill">
-            <mat-label>Usuario</mat-label>
-            <input matInput autocomplete="off">
-        </mat-form-field>
-        <mat-form-field class="width-form" appearance="fill">
-            <mat-label>Contraseña</mat-label>
-            <input matInput autocomplete="off">
-        </mat-form-field><br>
-        <button class="button-form" mat-raised-button color="primary">Iniciar</button>
+        <form [FormGroup]="formLogin">
+            <img class="img" src="./assets/images/profile.png" alt="">
+            <h1>Login</h1>
+            <mat-form-field class="width-form" appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput autocomplete="off" formControlName="usuario">
+            </mat-form-field>
+            <mat-form-field class="width-form" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput autocomplete="off" formControlName="password">
+            </mat-form-field><br>
+            <button class="button-form" mat-raised-button color="primary">Iniciar</button>
+        </form>
     </div>
 </div>
