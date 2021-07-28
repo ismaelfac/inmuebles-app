@@ -1,0 +1,26 @@
+[
+    {
+        "user": "ismaelfac",
+        "names": "Ismael Enrique",
+        "lastName": "Lastre Alvarez",
+        "isActive": true
+    },
+    {
+        "user": "vvasquez688",
+        "names": "Valeria Remedios",
+        "lastName": "Vasquez Cuesta",
+        "isActive": true
+    },
+    {
+        "user": "rosaalvarezb",
+        "names": "Rosa Maria",
+        "lastName": "Alvarez Bermudez",
+        "isActive": true
+    },
+    {
+        "user": "sgumersindo",
+        "names": "Sinforoso",
+        "lastName": "Gumersindo Perez",
+        "isActive": false
+    }
+]

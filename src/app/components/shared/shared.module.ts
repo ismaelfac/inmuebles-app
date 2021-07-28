@@ -9,6 +9,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule as matSpinner} from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     matSpinner,
     MatIconModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
     HttpClientModule
   ],
   exports: [
@@ -37,6 +43,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     matSpinner,
     MatIconModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
     HttpClientModule
   ]
 })
