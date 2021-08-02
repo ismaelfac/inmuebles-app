@@ -1,26 +1,37 @@
 [
     {
+        "id": 1,
         "user": "ismaelfac",
         "names": "Ismael Enrique",
         "lastName": "Lastre Alvarez",
         "isActive": true
     },
     {
+        "id": 2,
         "user": "vvasquez688",
         "names": "Valeria Remedios",
         "lastName": "Vasquez Cuesta",
         "isActive": true
     },
     {
+        "id": 3,
         "user": "rosaalvarezb",
         "names": "Rosa Maria",
         "lastName": "Alvarez Bermudez",
         "isActive": true
     },
     {
+        "id": 4,
         "user": "sgumersindo",
         "names": "Sinforoso",
         "lastName": "Gumersindo Perez",
         "isActive": false
+    },
+    {
+        "id": 5,
+        "user": "jcoastilla",
+        "names": "Jose",
+        "lastName": "Castilla Valera",
+        "isActive": true
     }
 ]

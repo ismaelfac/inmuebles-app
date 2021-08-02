@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Users } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users',
@@ -15,11 +16,10 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  users: Users[] = [];
-
-  constructor(private _usersService: UsersService) { }
+  constructor(private _usersService: UsersService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.loadUsers();
   }
 
   ngAfterViewInit() {
@@ -27,18 +27,7 @@ export class UsersComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  LIST_USERS: Users[] = [
-    { id:1, user: 'ismaelfac', names: 'Ismael Enrique', lastName: 'Lastre Alvarez', isActive: true },
-    { id:2, user: 'vvasquez', names: 'Valeria Remedios', lastName: 'Vasquez Cuesta', isActive: true },
-    { id:3, user: 'rosaalvarezb', names: 'Rosa Maria', lastName: 'Alvarez Bermudez', isActive: true },
-    { id:4, user: 'ktarazona', names: 'Katherine', lastName: 'Tarazona Velasquez', isActive: true },
-    { id:5, user: 'rmorales', names: 'Roberto Enrique', lastName: 'Morales Frias', isActive: false },
-    { id:6, user: 'rmorales', names: 'Roberto Enrique', lastName: 'Morales Frias', isActive: false },
-    { id:7, user: 'rmorales', names: 'Roberto Enrique', lastName: 'Morales Frias', isActive: false },
-    { id:8, user: 'rmorales', names: 'Roberto Enrique', lastName: 'Morales Frias', isActive: false },
-    { id:9, user: 'rmorales', names: 'Roberto Enrique', lastName: 'Morales Frias', isActive: false },
-    { id:10, user: 'rmorales', names: 'Roberto Enrique', lastName: 'Morales Frias', isActive: false },
-  ];
+  LIST_USERS: Users[] = [];
 
   displayedColumns: string[] = ['id','user', 'names', 'lastName', 'isActive','options'];
   dataSource = new MatTableDataSource(this.LIST_USERS);
@@ -48,7 +37,26 @@ export class UsersComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  loadUsers() {
+    this._usersService.getUsers().subscribe(data => {
+      this.LIST_USERS = data;
+      this.dataSource = new MatTableDataSource(this.LIST_USERS);
+    });
+    
+
+  }
+
   DeleteUser(index:number): void {
+    this._usersService.deleteUser(index);
+    this.loadUsers();
+    this._snackBar.open('El usuario fue elminado con exito', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
+
+  isActive(index:number): void {
     console.log(index);
   }
 

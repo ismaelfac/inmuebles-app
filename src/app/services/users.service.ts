@@ -13,4 +13,9 @@ export class UsersService {
   getUsers(): Observable<Users[]> {
     return this.httpClient.get<Users[]>('./assets/data/users.json');
   }
+
+  deleteUser(id: number) {
+    let userId = this.getUsers();
+    console.log(userId);
+  }
 }
