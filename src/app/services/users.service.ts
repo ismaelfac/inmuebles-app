@@ -7,6 +7,8 @@ import { Users } from '../interfaces/users';
   providedIn: 'root'
 })
 export class UsersService {
+  private options = [];
+  // delete(url: string, options: { headers?: HttpHeaders | { [header: string]: string | string[]; }; context?: HttpContext; observe?: "body" | "events" | "response"; params?: HttpParams | { [param: string]: string | number | boolean | ReadonlyArray<string | ... 1 more ... | boolean>; }; reportProgress?: boolean; responseType?: "arraybuffer" | ... 2... = {}): Observable<any>
 
   constructor(private httpClient: HttpClient) { }
 
@@ -15,7 +17,8 @@ export class UsersService {
   }
 
   deleteUser(id: number) {
-    let userId = this.getUsers();
-    console.log(userId);
+    return this.httpClient.delete('./assets/data/users.json', ).forEach(user => {
+      console.log(id);
+    });
   }
 }

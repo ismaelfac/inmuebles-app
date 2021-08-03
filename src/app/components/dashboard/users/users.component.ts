@@ -42,8 +42,6 @@ export class UsersComponent implements OnInit {
       this.LIST_USERS = data;
       this.dataSource = new MatTableDataSource(this.LIST_USERS);
     });
-    
-
   }
 
   DeleteUser(index:number): void {
