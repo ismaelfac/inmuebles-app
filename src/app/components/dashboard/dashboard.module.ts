@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReportsComponent } from './reports/reports.component';
+import { UsersCreateComponent } from './users/users-create/users-create.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReportsComponent } from './reports/reports.component';
     HomeComponent,
     UsersComponent,
     NavbarComponent,
-    ReportsComponent
+    ReportsComponent,
+    UsersCreateComponent,
   ],
   imports: [
     CommonModule,
