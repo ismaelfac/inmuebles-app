@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "arrendatario": "ISMAEL LASTRE ALVAREZ",
+        "deudorSolidario": "VALERIA VASQUEZ CUESTA",
+        "addressInmueble": "Cll 84c 82-27",
+        "isActive": true
+    },
+    {
+        "id": 2,
+        "arrendatario": "SINFORSO GUMERSINDO",
+        "deudorSolidario": "PAMELA RODRIGUEZ",
+        "addressInmueble": "Cll 24 2-2",
+        "isActive": true
+    },
+    {
+        "id": 3,
+        "arrendatario": "RODOLFO UCROS MORALES",
+        "deudorSolidario": "AGUNSTIN JULIO CARDENAS",
+        "addressInmueble": "Cll 100 57-12",
+        "isActive": false
+    }
+]

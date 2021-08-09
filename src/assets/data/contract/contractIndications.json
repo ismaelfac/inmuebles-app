@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "arrendatario": "ismaelfac",
+        "deudorSolidario": "",
+        "address": "Cll 84c 82-27",
+        "isActive": true
+    },
+    {
+        "id": 2,
+        "arrendatario": "ismaelfac",
+        "deudorSolidario": "",
+        "address": "Cll 84c 82-27",
+        "isActive": true
+    },
+    {
+        "id": 3,
+        "arrendatario": "ismaelfac",
+        "deudorSolidario": "",
+        "address": "Cll 84c 82-27",
+        "isActive": true
+    }
+]
