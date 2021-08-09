@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReportsComponent } from './reports/reports.component';
 import { UsersCreateComponent } from './users/users-create/users-create.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { UsersCreateComponent } from './users/users-create/users-create.componen
     NavbarComponent,
     ReportsComponent,
     UsersCreateComponent,
+    SideNavComponent,
   ],
   imports: [
     CommonModule,

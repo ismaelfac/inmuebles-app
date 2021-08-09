@@ -14,6 +14,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatCardModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule
   ],
   exports: [
     MatTableModule,
@@ -52,7 +54,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatCardModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }

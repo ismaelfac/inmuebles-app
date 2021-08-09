@@ -11,7 +11,9 @@ const routes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'usuarios', component: UsersComponent},
     { path: 'reportes', component: ReportsComponent},
-    { path: 'crear-usuario', component: UsersCreateComponent}
+    { path: 'crear-usuario', component: UsersCreateComponent},
+    { path: 'contractos', loadChildren: () => import('../dashboard/contracts/contracts.module').then(x => x.ContractsModule)},
+  
   ]}
 ];
 
