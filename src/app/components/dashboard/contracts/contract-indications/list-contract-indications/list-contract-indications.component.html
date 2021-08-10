@@ -1,6 +1,5 @@
 <div class="container">
     <mat-toolbar>
-        <span>Indicaciones de Contracto</span>
         <div class="example-spacer"></div>        
         <button mat-raised-button color="primary" routerLink="/dashboard/contractos/crear-indicaciones-contrato">Agregar</button>
     </mat-toolbar>
@@ -64,5 +63,5 @@
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
       </div>
     </div>
-    <h2 *ngIf="LIST_CONTRACT_INDICATIONS.length == 0" style="margin: auto;">No hay usuarios para mostrar</h2>
+    <h2 *ngIf="LIST_CONTRACT_INDICATIONS.length == 0" style="margin: auto;">Cargando usuarios para mostrar</h2>
 </div>  

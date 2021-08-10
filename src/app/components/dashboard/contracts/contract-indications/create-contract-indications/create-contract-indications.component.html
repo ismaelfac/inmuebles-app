@@ -1,11 +1,12 @@
-<mat-accordion>
+<mat-accordion class="example-headers-align" multi>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Informacion General del Contrato
         </mat-panel-title>
         <mat-panel-description>
-          This is a summary of the content
+          Registre aqui los datos generales del contrato
+          <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <!--Formulario para componente-->
@@ -16,19 +17,6 @@
                     <mat-label>No de Contrato</mat-label>
                     <input matInput disabled value="Contrato No 256498">
                 </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Seleccione el No de Destinatarios</mat-label>
-                    <mat-select [(value)]="selected">
-                      <mat-option *ngFor="let item of destinatarios" [value]="item.value">
-                        {{item.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-            </td>
-            <td>
-                <p>: {{selected}} Destinatarios</p>
             </td>
         </tr></table>
       
@@ -41,9 +29,10 @@
             <mat-label>Dni Arrendatario</mat-label>
             <input matInput>
           </mat-form-field></td>
+          <td><button mat-raised-button color="primary">Deudores Solidarios </button>
+          </td>
         </tr></table>
-
-      
+              
         <p>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Direccion Inmueble</mat-label>
@@ -81,8 +70,9 @@
           Convenio del Contrato
         </mat-panel-title>
         <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          Configure el convenio y sus condiciones {{panelOpenState ? 'open' : 'closed'}}
         </mat-panel-description>
+        <mat-icon>map</mat-icon>
       </mat-expansion-panel-header>
       <p>I'm visible because I am open</p>
     </mat-expansion-panel>

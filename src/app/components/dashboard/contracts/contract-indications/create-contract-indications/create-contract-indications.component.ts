@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 
-interface Destinatarios {
+interface Deudores {
   value: string;
   viewValue: string;
 }
@@ -20,7 +20,7 @@ export class CreateContractIndicationsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  destinatarios: Destinatarios[] = [
+  deudores: Deudores[] = [
     {value: '1', viewValue: 'Uno'},
     {value: '2', viewValue: 'Dos'},
     {value: '3', viewValue: 'Tres'}

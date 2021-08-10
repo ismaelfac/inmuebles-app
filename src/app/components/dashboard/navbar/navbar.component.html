@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
-    <span>AppInmuebles</span>
-    
+    <span style="margin-right: 5px;">App </span>
+    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
     <span class="example-spacer"></span>
         <button mat-button *ngFor="let item of menu" [routerLink]="item.redirect" >{{ item.name }}</button>
     <span class="example-spacer"></span>
