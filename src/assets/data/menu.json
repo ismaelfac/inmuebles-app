@@ -10,5 +10,9 @@
     {
         "name": "Reportes",
         "redirect": "/dashboard/reportes"
+    },
+    {
+        "name": "Contratos",
+        "redirect": "/dashboard/contractos"
     }
 ]

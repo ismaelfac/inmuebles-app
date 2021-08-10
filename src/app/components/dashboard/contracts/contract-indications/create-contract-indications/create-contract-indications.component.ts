@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatAccordion} from '@angular/material/expansion';
+
+interface Destinatarios {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'create-contract-indications',
@@ -6,10 +12,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-contract-indications.component.css']
 })
 export class CreateContractIndicationsComponent implements OnInit {
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
+  panelOpenState = false;
+  selected = '1';
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  destinatarios: Destinatarios[] = [
+    {value: '1', viewValue: 'Uno'},
+    {value: '2', viewValue: 'Dos'},
+    {value: '3', viewValue: 'Tres'}
+  ];
+  
 
 }

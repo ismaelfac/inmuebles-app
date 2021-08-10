@@ -15,6 +15,9 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -38,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatSelectModule
   ],
   exports: [
     MatTableModule,
@@ -55,7 +61,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }
