@@ -96,14 +96,6 @@
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Fecha Estimada de Entrega</mat-label>
-              <input matInput [matDatepicker]="dp" [value]="date">
-              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-              <mat-datepicker #dp></mat-datepicker>
-            </mat-form-field>                        
-          </td>
-          <td>
             <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
               <mat-label>% Incremento</mat-label>
               <input matInput type="number" class="example-right-align" placeholder="0">
@@ -112,6 +104,43 @@
             </mat-form-field>
           </td>
          </tr></table>
+         <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>% Derechos de Contrato</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+              <span matSuffix>.0</span>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Fecha Estimada de Entrega</mat-label>
+              <input matInput [matDatepicker]="dp" [value]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>                        
+          </td>
+          <td>
+            <mat-slide-toggle class="example-margin" color="primary" (click)="setPeriodoGracia()">Periodo de Gracia</mat-slide-toggle></td>
+          <td *ngIf="periodoGracia">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Periodo de Gracia</mat-label>
+              <input matInput type="number" placeholder="2" min="1">
+              <span matSuffix>Meses</span>
+              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Mes</mat-error>
+            </mat-form-field>
+          </td>
+         </tr></table>
+         <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Clausulas Adicionales</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </td>
+          </tr>
+          </table>
       </form>
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true"
@@ -126,15 +155,80 @@
         <mat-icon>map</mat-icon>
       </mat-expansion-panel-header>
       <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Favorite food</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="Sushi">
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Leave a comment</mat-label>
-          <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-        </mat-form-field>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-slide-toggle class="example-margin" color="primary">Elaborar Convenio Admon</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Division de Renta</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary">RUT</mat-slide-toggle></td>
+          
+        </tr></table>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Propietario</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Cedula</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+                <mat-label>% Porcentaje</mat-label>
+                <input matInput type="number" class="example-right-align" placeholder="0">
+                <span matPrefix>%&nbsp;</span>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-slide-toggle class="example-margin" color="primary">Responsable de Iva</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Garantizado</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Amparo Basico</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Amparo Integral</mat-slide-toggle></td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>% Porcentaje de Comisión</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>% Porcentaje de Mercadeo</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+            </mat-form-field>
+          </td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Pago por Consignación</mat-slide-toggle></td>
+        </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Banco a Consignar</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Numero de Cuenta</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+          </tr>
+        </table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Observaciones</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        </table>
       </form>
       
     </mat-expansion-panel>

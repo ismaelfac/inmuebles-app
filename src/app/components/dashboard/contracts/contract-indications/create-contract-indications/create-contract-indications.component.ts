@@ -57,6 +57,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   selectedValueGarage: any = '';
   selectedValueContractType: any = '';
   tiempoEstimado = new FormControl(11, Validators.min(1));
+  periodoGracia: boolean = false;
 
   constructor(fb: FormBuilder) { 
     
@@ -76,6 +77,10 @@ export class CreateContractIndicationsComponent implements OnInit {
     {value: 'vivienda', viewValue: 'Vivienda'},
     {value: 'comercial', viewValue: 'Comercial'}
   ]
+
+  setPeriodoGracia(): any {
+    this.periodoGracia = !this.periodoGracia;
+  }
   
 
 }
