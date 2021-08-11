@@ -48,7 +48,7 @@
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Direccion Inmueble</mat-label>
-              <textarea matInput placeholder="Ex. 100 Main St">Cll # </textarea>
+              <input matInput placeholder="Cll # Cra # Tranversal #">
             </mat-form-field>
           </td>
           <td>
@@ -74,6 +74,27 @@
             <mat-label>Valor Administracion</mat-label>
             <input matInput>
           </mat-form-field></td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Valor Administracion</mat-slide-toggle></td>
+        </tr></table>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tipo de Contrato</mat-label>
+              <mat-select [(value)]="selectedValueGarage" name="garage">
+                <mat-option *ngFor="let item of garage" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Verbose datepicker</mat-label>
+              <input matInput [matDatepicker]="dp" [value]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>                        
+          </td>
           <td><mat-slide-toggle class="example-margin" color="primary">Valor Administracion</mat-slide-toggle></td>
         </tr></table>
       </form>

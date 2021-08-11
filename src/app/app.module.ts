@@ -9,9 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListStatesComponent } from './components/list-states/list-states.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './components/shared/shared.module';
 import { StatesComponent } from './components/states/states.component';
 import { LoginComponent } from './components/login/login.component';
-import { SharedModule } from './components/shared/shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SharedModule } from './components/shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
     SharedModule
   ],
   providers: [CookieService],
