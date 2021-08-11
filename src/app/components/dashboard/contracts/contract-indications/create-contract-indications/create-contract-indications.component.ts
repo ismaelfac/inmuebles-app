@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
-import {FormControl} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
@@ -29,7 +29,10 @@ interface Garage {
   value: string;
   viewValue: string;
 }
-
+interface ContractType {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'create-contract-indications',
   templateUrl: './create-contract-indications.component.html',
@@ -52,16 +55,27 @@ export class CreateContractIndicationsComponent implements OnInit {
   date = new FormControl(moment());
   panelOpenState = false;
   selectedValueGarage: any = '';
+  selectedValueContractType: any = '';
+  tiempoEstimado = new FormControl(11, Validators.min(1));
 
-  constructor() { }
+  constructor(fb: FormBuilder) { 
+    
+   }
 
   ngOnInit(): void {
+    this.selectedValueGarage = 'No Aplica';
   }
   garage: Garage[] = [
+    {value: '0', viewValue: 'No Aplica'},
     {value: '1', viewValue: 'Uno'},
     {value: '2', viewValue: 'Dos'},
     {value: '3', viewValue: 'Tres'}
   ];
+
+  contractsType: ContractType[] = [
+    {value: 'vivienda', viewValue: 'Vivienda'},
+    {value: 'comercial', viewValue: 'Comercial'}
+  ]
   
 
 }
