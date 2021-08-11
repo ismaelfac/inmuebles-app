@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 
-interface Deudores {
+interface Garage {
   value: string;
   viewValue: string;
 }
@@ -14,13 +14,13 @@ interface Deudores {
 export class CreateContractIndicationsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   panelOpenState = false;
-  selected = '1';
+  selectedValueGarage: any = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  deudores: Deudores[] = [
+  garage: Garage[] = [
     {value: '1', viewValue: 'Uno'},
     {value: '2', viewValue: 'Dos'},
     {value: '3', viewValue: 'Tres'}
