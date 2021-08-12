@@ -45,6 +45,31 @@
           </mat-form-field></td>
         </tr></table>
         <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Deudor Solidario</mat-slide-toggle></td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Número de Deudores Solidarios</mat-label>
+              <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
+              <span matSuffix>Unidad</span>
+              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Deudor Solidario</mat-error>
+            </mat-form-field>
+          </td>
+        </tr></table>
+        <table class="example-full-width" cellspacing="0" *ngIf="OptdeudorSolidario">
+          <tr *ngFor="let item of deudorSolidario">
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Deudor {{ item }}</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Cedula Deudor {{ item }}</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Direccion Inmueble</mat-label>
@@ -160,23 +185,14 @@
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Valor de Division</mat-label>
-              <input matInput type="number" placeholder="1" min="1">
+              <input matInput type="number" placeholder="1" min="1" (change)="setDivisionValue($event)" value="1">
               <span matSuffix>Unidad</span>
               <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Propietario</mat-error>
             </mat-form-field>
           </td>
         </tr></table>
-        <table class="example-full-width" cellspacing="0" *ngIf="totalDivisionValue"><tr>
-          <td>
-            <mat-selection-list #shoes>
-              <mat-list-option *ngFor="let shoe of typesOfShoes">
-                {{shoe}}
-              </mat-list-option>
-            </mat-selection-list>
-          </td>
-        </tr></table>
-        <table class="example-full-width" cellspacing="0">
-          <tr>
+        <table class="example-full-width" cellspacing="0" *ngIf="totalDivisionValue">
+          <tr *ngFor="let owner of owners">
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Propietario</mat-label>
@@ -188,11 +204,7 @@
               <input matInput>
             </mat-form-field></td>
             <td>
-              <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-                <mat-label>% Porcentaje</mat-label>
-                <input matInput type="number" class="example-right-align" placeholder="0">
-                <span matPrefix>%&nbsp;</span>
-              </mat-form-field>
+              <button mat-flat-button color="primary">RUT</button>
             </td>
           </tr>
         </table>

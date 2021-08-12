@@ -41,6 +41,15 @@ interface BankConsign {
   value: string;
   viewValue: string;
 }
+
+interface DeudorSolidario {
+  name: string;
+  value: string;
+}
+interface Owners {
+  name: string;
+  value: string;
+}
 @Component({
   selector: 'create-contract-indications',
   templateUrl: './create-contract-indications.component.html',
@@ -70,6 +79,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   tiempoEstimado = new FormControl(11, Validators.min(1));
   periodoGracia: boolean = false;
   totalDivisionValue: boolean = false;
+  OptdeudorSolidario: boolean = false;
   divisionValue = new FormControl(5, Validators.min(1));
   typesOfShoes: string[] = ['Boots'];
 
@@ -78,7 +88,6 @@ export class CreateContractIndicationsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.selectedValueGarage = 'No Aplica';
   }
   garage: Garage[] = [
     {value: '0', viewValue: 'No Aplica'},
@@ -103,6 +112,13 @@ export class CreateContractIndicationsComponent implements OnInit {
     {value: '1', viewValue: 'Bancolombia'},
     {value: '2', viewValue: 'Davivienda'}
   ]
+  numOwner: number = 0;
+  owners: Owners[] = [
+    { name: 'propietario1', value: '1'}
+  ]
+  deudorSolidario: DeudorSolidario[] = [
+    { name: 'propietario1', value: '1'}
+  ]
 
   setPeriodoGracia(): any {
     this.periodoGracia = !this.periodoGracia;
@@ -110,5 +126,21 @@ export class CreateContractIndicationsComponent implements OnInit {
   
   setTotalDivisionValue(): any {
     this.totalDivisionValue = !this.totalDivisionValue;
+  }
+
+  setDivisionValue($event:any){
+    console.log(this.owners);
+    this.owners.push($event.target.value);
+    console.log(this.owners);
+  }
+  
+  setDeudorSolidario() {
+    this.OptdeudorSolidario = !this.OptdeudorSolidario;
+  }
+
+  setNumDeudorSolidario($event:any) {
+    console.log(this.deudorSolidario);
+    this.deudorSolidario.push($event.target.value);
+    console.log(this.deudorSolidario);
   }
 }
