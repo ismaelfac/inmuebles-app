@@ -21,13 +21,13 @@
             <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>No Asegurable</mat-label>
-                    <input matInput disabled value="123456">
+                    <input matInput value="123456">
                 </mat-form-field>
             </td>
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Cod Domus</mat-label>
-                  <input matInput disabled value="2345">
+                  <input matInput value="2345">
               </mat-form-field>
           </td>
         </tr></table>
@@ -156,10 +156,24 @@
       </mat-expansion-panel-header>
       <form class="example-form">
         <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-slide-toggle class="example-margin" color="primary">Elaborar Convenio Admon</mat-slide-toggle></td>
-          <td><mat-slide-toggle class="example-margin" color="primary">Division de Renta</mat-slide-toggle></td>
-          <td><mat-slide-toggle class="example-margin" color="primary">RUT</mat-slide-toggle></td>
-          
+          <td><mat-slide-toggle class="example-margin" color="primary" (click)="setTotalDivisionValue()">Division de Renta</mat-slide-toggle></td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Valor de Division</mat-label>
+              <input matInput type="number" placeholder="1" min="1">
+              <span matSuffix>Unidad</span>
+              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Propietario</mat-error>
+            </mat-form-field>
+          </td>
+        </tr></table>
+        <table class="example-full-width" cellspacing="0" *ngIf="totalDivisionValue"><tr>
+          <td>
+            <mat-selection-list #shoes>
+              <mat-list-option *ngFor="let shoe of typesOfShoes">
+                {{shoe}}
+              </mat-list-option>
+            </mat-selection-list>
+          </td>
         </tr></table>
         <table class="example-full-width" cellspacing="0">
           <tr>
@@ -185,6 +199,9 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-slide-toggle class="example-margin" color="primary">Responsable de Iva</mat-slide-toggle></td>
           <td><mat-slide-toggle class="example-margin" color="primary">Garantizado</mat-slide-toggle></td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-slide-toggle class="example-margin" color="primary">Amparo Basico</mat-slide-toggle></td>
           <td><mat-slide-toggle class="example-margin" color="primary">Amparo Integral</mat-slide-toggle></td>
           </tr>
@@ -209,10 +226,26 @@
         </table>
         <table class="example-full-width" cellspacing="0">
           <tr>
-            <td><mat-form-field class="example-full-width" appearance="fill">
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Banco a Consignar</mat-label>
-              <input matInput>
-            </mat-form-field></td>
+              <mat-select [(value)]="selectedValueBankConsign" name="bankConsign">
+                <mat-option *ngFor="let item of bankConsign" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tipo de Cuenta</mat-label>
+              <mat-select [(value)]="selectedValueAccountType" name="accountType">
+                <mat-option *ngFor="let item of accountType" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
             <td><mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Numero de Cuenta</mat-label>
               <input matInput>

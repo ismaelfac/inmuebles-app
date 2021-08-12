@@ -33,6 +33,14 @@ interface ContractType {
   value: string;
   viewValue: string;
 }
+interface AccountType {
+  value: string;
+  viewValue: string;
+}
+interface BankConsign {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'create-contract-indications',
   templateUrl: './create-contract-indications.component.html',
@@ -56,8 +64,14 @@ export class CreateContractIndicationsComponent implements OnInit {
   panelOpenState = false;
   selectedValueGarage: any = '';
   selectedValueContractType: any = '';
+  selectedValueAccountType:any = '';
+  selectedValueBankConsign:any = '';
+
   tiempoEstimado = new FormControl(11, Validators.min(1));
   periodoGracia: boolean = false;
+  totalDivisionValue: boolean = false;
+  divisionValue = new FormControl(5, Validators.min(1));
+  typesOfShoes: string[] = ['Boots'];
 
   constructor(fb: FormBuilder) { 
     
@@ -78,9 +92,23 @@ export class CreateContractIndicationsComponent implements OnInit {
     {value: 'comercial', viewValue: 'Comercial'}
   ]
 
+  accountType: AccountType[] = [
+    {value: '0', viewValue: 'No Aplica'},
+    {value: '1', viewValue: 'Ahorros'},
+    {value: '2', viewValue: 'Corriente'},
+  ]
+
+  bankConsign: BankConsign[] = [
+    {value: '0', viewValue: 'No Aplica'},
+    {value: '1', viewValue: 'Bancolombia'},
+    {value: '2', viewValue: 'Davivienda'}
+  ]
+
   setPeriodoGracia(): any {
     this.periodoGracia = !this.periodoGracia;
   }
   
-
+  setTotalDivisionValue(): any {
+    this.totalDivisionValue = !this.totalDivisionValue;
+  }
 }
