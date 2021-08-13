@@ -2,22 +2,17 @@
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Informacion General del Contrato
+          
         </mat-panel-title>
         <mat-panel-description>
-          Registre aqui los datos generales del contrato
+          <b>Informacion General del Contrato</b>
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <!--Formulario para componente-->
       <form class="example-form">
         <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>No de Contrato</mat-label>
-                    <input matInput disabled value="Contrato No 256498">
-                </mat-form-field>
-            </td>
+            
             <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>No Asegurable</mat-label>
@@ -43,18 +38,39 @@
             <mat-label>Dni Arrendatario</mat-label>
             <input matInput>
           </mat-form-field></td>
-        </tr></table>
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Deudor Solidario</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Agregar Arrendatario Solidario</mat-slide-toggle></td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Número de Deudores Solidarios</mat-label>
+              <mat-label>Número de Arrendatarios</mat-label>
               <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
-              <span matSuffix>Unidad</span>
-              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Deudor Solidario</mat-error>
+              <span matSuffix>Arrendatarios</span>
+              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Arrendatario</mat-error>
             </mat-form-field>
           </td>
         </tr></table>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Deudor 1</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Cedula Deudor 1</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+            <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Agregar Deudor Solidario</mat-slide-toggle></td>
+            <td *ngIf="OptdeudorSolidario">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Número de Deudores Solidarios</mat-label>
+                <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
+                <span matSuffix>Deudores</span>
+                <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Deudor Solidario</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          </table>
         <table class="example-full-width" cellspacing="0" *ngIf="OptdeudorSolidario">
           <tr *ngFor="let item of deudorSolidario">
             <td>
@@ -172,10 +188,10 @@
                          (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
         <mat-panel-title>
-          Convenio del Contrato
+          
         </mat-panel-title>
         <mat-panel-description>
-          Configure el convenio y sus condiciones {{panelOpenState ? 'abierto' : '- Cerrado por proceso incompleto'}}
+          <b>Convenio del Contrato</b>
         </mat-panel-description>
         <mat-icon>map</mat-icon>
       </mat-expansion-panel-header>
