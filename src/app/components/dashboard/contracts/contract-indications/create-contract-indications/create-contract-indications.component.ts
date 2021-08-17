@@ -5,6 +5,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
@@ -46,6 +47,10 @@ interface BankConsign {
   viewValue: string;
 }
 
+interface FieldArrendatario {
+  name: string;
+  value: string;
+}
 interface DeudorSolidario {
   name: string;
   value: string;
@@ -75,6 +80,8 @@ export class CreateContractIndicationsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   date = new FormControl(moment());
   panelOpenState = false;
+  numArrentararios: number = 0;
+  numDeudores: number = 0;
   selectedValueGarage: any = '';
   selectedValueContractType: any = '';
   selectedValueAccountType:any = '';
@@ -92,7 +99,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   typePerson: string[] = ['Natural', 'Juridica'];
 
   constructor(fb: FormBuilder) { 
-    
+      this.numArrentararios = this.fieldArrendatario.length;
    }
 
   ngOnInit(): void {
@@ -124,8 +131,11 @@ export class CreateContractIndicationsComponent implements OnInit {
   owners: Owners[] = [
     { name: 'propietario1', value: '1'}
   ]
+  fieldArrendatario: FieldArrendatario[] = [
+    { name: 'Arrendatario 1', value: '1'}
+  ]
   deudorSolidario: DeudorSolidario[] = [
-    { name: 'propietario1', value: '1'}
+    { name: 'deudor1', value: '1'}
   ]
 
   setPeriodoGracia(): any {
@@ -142,8 +152,8 @@ export class CreateContractIndicationsComponent implements OnInit {
     console.log(this.owners);
   }
 
-  setArrendatario(){
-
+  setArrendatario(action: string){
+    console.log(action)
   }
 
   setNumArrendatario($event:any) {
@@ -166,6 +176,13 @@ export class CreateContractIndicationsComponent implements OnInit {
 
   setValorIntegral($event:any) {
     this.esValorIntegral = !this.esValorIntegral;
+  }
+  setValorAdministracion() {
+
+  }
+
+  haveRut(event:void) {
+    console.log("Tiene RUT")
   }
   
   selectable = true;

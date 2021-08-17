@@ -27,13 +27,23 @@
           </td>
         </tr></table>
         <div class="container">
-          <h2>Arrendatarios</h2>
+            <span>
+              <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+                  remove
+                  </span></mat-button-toggle>
+                <h2 class="title-form">Arrendatarios</h2>
+                <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+                  add
+                  </span></mat-button-toggle>
+              </mat-button-toggle-group>
+            </span>
           <table class="example-full-width" cellspacing="0">
-            <tr>
+            <tr *ngFor="let item of fieldArrendatario">
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Arrendatario</mat-label>
-                <input matInput>
+                <mat-label>{{ item.name }}</mat-label>
+                <input matInput value="{{item.value}}">
               </mat-form-field>
             </td>
             <td>  
@@ -42,17 +52,16 @@
               <input matInput></mat-form-field>
             </td>
             <td>
-              <mat-slide-toggle class="example-margin" color="primary" (click)="setArrendatario()">Agregar Arrendatario Solidario</mat-slide-toggle>
-            </td>
-            <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Tipo de Persona</mat-label>
                 <mat-select [(value)]="selectedValueGarage" name="garage">
-                  <mat-option *ngFor="let item of garage" [value]="item.value">
-                    {{item.viewValue}}
-                  </mat-option>
+                  <mat-option value="Natural">Natural</mat-option>
+                  <mat-option value="Juridica">Juridica</mat-option>
                 </mat-select>
               </mat-form-field>
+            </td>
+            <td>
+                <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
             </td>
             </tr>
           </table>
@@ -70,7 +79,7 @@
           </table>
         </div>
         <div class="container">
-          <h2>Deudor Solidario</h2>
+          <h2 class="title-form">Deudor Solidario</h2>
           <table class="example-full-width" cellspacing="0">
             <tr>
               <td>
@@ -83,14 +92,19 @@
                 <mat-label>Cedula Deudor 1</mat-label>
                 <input matInput>
               </mat-form-field></td>
-              <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Agregar Deudor Solidario</mat-slide-toggle></td>
-              <td *ngIf="OptdeudorSolidario">
+              <td>
                 <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Número de Deudores Solidarios</mat-label>
-                  <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
-                  <span matSuffix>Deudores</span>
-                  <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Deudor Solidario</mat-error>
+                  <mat-label>Tipo de Persona</mat-label>
+                  <mat-select [(value)]="selectedValueGarage" name="garage">
+                    <mat-option value="Natural">Natural</mat-option>
+                    <mat-option value="Juridica">Juridica</mat-option>
+                  </mat-select>
                 </mat-form-field>
+              </td>
+              <td>
+                <div class="">
+                  <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+                </div>
               </td>
             </tr>
             </table>
@@ -110,6 +124,16 @@
             </table>
         </div>
         <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tipo de Contrato</mat-label>
+              <mat-select [(value)]="selectedValueContractType" name="garage">
+                <mat-option *ngFor="let item of contractsType" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Direccion Inmueble</mat-label>
@@ -143,23 +167,14 @@
               <input matInput>
             </mat-form-field>
           </td>
+          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion">Valor Administracion</mat-slide-toggle></td>
           <td><mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Valor Administracion</mat-label>
             <input matInput>
-          </mat-form-field></td>
-          <td><mat-slide-toggle class="example-margin" color="primary">Valor Administracion</mat-slide-toggle></td>
+          </mat-form-field></td>          
         </tr></table>
         <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Tipo de Contrato</mat-label>
-              <mat-select [(value)]="selectedValueContractType" name="garage">
-                <mat-option *ngFor="let item of contractsType" [value]="item.value">
-                  {{item.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
+          
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Duracion del Contrato</mat-label>

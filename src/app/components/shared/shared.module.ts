@@ -21,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -51,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatSlideToggleModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonToggleModule
   ],
   exports: [
     MatTableModule,
@@ -74,7 +76,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatSlideToggleModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonToggleModule
   ]
 })
 export class SharedModule { }
