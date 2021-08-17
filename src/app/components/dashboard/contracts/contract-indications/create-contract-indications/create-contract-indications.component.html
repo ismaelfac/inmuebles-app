@@ -38,23 +38,23 @@
                   </span></mat-button-toggle>
               </mat-button-toggle-group>
             </span>
-          <table class="example-full-width" cellspacing="0">
-            <tr *ngFor="let item of fieldArrendatario">
+          <table class="example-full-width" cellspacing="0" *ngFor="let item of fieldArrendatario">
+            <tr >
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>{{ item.name }}</mat-label>
-                <input matInput value="{{item.value}}">
+                <input matInput value="" name="{{ item.name }}">
               </mat-form-field>
             </td>
             <td>  
               <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Dni Arrendatario</mat-label>
+              <mat-label>Identificación del Arrendatario</mat-label>
               <input matInput></mat-form-field>
             </td>
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Tipo de Persona</mat-label>
-                <mat-select [(value)]="selectedValueGarage" name="garage">
+                <mat-select [(value)]="selectedValueGarage" name="typePersona">
                   <mat-option value="Natural">Natural</mat-option>
                   <mat-option value="Juridica">Juridica</mat-option>
                 </mat-select>
@@ -64,22 +64,34 @@
                 <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
             </td>
             </tr>
+            <tr *ngIf="IsPersonaJuridica">
+              <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Nombres Completos Representante Legal</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </td>
+              <td>
+                <button mat-raised-button color="primary">Cedula del Representante</button>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="container">
           <span>
             <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-              <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+              <mat-button-toggle value="-" (click)="setDeudorSolidario('-')"><span class="material-icons">
                 remove
                 </span></mat-button-toggle>
-              <h2 class="title-form">Deudor</h2>
-              <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+              <h2 class="title-form">Deudores</h2>
+              <mat-button-toggle value="+" (click)="setDeudorSolidario('+')"><span class="material-icons">
                 add
                 </span></mat-button-toggle>
             </mat-button-toggle-group>
           </span>
         <table class="example-full-width" cellspacing="0">
-          <tr *ngFor="let item of fieldArrendatario">
+          <tr *ngFor="let item of fieldDeudores">
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>{{ item.name }}</mat-label>
@@ -88,7 +100,7 @@
           </td>
           <td>  
             <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Dni Arrendatario</mat-label>
+            <mat-label>Identificación Arrendatario</mat-label>
             <input matInput></mat-form-field>
           </td>
           <td>
@@ -186,7 +198,7 @@
           </td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Fecha Estimada de Entrega</mat-label>
+              <mat-label>Fecha Solicitada de Entrega</mat-label>
               <input matInput [matDatepicker]="dp" [value]="date">
               <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
               <mat-datepicker #dp></mat-datepicker>

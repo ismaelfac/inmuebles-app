@@ -53,6 +53,7 @@ interface FieldArrendatario {
   value: string;
 }
 interface DeudorSolidario {
+  id: string;
   name: string;
   value: string;
 }
@@ -90,6 +91,7 @@ export class CreateContractIndicationsComponent implements OnInit {
 
   tiempoEstimado = new FormControl(11, Validators.min(1));
   periodoGracia: boolean = false;
+  IsPersonaJuridica: boolean = true;
   totalDivisionValue: boolean = false;
   OptdeudorSolidario: boolean = false;
   esAmparado: boolean = true;
@@ -135,8 +137,8 @@ export class CreateContractIndicationsComponent implements OnInit {
   fieldArrendatario: FieldArrendatario[] = [
     { id: '1', name: 'Arrendatario 1', value: 'A1'}
   ]
-  deudorSolidario: DeudorSolidario[] = [
-    { name: 'deudor1', value: '1'}
+  fieldDeudores: DeudorSolidario[] = [
+    { id: '1', name: 'deudor 1', value: 'D1'}
   ]
 
   setPeriodoGracia(): any {
@@ -170,17 +172,23 @@ export class CreateContractIndicationsComponent implements OnInit {
   }
 
   setNumArrendatario($event:any) {
-
+    
   }
   
-  setDeudorSolidario() {
-    this.OptdeudorSolidario = !this.OptdeudorSolidario;
-  }
-
-  setNumDeudorSolidario($event:any) {
-    console.log(this.deudorSolidario);
-    this.deudorSolidario.push($event.target.value);
-    console.log(this.deudorSolidario);
+  setDeudorSolidario(action: string) {
+    let numPerson = this.fieldDeudores.length;
+     numPerson++;
+    if(action === '+'){
+      this.fieldDeudores.push({
+        id: ''+numPerson,
+        name: 'Deudor '+numPerson,
+        value: 'D'+numPerson
+      });
+      console.log(this.fieldDeudores)
+    }else{
+      this.fieldDeudores.pop();
+    }
+    console.log(action)
   }
 
   setEsAmparado($event:any) {
