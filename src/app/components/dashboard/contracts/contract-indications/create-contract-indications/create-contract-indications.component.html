@@ -65,18 +65,6 @@
             </td>
             </tr>
           </table>
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Número de Arrendatarios</mat-label>
-                  <input matInput type="number" placeholder="1" min="1" (change)="setNumArrendatario($event)" name="NumDeudorSolidario" value="1">
-                  <span matSuffix>Arrendatarios</span>
-                  <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Arrendatario</mat-error>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
         </div>
         <div class="container">
           <h2 class="title-form">Deudor Solidario</h2>

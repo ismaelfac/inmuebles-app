@@ -48,6 +48,7 @@ interface BankConsign {
 }
 
 interface FieldArrendatario {
+  id: string;
   name: string;
   value: string;
 }
@@ -132,7 +133,7 @@ export class CreateContractIndicationsComponent implements OnInit {
     { name: 'propietario1', value: '1'}
   ]
   fieldArrendatario: FieldArrendatario[] = [
-    { name: 'Arrendatario 1', value: '1'}
+    { id: '1', name: 'Arrendatario 1', value: 'A1'}
   ]
   deudorSolidario: DeudorSolidario[] = [
     { name: 'deudor1', value: '1'}
@@ -153,6 +154,18 @@ export class CreateContractIndicationsComponent implements OnInit {
   }
 
   setArrendatario(action: string){
+    let numPerson = this.fieldArrendatario.length;
+     numPerson++;
+    if(action === '+'){
+      this.fieldArrendatario.push({
+        id: ''+numPerson,
+        name: 'Arrendatario '+numPerson,
+        value: 'A'+numPerson
+      });
+      console.log(this.fieldArrendatario)
+    }else{
+      this.fieldArrendatario.pop();
+    }
     console.log(action)
   }
 
