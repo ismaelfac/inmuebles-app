@@ -20,6 +20,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ],
   exports: [
     MatTableModule,
@@ -71,7 +73,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ]
 })
 export class SharedModule { }

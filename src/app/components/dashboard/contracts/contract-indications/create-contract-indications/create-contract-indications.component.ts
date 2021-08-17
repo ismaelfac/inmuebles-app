@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatAccordion} from '@angular/material/expansion';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-
+import {MatChipInputEvent} from '@angular/material/chips';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
@@ -25,6 +26,9 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+export interface Fruit {
+  name: string;
+}
 interface Garage {
   value: string;
   viewValue: string;
@@ -80,8 +84,12 @@ export class CreateContractIndicationsComponent implements OnInit {
   periodoGracia: boolean = false;
   totalDivisionValue: boolean = false;
   OptdeudorSolidario: boolean = false;
+  esAmparado: boolean = true;
+  esValorIntegral: boolean = false;
   divisionValue = new FormControl(5, Validators.min(1));
   typesOfShoes: string[] = ['Boots'];
+  selectedValueTypePerson: string = '';
+  typePerson: string[] = ['Natural', 'Juridica'];
 
   constructor(fb: FormBuilder) { 
     
@@ -133,6 +141,14 @@ export class CreateContractIndicationsComponent implements OnInit {
     this.owners.push($event.target.value);
     console.log(this.owners);
   }
+
+  setArrendatario(){
+
+  }
+
+  setNumArrendatario($event:any) {
+
+  }
   
   setDeudorSolidario() {
     this.OptdeudorSolidario = !this.OptdeudorSolidario;
@@ -143,4 +159,39 @@ export class CreateContractIndicationsComponent implements OnInit {
     this.deudorSolidario.push($event.target.value);
     console.log(this.deudorSolidario);
   }
+
+  setEsAmparado($event:any) {
+    this.esAmparado = !this.esAmparado;
+  }
+
+  setValorIntegral($event:any) {
+    this.esValorIntegral = !this.esValorIntegral;
+  }
+  
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  fruits: Fruit[] = [];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.fruits.push({name: value});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(fruit: Fruit): void {
+    const index = this.fruits.indexOf(fruit);
+
+    if (index >= 0) {
+      this.fruits.splice(index, 1);
+    }
+  }
+
 }

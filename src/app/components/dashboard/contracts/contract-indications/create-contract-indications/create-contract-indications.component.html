@@ -26,65 +26,89 @@
               </mat-form-field>
           </td>
         </tr></table>
-      
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Arrendatario</mat-label>
-              <input matInput>
-            </mat-form-field>
-          </td>
-          <td><mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Dni Arrendatario</mat-label>
-            <input matInput>
-          </mat-form-field></td>
-          <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Agregar Arrendatario Solidario</mat-slide-toggle></td>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Número de Arrendatarios</mat-label>
-              <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
-              <span matSuffix>Arrendatarios</span>
-              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Arrendatario</mat-error>
-            </mat-form-field>
-          </td>
-        </tr></table>
-        <table class="example-full-width" cellspacing="0">
-          <tr>
+        <div class="container">
+          <h2>Arrendatarios</h2>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Deudor 1</mat-label>
+                <mat-label>Arrendatario</mat-label>
                 <input matInput>
               </mat-form-field>
             </td>
-            <td><mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Cedula Deudor 1</mat-label>
-              <input matInput>
-            </mat-form-field></td>
-            <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Agregar Deudor Solidario</mat-slide-toggle></td>
-            <td *ngIf="OptdeudorSolidario">
+            <td>  
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Número de Deudores Solidarios</mat-label>
-                <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
-                <span matSuffix>Deudores</span>
-                <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Deudor Solidario</mat-error>
+              <mat-label>Dni Arrendatario</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+            <td>
+              <mat-slide-toggle class="example-margin" color="primary" (click)="setArrendatario()">Agregar Arrendatario Solidario</mat-slide-toggle>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Tipo de Persona</mat-label>
+                <mat-select [(value)]="selectedValueGarage" name="garage">
+                  <mat-option *ngFor="let item of garage" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </td>
-          </tr>
+            </tr>
           </table>
-        <table class="example-full-width" cellspacing="0" *ngIf="OptdeudorSolidario">
-          <tr *ngFor="let item of deudorSolidario">
-            <td>
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Deudor {{ item }}</mat-label>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Número de Arrendatarios</mat-label>
+                  <input matInput type="number" placeholder="1" min="1" (change)="setNumArrendatario($event)" name="NumDeudorSolidario" value="1">
+                  <span matSuffix>Arrendatarios</span>
+                  <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Arrendatario</mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="container">
+          <h2>Deudor Solidario</h2>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Deudor 1</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </td>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Cedula Deudor 1</mat-label>
                 <input matInput>
-              </mat-form-field>
-            </td>
-            <td><mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Cedula Deudor {{ item }}</mat-label>
-              <input matInput>
-            </mat-form-field></td>
-          </tr>
-        </table>
+              </mat-form-field></td>
+              <td><mat-slide-toggle class="example-margin" color="primary" (click)="setDeudorSolidario()">Agregar Deudor Solidario</mat-slide-toggle></td>
+              <td *ngIf="OptdeudorSolidario">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Número de Deudores Solidarios</mat-label>
+                  <input matInput type="number" placeholder="1" min="1" (change)="setNumDeudorSolidario($event)" name="NumDeudorSolidario" value="1">
+                  <span matSuffix>Deudores</span>
+                  <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Deudor Solidario</mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+            </table>
+            <table class="example-full-width" cellspacing="0" *ngIf="OptdeudorSolidario">
+              <tr *ngFor="let item of deudorSolidario">
+                <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Deudor {{ item }}</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                </td>
+                <td><mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Cedula Deudor {{ item }}</mat-label>
+                  <input matInput>
+                </mat-form-field></td>
+              </tr>
+            </table>
+        </div>
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
@@ -93,14 +117,22 @@
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>No Garaje/Cuarto Util</mat-label>
-              <mat-select [(value)]="selectedValueGarage" name="garage">
-                <mat-option *ngFor="let item of garage" [value]="item.value">
-                  {{item.viewValue}}
-                </mat-option>
-              </mat-select>
+            <mat-form-field class="example-chip-list example-full-width" appearance="fill">
+              <mat-label>Garaje(s) | Cuarto Util</mat-label>
+              <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                         [removable]="removable" (removed)="remove(fruit)">
+                  {{fruit.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Nuevo Cuarto o Garaje..."
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="add($event)">
+              </mat-chip-list>
             </mat-form-field>
+            
           </td>
           </tr>
         </table>
@@ -224,14 +256,28 @@
             </td>
           </tr>
         </table>
-        <table class="example-full-width" cellspacing="0"><tr>
+        <table class="example-full-width" cellspacing="0" ><tr>
           <td><mat-slide-toggle class="example-margin" color="primary">Responsable de Iva</mat-slide-toggle></td>
-          <td><mat-slide-toggle class="example-margin" color="primary">Garantizado</mat-slide-toggle></td>
+          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setEsAmparado($event)">Garantizado</mat-slide-toggle></td>
           </tr>
         </table>
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-slide-toggle class="example-margin" color="primary">Amparo Basico</mat-slide-toggle></td>
-          <td><mat-slide-toggle class="example-margin" color="primary">Amparo Integral</mat-slide-toggle></td>
+        <table class="example-full-width" cellspacing="0" *ngIf="esAmparado"><tr>
+          <td><mat-slide-toggle class="example-margin" color="primary" [checked]="esAmparado">Amparo Basico</mat-slide-toggle></td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Valor Amparo Basico</mat-label>
+              <span matPrefix>$&nbsp;</span>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+            </mat-form-field>
+          </td>
+          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorIntegral($event)">Amparo Integral</mat-slide-toggle></td>
+          <td *ngIf="esValorIntegral">
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Valor Amparo Integral</mat-label>
+              <span matPrefix>$&nbsp;</span>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+            </mat-form-field>
+          </td>
           </tr>
         </table>
         <table class="example-full-width" cellspacing="0"><tr>
