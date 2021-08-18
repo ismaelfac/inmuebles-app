@@ -32,7 +32,7 @@
                 <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
                   remove
                   </span></mat-button-toggle>
-                <h2 class="title-form">Arrendatarios</h2>
+                <h2 class="title-form">{{ fieldArrendatario.length }} {{ titleArrendatario }} </h2>
                 <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
                   add
                   </span></mat-button-toggle>
@@ -54,7 +54,7 @@
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Tipo de Persona</mat-label>
-                <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" (selectionChange)="setTypePersonJuridica($event.value)" >
+                <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" formControlName="juridica" (selectionChange)="setTypePersonJuridica($event.value)" >
                   <mat-option value="Natural">Natural</mat-option>
                   <mat-option value="Juridica">Juridica</mat-option>
                 </mat-select>
@@ -78,13 +78,14 @@
             </tr>
           </table>
         </div>
+        <mat-divider></mat-divider>
         <div class="container">
           <span>
             <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
               <mat-button-toggle value="-" (click)="setDeudorSolidario('-')"><span class="material-icons">
                 remove
                 </span></mat-button-toggle>
-              <h2 class="title-form">Deudores</h2>
+              <h2 class="title-form">{{ fieldDeudores.length }} {{ titleDeudor }} </h2>
               <mat-button-toggle value="+" (click)="setDeudorSolidario('+')"><span class="material-icons">
                 add
                 </span></mat-button-toggle>
@@ -117,44 +118,60 @@
           </td>
           </tr>
         </table>
-      </div>
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Tipo de Contrato</mat-label>
-              <mat-select [(value)]="selectedValueContractType" name="garage">
-                <mat-option *ngFor="let item of contractsType" [value]="item.value">
-                  {{item.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Direccion Inmueble</mat-label>
-              <input matInput placeholder="Cll # Cra # Tranversal #">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="example-chip-list example-full-width" appearance="fill">
-              <mat-label>Garaje(s) | Cuarto Util</mat-label>
-              <mat-chip-list #chipList aria-label="Fruit selection">
-                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                         [removable]="removable" (removed)="remove(fruit)">
-                  {{fruit.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-                <input placeholder="Nuevo Cuarto o Garaje..."
-                       [matChipInputFor]="chipList"
-                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                       [matChipInputAddOnBlur]="addOnBlur"
-                       (matChipInputTokenEnd)="add($event)">
-              </mat-chip-list>
-            </mat-form-field>
-            
-          </td>
-          </tr>
-        </table>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="container">
+          <span>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <h2 class="title-form">Descripción del Inmueble</h2>
+                <mat-button-toggle value="-"><span class="material-icons">
+                  remove
+                  </span></mat-button-toggle>
+                
+                <mat-button-toggle value="+"><span class="material-icons">
+                  add
+                  </span></mat-button-toggle>
+            </mat-button-toggle-group>
+          </span>
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Tipo de Contrato</mat-label>
+                <mat-select [(value)]="selectedValueContractType" name="garage">
+                  <mat-option *ngFor="let item of contractsType" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Direccion Inmueble</mat-label>
+                <input matInput placeholder="Cll # Cra # Tranversal #">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-chip-list example-full-width" appearance="fill">
+                <mat-label>Garaje(s) | Cuarto Util</mat-label>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="Nuevo Cuarto o Garaje..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>
+              
+            </td>
+            </tr>
+          </table>
+        </div>
+        <mat-divider></mat-divider>
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
@@ -174,7 +191,7 @@
               <mat-label>Duracion del Contrato</mat-label>
               <input matInput type="number" placeholder="2" min="1">
               <span matSuffix>Meses</span>
-              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Mes</mat-error>
+              <mat-error>Minimo 1 Mes</mat-error>
             </mat-form-field>
           </td>
           <td>
@@ -209,8 +226,8 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Periodo de Gracia</mat-label>
               <input matInput type="number" placeholder="2" min="1">
-              <span matSuffix>Meses</span>
-              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Mes</mat-error>
+              <span matSuffix>Dias</span>
+              <mat-error>Minimo 30 Dias</mat-error>
             </mat-form-field>
           </td>
          </tr></table>
@@ -244,8 +261,7 @@
               <mat-label>Valor de Division</mat-label>
               <input matInput type="number" placeholder="1" min="1" (change)="setDivisionValue($event)" value="1">
               <span matSuffix>Unidad</span>
-              <mat-error *ngIf="tiempoEstimado.invalid">Minimo 1 Propietario</mat-error>
-            </mat-form-field>
+              </mat-form-field>
           </td>
         </tr></table>
         <table class="example-full-width" cellspacing="0" *ngIf="totalDivisionValue">

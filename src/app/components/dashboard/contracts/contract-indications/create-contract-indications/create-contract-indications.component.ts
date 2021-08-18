@@ -5,7 +5,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
@@ -80,7 +79,10 @@ interface Owners {
 })
 export class CreateContractIndicationsComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
+  
   date = new FormControl(moment());
+  titleDeudor: string = 'Deudor';
+  titleArrendatario: string = 'Arrendatario';
   panelOpenState = false;
   numArrentararios: number = 0;
   numDeudores: number = 0;
@@ -89,7 +91,6 @@ export class CreateContractIndicationsComponent implements OnInit {
   selectedValueAccountType:any = '';
   selectedValueBankConsign:any = '';
 
-  tiempoEstimado = new FormControl(11, Validators.min(1));
   periodoGracia: boolean = false;
   IsPersonaJuridica: boolean = false;
   totalDivisionValue: boolean = true;
@@ -97,7 +98,6 @@ export class CreateContractIndicationsComponent implements OnInit {
   IsAdministracion: boolean = false;
   esAmparado: boolean = true;
   esValorIntegral: boolean = false;
-  divisionValue = new FormControl(5, Validators.min(1));
   typesOfShoes: string[] = ['Boots'];
   selectedValueTypePerson: string = '';
   typePerson: string[] = ['Natural', 'Juridica'];
@@ -105,6 +105,7 @@ export class CreateContractIndicationsComponent implements OnInit {
 
   constructor() { 
       this.numArrentararios = this.fieldArrendatario.length;
+      
    }
 
   ngOnInit(): void {
@@ -140,7 +141,6 @@ export class CreateContractIndicationsComponent implements OnInit {
     { id: '1', name: 'Arrendatario 1', value: 'A1'}
   ]
   fieldDeudores: DeudorSolidario[] = [
-    { id: '1', name: 'deudor 1', value: 'D1'}
   ]
 
   setPeriodoGracia(): any {
@@ -166,11 +166,10 @@ export class CreateContractIndicationsComponent implements OnInit {
         name: 'Arrendatario '+numPerson,
         value: 'A'+numPerson
       });
-      console.log(this.fieldArrendatario)
     }else{
       this.fieldArrendatario.pop();
     }
-    console.log(action)
+    this.titleArrendatario = (this.fieldArrendatario.length === 1 ? 'Arrendatario' : 'Arrendatarios');
   }
 
   setNumArrendatario($event:any) {
@@ -194,11 +193,10 @@ export class CreateContractIndicationsComponent implements OnInit {
         name: 'Deudor '+numPerson,
         value: 'D'+numPerson
       });
-      console.log(this.fieldDeudores)
     }else{
       this.fieldDeudores.pop();
     }
-    console.log(action)
+    this.titleDeudor = (this.fieldDeudores.length === 1 ? 'Deudor' : 'Deudores');
   }
 
   setEsAmparado($event:any) {
