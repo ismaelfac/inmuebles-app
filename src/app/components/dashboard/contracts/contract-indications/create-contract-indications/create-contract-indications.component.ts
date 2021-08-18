@@ -91,7 +91,7 @@ export class CreateContractIndicationsComponent implements OnInit {
 
   tiempoEstimado = new FormControl(11, Validators.min(1));
   periodoGracia: boolean = false;
-  IsPersonaJuridica: boolean = true;
+  IsPersonaJuridica: boolean = false;
   totalDivisionValue: boolean = true;
   OptdeudorSolidario: boolean = false;
   IsAdministracion: boolean = false;
@@ -175,6 +175,14 @@ export class CreateContractIndicationsComponent implements OnInit {
 
   setNumArrendatario($event:any) {
     
+  }
+
+  setTypePersonJuridica(value:string) {
+    if(value === 'Juridica') {
+      this.IsPersonaJuridica = true;
+    }else{
+      this.IsPersonaJuridica = false;
+    }
   }
   
   setDeudorSolidario(action: string) {

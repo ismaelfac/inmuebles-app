@@ -54,7 +54,7 @@
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Tipo de Persona</mat-label>
-                <mat-select [(value)]="selectedValueGarage" name="typePersona">
+                <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" (selectionChange)="setTypePersonJuridica($event.value)" >
                   <mat-option value="Natural">Natural</mat-option>
                   <mat-option value="Juridica">Juridica</mat-option>
                 </mat-select>
