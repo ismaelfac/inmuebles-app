@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {COMMA, ENTER, F} from '@angular/cdk/keycodes';
 import {MatAccordion} from '@angular/material/expansion';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -92,16 +92,18 @@ export class CreateContractIndicationsComponent implements OnInit {
   tiempoEstimado = new FormControl(11, Validators.min(1));
   periodoGracia: boolean = false;
   IsPersonaJuridica: boolean = true;
-  totalDivisionValue: boolean = false;
+  totalDivisionValue: boolean = true;
   OptdeudorSolidario: boolean = false;
+  IsAdministracion: boolean = false;
   esAmparado: boolean = true;
   esValorIntegral: boolean = false;
   divisionValue = new FormControl(5, Validators.min(1));
   typesOfShoes: string[] = ['Boots'];
   selectedValueTypePerson: string = '';
   typePerson: string[] = ['Natural', 'Juridica'];
+  cmdEstateType: string = '';
 
-  constructor(fb: FormBuilder) { 
+  constructor() { 
       this.numArrentararios = this.fieldArrendatario.length;
    }
 
@@ -199,7 +201,7 @@ export class CreateContractIndicationsComponent implements OnInit {
     this.esValorIntegral = !this.esValorIntegral;
   }
   setValorAdministracion() {
-
+    this.IsAdministracion = !this.IsAdministracion;
   }
 
   haveRut(event:void) {
@@ -230,6 +232,10 @@ export class CreateContractIndicationsComponent implements OnInit {
     if (index >= 0) {
       this.fruits.splice(index, 1);
     }
+  }
+
+  onSubmitInfoContrato(): void {
+
   }
 
 }
