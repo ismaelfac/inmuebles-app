@@ -14,5 +14,9 @@
     {
         "name": "Contratos",
         "redirect": "/dashboard/contractos"
+    },
+    {
+        "name": "Inventarios",
+        "redirect": "/dashboard/inventarios"
     }
 ]
