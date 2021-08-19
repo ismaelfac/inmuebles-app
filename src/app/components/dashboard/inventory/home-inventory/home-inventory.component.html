@@ -1,1 +1,19 @@
-<p>home-inventory works!</p>
+<div class="container">
+    <h1>{{ panel_title }}</h1>
+    <div class="moduleActive" *ngIf="!moduleActive">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Modulo</mat-card-title>
+              <mat-card-subtitle>Inventarios</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://www.garrigues.com/sites/default/files/images-news/alerta-laboral-chile.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-actions>
+              <button mat-button (click)="setModuleActive('Indicaciones de Contrato')">Entrar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div *ngIf="moduleActive">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+  
