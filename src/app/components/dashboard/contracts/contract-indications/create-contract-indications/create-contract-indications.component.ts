@@ -102,7 +102,20 @@ export class CreateContractIndicationsComponent implements OnInit {
   selectedValueTypePerson: string = '';
   typePerson: string[] = ['Natural', 'Juridica'];
   cmdEstateType: string = '';
+  step = 0;
 
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+  
   constructor() { 
       this.numArrentararios = this.fieldArrendatario.length;
       

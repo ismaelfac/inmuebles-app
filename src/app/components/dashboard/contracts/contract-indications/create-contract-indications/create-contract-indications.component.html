@@ -5,7 +5,7 @@
           
         </mat-panel-title>
         <mat-panel-description>
-          <b>Informacion General del Contrato</b>
+          <b style="color:#3f51b5;">Informacion General del Contrato</b>
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
@@ -196,7 +196,7 @@
           </td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-              <mat-label>% Incremento</mat-label>
+              <mat-label>Incremento</mat-label>
               <input matInput type="number" class="example-right-align" placeholder="0">
               <span matPrefix>%&nbsp;</span>
               <span matSuffix>.0</span>
@@ -206,7 +206,7 @@
          <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-              <mat-label>% Derechos de Contrato</mat-label>
+              <mat-label>Derechos de Contrato</mat-label>
               <input matInput type="number" class="example-right-align" placeholder="0">
               <span matPrefix>%&nbsp;</span>
               <span matSuffix>.0</span>
@@ -249,40 +249,123 @@
           
         </mat-panel-title>
         <mat-panel-description>
-          <b>Convenio del Contrato</b>
+          <b style="color:#3f51b5;">Convenio del Contrato</b>
         </mat-panel-description>
         <mat-icon>map</mat-icon>
       </mat-expansion-panel-header>
       <form class="example-form">
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-slide-toggle class="example-margin" checked="true" color="primary" (change)="setTotalDivisionValue()">Division de Renta</mat-slide-toggle></td>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Valor de Division</mat-label>
-              <input matInput type="number" placeholder="1" min="1" (change)="setDivisionValue($event)" value="1">
-              <span matSuffix>Unidad</span>
-              </mat-form-field>
-          </td>
-          </tr></table>
-        <table class="example-full-width" cellspacing="0" *ngIf="totalDivisionValue">
-          <tr *ngFor="let owner of owners">
+        
+      <div class="container">
+        <h2 class="title-form">propiedades del convenio</h2>
+        <mat-divider style="margin-bottom: 10px;"></mat-divider>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td><mat-slide-toggle class="example-margin" checked="true" color="primary" (change)="setTotalDivisionValue()">Division de Renta</mat-slide-toggle></td>
             <td>
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Propietario</mat-label>
-                <input matInput>
-              </mat-form-field>
-            </td>
-            <td><mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Cedula</mat-label>
-              <input matInput>
-            </mat-form-field></td>
-            <td>
-              <button mat-flat-button color="primary">RUT</button>
+              <span>
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+                    remove
+                    </span></mat-button-toggle>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tipo de Persona</mat-label>
+                        <mat-select [(value)]="selectedValueTypePerson" formControlName="typePerson" (selectionChange)="setTypePersonJuridica($event.value)" >
+                          <mat-option value="Propietario">Propietario</mat-option>
+                          <mat-option value="Usuafructuario">Usuafructuario</mat-option>
+                          <mat-option value="Comodatario">Comodatario</mat-option>
+                          <mat-option value="Apoderado">Apoderado</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+                    add
+                    </span></mat-button-toggle>
+                </mat-button-toggle-group>
+              </span>
             </td>
           </tr>
         </table>
+        <div class="container">
+          <h2 class="title-form">Informacion de </h2>
+          <mat-divider style="margin-bottom: 10px;"></mat-divider>
+          <mat-accordion class="example-headers-align" *ngFor="let item of fieldArrendatario">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos Personales
+                </mat-panel-title>
+                <mat-panel-description>
+                  Type your name and age
+                  <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput>
+              </mat-form-field>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Age</mat-label>
+                <input matInput type="number" min="1">
+              </mat-form-field>
+              <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos del convenio
+                </mat-panel-title>
+                <mat-panel-description>
+                  Type the country name
+                  <mat-icon>map</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Country</mat-label>
+                <input matInput>
+              </mat-form-field>
+          
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos Bancarios
+                </mat-panel-title>
+                <mat-panel-description>
+                  Inform the date you wish to travel
+                  <mat-icon>date_range</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+              </mat-form-field>
+              <mat-datepicker #picker></mat-datepicker>
+          
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">End</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+          
+        </div>
+      </div>
+        
+        
         <table class="example-full-width" cellspacing="0" ><tr>
-          <td><mat-slide-toggle class="example-margin" color="primary">Responsable de Iva</mat-slide-toggle></td>
+          
           <td><mat-slide-toggle class="example-margin" color="primary" (change)="setEsAmparado($event)">Garantizado</mat-slide-toggle></td>
           </tr>
         </table>
@@ -308,14 +391,14 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-              <mat-label>% Porcentaje de Comisión</mat-label>
+              <mat-label>Comisión</mat-label>
               <input matInput type="number" class="example-right-align" placeholder="0">
               <span matPrefix>%&nbsp;</span>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-              <mat-label>% Porcentaje de Mercadeo</mat-label>
+              <mat-label>Mercadeo</mat-label>
               <input matInput type="number" class="example-right-align" placeholder="0">
               <span matPrefix>%&nbsp;</span>
             </mat-form-field>
