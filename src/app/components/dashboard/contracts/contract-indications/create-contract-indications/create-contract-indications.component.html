@@ -284,10 +284,10 @@
             </td>
           </tr>
         </table>
-        <div class="container">
+        <div class="container" *ngFor="let item of fieldArrendatario">
           <h2 class="title-form">Informacion de </h2>
           <mat-divider style="margin-bottom: 10px;"></mat-divider>
-          <mat-accordion class="example-headers-align" *ngFor="let item of fieldArrendatario">
+          <mat-accordion class="example-headers-align">
             <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -345,13 +345,37 @@
                   <mat-icon>date_range</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-          
-              <mat-form-field appearance="fill">
-                <mat-label>Date</mat-label>
-                <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
-              </mat-form-field>
-              <mat-datepicker #picker></mat-datepicker>
-          
+                <div class="container">
+                  <table class="example-full-width" cellspacing="0">
+                    <tr>
+                      <td><mat-slide-toggle class="example-margin" color="primary">Pago por Consignación</mat-slide-toggle></td>
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Banco a Consignar</mat-label>
+                        <mat-select [(value)]="selectedValueBankConsign" name="bankConsign">
+                          <mat-option *ngFor="let item of bankConsign" [value]="item.value">
+                            {{item.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tipo de Cuenta</mat-label>
+                        <mat-select [(value)]="selectedValueAccountType" name="accountType">
+                          <mat-option *ngFor="let item of accountType" [value]="item.value">
+                            {{item.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                      <td><mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Numero de Cuenta</mat-label>
+                        <input matInput>
+                      </mat-form-field></td>
+                    </tr>
+                  </table>
+                </div>
               <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">End</button>
@@ -362,32 +386,36 @@
           
         </div>
       </div>
-        
-        
+      <div class="container">
+        <h2 class="title-form">Garantia del Convenio</h2>
+        <mat-divider style="margin-bottom: 10px;"></mat-divider>
         <table class="example-full-width" cellspacing="0" ><tr>
-          
           <td><mat-slide-toggle class="example-margin" color="primary" (change)="setEsAmparado($event)">Garantizado</mat-slide-toggle></td>
           </tr>
         </table>
-        <table class="example-full-width" cellspacing="0" *ngIf="esAmparado"><tr>
-          <td><mat-slide-toggle class="example-margin" color="primary" [checked]="esAmparado">Amparo Basico</mat-slide-toggle></td>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-              <mat-label>Valor Amparo Basico</mat-label>
-              <span matPrefix>$&nbsp;</span>
-              <input matInput type="number" class="example-right-align" placeholder="0">
-            </mat-form-field>
-          </td>
-          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorIntegral($event)">Amparo Integral</mat-slide-toggle></td>
-          <td *ngIf="esValorIntegral">
-            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-              <mat-label>Valor Amparo Integral</mat-label>
-              <span matPrefix>$&nbsp;</span>
-              <input matInput type="number" class="example-right-align" placeholder="0">
-            </mat-form-field>
-          </td>
-          </tr>
-        </table>
+        <div class="container">
+          <table class="example-full-width" cellspacing="0" *ngIf="esAmparado"><tr>
+            <td><mat-slide-toggle class="example-margin" color="primary" [checked]="esAmparado">Amparo Basico</mat-slide-toggle></td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+                <mat-label>Valor Amparo Basico</mat-label>
+                <span matPrefix>$&nbsp;</span>
+                <input matInput type="number" class="example-right-align" placeholder="0">
+              </mat-form-field>
+            </td>
+            <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorIntegral($event)">Amparo Integral</mat-slide-toggle></td>
+            <td *ngIf="esValorIntegral">
+              <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+                <mat-label>Valor Amparo Integral</mat-label>
+                <span matPrefix>$&nbsp;</span>
+                <input matInput type="number" class="example-right-align" placeholder="0">
+              </mat-form-field>
+            </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
@@ -403,37 +431,9 @@
               <span matPrefix>%&nbsp;</span>
             </mat-form-field>
           </td>
-          <td><mat-slide-toggle class="example-margin" color="primary">Pago por Consignación</mat-slide-toggle></td>
         </tr>
         </table>
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Banco a Consignar</mat-label>
-              <mat-select [(value)]="selectedValueBankConsign" name="bankConsign">
-                <mat-option *ngFor="let item of bankConsign" [value]="item.value">
-                  {{item.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Tipo de Cuenta</mat-label>
-              <mat-select [(value)]="selectedValueAccountType" name="accountType">
-                <mat-option *ngFor="let item of accountType" [value]="item.value">
-                  {{item.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-            <td><mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Numero de Cuenta</mat-label>
-              <input matInput>
-            </mat-form-field></td>
-          </tr>
-        </table>
+        
 
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
