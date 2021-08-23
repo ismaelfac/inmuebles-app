@@ -2,7 +2,23 @@
     <mat-sidenav></mat-sidenav>
     <mat-sidenav-content>
         <navbar></navbar>
-        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-selection-list #shoes [multiple]="false">
+        <mat-list-option *ngFor="let item of menu" [routerLink]="item.redirect" [value]="item.name">
+            {{ item.name }}
+        </mat-list-option>
+      </mat-selection-list>
+  </mat-drawer>
+
+  <div>
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
 
