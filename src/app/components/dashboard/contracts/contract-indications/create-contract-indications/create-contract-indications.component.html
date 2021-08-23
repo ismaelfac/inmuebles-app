@@ -300,16 +300,33 @@
                     <mat-icon>account_circle</mat-icon>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-            
-                <mat-form-field appearance="fill">
-                  <mat-label>First name</mat-label>
-                  <input matInput>
-                </mat-form-field>
-            
-                <mat-form-field appearance="fill">
-                  <mat-label>Age</mat-label>
-                  <input matInput type="number" min="1">
-                </mat-form-field>
+                  <table class="example-full-width" cellspacing="0">
+                    <tr *ngFor="let item of fieldDeudores">
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>{{ item.name }}</mat-label>
+                        <input matInput value="{{item.value}}">
+                      </mat-form-field>
+                    </td>
+                    <td>  
+                      <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Identificación</mat-label>
+                      <input matInput></mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tipo de Persona</mat-label>
+                        <mat-select [(value)]="selectedValueGarage" name="garage">
+                          <mat-option value="Natural">Natural</mat-option>
+                          <mat-option value="Juridica">Juridica</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                        <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+                    </td>
+                    </tr>
+                  </table>
                 <mat-action-row>
                   <button mat-button color="primary" (click)="nextStep()">Next</button>
                 </mat-action-row>
