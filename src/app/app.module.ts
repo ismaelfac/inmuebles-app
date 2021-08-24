@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //:APPLICATION
@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     SharedModule

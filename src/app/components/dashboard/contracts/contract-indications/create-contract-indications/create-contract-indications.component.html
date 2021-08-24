@@ -10,7 +10,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <!--Formulario para componente-->
-      <form (ngSubmit)="onSubmitInfoContrato()" class="example-form">
+      <form [formGroup]="formulario" (ngSubmit)="onSubmitInfoContrato()" class="example-form">
         <table class="example-full-width" cellspacing="0"><tr>
             
             <td>
@@ -39,30 +39,31 @@
               </mat-button-toggle-group>
             </span>
           <table class="example-full-width" cellspacing="0" *ngFor="let item of fieldArrendatario">
-            <tr >
-            <td>
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>{{ item.name }}</mat-label>
-                <input matInput value="" name="{{ item.name }}">
-              </mat-form-field>
-            </td>
-            <td>  
-              <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Identificación del Arrendatario</mat-label>
-              <input matInput></mat-form-field>
-            </td>
-            <td>
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Tipo de Persona</mat-label>
-                <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" formControlName="juridica" (selectionChange)="setTypePersonJuridica($event.value)" >
-                  <mat-option value="Natural">Natural</mat-option>
-                  <mat-option value="Juridica">Juridica</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </td>
-            <td>
-                <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
-            </td>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Tipo de Persona</mat-label>
+                  <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" formControlName="juridica" (selectionChange)="setTypePersonJuridica($event.value)" >
+                    <mat-option value="Natural">Natural</mat-option>
+                    <mat-option value="Juridica">Juridica</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>{{ item.name }}</mat-label>
+                  <input matInput value="" name="{{ item.name }}">
+                </mat-form-field>
+              </td>
+              <td>  
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Identificación del Arrendatario</mat-label>
+                <input matInput></mat-form-field>
+              </td>
+              
+              <td>
+                  <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+              </td>
             </tr>
             <tr *ngIf="IsPersonaJuridica">
               <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
@@ -264,19 +265,19 @@
             <td>
               <span>
                 <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                  <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+                  <mat-button-toggle value="-" (click)="setActoresContrato('-')"><span class="material-icons">
                     remove
                     </span></mat-button-toggle>
                       <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Tipo de Persona</mat-label>
-                        <mat-select [(value)]="selectedValueTypePerson" formControlName="typePerson" (selectionChange)="setTypePersonJuridica($event.value)" >
+                        <mat-select [(value)]="selectedValueTypePerson" formControlName="typePerson" (selectionChange)="setTypeActorContrato($event.value)" >
                           <mat-option value="Propietario">Propietario</mat-option>
                           <mat-option value="Usuafructuario">Usuafructuario</mat-option>
                           <mat-option value="Comodatario">Comodatario</mat-option>
                           <mat-option value="Apoderado">Apoderado</mat-option>
                         </mat-select>
                       </mat-form-field>
-                  <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+                  <mat-button-toggle value="+" (click)="setActoresContrato('+')"><span class="material-icons">
                     add
                     </span></mat-button-toggle>
                 </mat-button-toggle-group>
@@ -286,8 +287,8 @@
         </table>
         <div class="container">
           <mat-card>Simple card</mat-card>
-          <div class="container" *ngFor="let item of fieldArrendatario">
-            <h2 class="title-form">Informacion de </h2>
+          <div class="container" *ngFor="let item of fieldActoresContrato">
+            <h2 class="title-form">Informacion de {{ titleActor }}</h2>
             <mat-divider style="margin-bottom: 10px;"></mat-divider>
             <mat-accordion class="example-headers-align">
               <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
@@ -301,9 +302,9 @@
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                   <table class="example-full-width" cellspacing="0">
-                    <tr *ngFor="let item of fieldDeudores">
+                    <tr>
                     <td>
-                      <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-form-field class="example-full-width" appearance="fill" formControlName="nombre">
                         <mat-label>{{ item.name }}</mat-label>
                         <input matInput value="{{item.value}}">
                       </mat-form-field>
