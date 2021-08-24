@@ -134,6 +134,7 @@ export class CreateContractIndicationsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log(this.formulario.value);
   }
   garage: Garage[] = [
     {value: '0', viewValue: 'No Aplica'},
