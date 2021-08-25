@@ -32,7 +32,7 @@ export class ListContractIndicationsComponent implements OnInit {
 
   LIST_CONTRACT_INDICATIONS: ContractIndications[] = [];
 
-  displayedColumns: string[] = ['id','arrendatario', 'deudorSolidario', 'addressInmueble', 'isActive','options'];
+  displayedColumns: string[] = ['id', 'contrato','arrendatario', 'deudorSolidario', 'addressInmueble', 'isActive','options'];
   dataSource = new MatTableDataSource(this.LIST_CONTRACT_INDICATIONS);
 
   applyFilter(event: Event) {

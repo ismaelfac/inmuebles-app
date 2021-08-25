@@ -257,36 +257,38 @@
       <form class="example-form">
         
       <div class="container">
-        <h2 class="title-form">propiedades del convenio</h2>
+        <h2 class="title-form">Propiedades del convenio</h2>
         <mat-divider style="margin-bottom: 10px;"></mat-divider>
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-            <td><mat-slide-toggle class="example-margin" checked="true" color="primary" (change)="setTotalDivisionValue()">Division de Renta</mat-slide-toggle></td>
-            <td>
-              <span>
-                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                  <mat-button-toggle value="-" (click)="setActoresContrato('-')"><span class="material-icons">
-                    remove
-                    </span></mat-button-toggle>
-                      <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Tipo de Persona</mat-label>
-                        <mat-select [(value)]="selectedValueTypePerson" formControlName="typePerson" (selectionChange)="setTypeActorContrato($event.value)" >
-                          <mat-option value="Propietario">Propietario</mat-option>
-                          <mat-option value="Usuafructuario">Usuafructuario</mat-option>
-                          <mat-option value="Comodatario">Comodatario</mat-option>
-                          <mat-option value="Apoderado">Apoderado</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                  <mat-button-toggle value="+" (click)="setActoresContrato('+')"><span class="material-icons">
-                    add
-                    </span></mat-button-toggle>
-                </mat-button-toggle-group>
-              </span>
-            </td>
-          </tr>
-        </table>
         <div class="container" style="margin-top: 8%;">
-          <mat-card>Simple card</mat-card>
+          <h2 class="title-form">Configuración</h2>
+          <mat-card>
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td><mat-slide-toggle class="example-margin" checked="true" color="primary" (change)="setTotalDivisionValue()">Division de Renta</mat-slide-toggle></td>
+                <td>
+                  <span>
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                      <mat-button-toggle value="-" (click)="setActoresContrato('-')"><span class="material-icons">
+                        remove
+                        </span></mat-button-toggle>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Tipo de Persona</mat-label>
+                            <mat-select [(value)]="selectedValueTypePerson" formControlName="typePerson" (selectionChange)="setTypeActorContrato($event.value)" >
+                              <mat-option value="Propietario">Propietario</mat-option>
+                              <mat-option value="Usuafructuario">Usuafructuario</mat-option>
+                              <mat-option value="Comodatario">Comodatario</mat-option>
+                              <mat-option value="Apoderado">Apoderado</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      <mat-button-toggle value="+" (click)="setActoresContrato('+')"><span class="material-icons">
+                        add
+                        </span></mat-button-toggle>
+                    </mat-button-toggle-group>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </mat-card>
           <div *ngFor="let item of fieldActoresContrato">
             <h2 class="title-form">Informacion de {{ item.titleActor }}</h2>
             <mat-divider style="margin-bottom: 10px;"></mat-divider>
@@ -306,7 +308,7 @@
                     <td>
                       <mat-form-field class="example-full-width" appearance="fill" formControlName="nombre">
                         <mat-label>{{ item.name }}</mat-label>
-                        <input matInput value="{{item.value}}">
+                        <input matInput value="">
                       </mat-form-field>
                     </td>
                     <td>  
@@ -323,11 +325,37 @@
                         </mat-select>
                       </mat-form-field>
                     </td>
-                    <td>
-                        <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
-                    </td>
                     </tr>
                   </table>
+                  <div class="container">
+                    <h2 class="title-form">Datos del Representante legal del {{ item.titleActor }}</h2>
+                    <table class="example-full-width" cellspacing="0">
+                      <tr>
+                        <td>
+                          <mat-form-field class="example-full-width" appearance="fill" formControlName="nombre">
+                            <mat-label>Representante Legal</mat-label>
+                            <input matInput value="representante de {{item.value}}">
+                          </mat-form-field>
+                        </td>
+                        <td>  
+                          <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Identificación</mat-label>
+                          <input matInput></mat-form-field>
+                        </td>
+                        <td>  
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>FOTOCOPIA CEDULA</mat-label>
+                            <input matInput disabled value="Click en el Icono para subir el RUT">
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <a class="pointer" style="color: #187159" matTooltip="RUT">
+                            <mat-icon>assignment</mat-icon>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
                 <mat-action-row>
                   <button mat-button color="primary" (click)="nextStep()">Next</button>
                 </mat-action-row>
@@ -336,7 +364,7 @@
               <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    Datos del convenio
+                    Documentación
                   </mat-panel-title>
                   <mat-panel-description>
                     Type the country name
@@ -344,10 +372,21 @@
                   </mat-panel-description>
                 </mat-expansion-panel-header>
             
-                <mat-form-field appearance="fill">
-                  <mat-label>Country</mat-label>
-                  <input matInput>
-                </mat-form-field>
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>  
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>RUT</mat-label>
+                        <input matInput disabled value="Click en el Icono para subir el RUT">
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <a class="pointer" style="color: #187159" matTooltip="RUT">
+                        <mat-icon>assignment</mat-icon>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
             
                 <mat-action-row>
                   <button mat-button color="warn" (click)="prevStep()">Previous</button>
