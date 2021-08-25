@@ -52,7 +52,7 @@
               <td>
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>{{ item.name }}</mat-label>
-                  <input matInput value="" name="{{ item.name }}">
+                  <input matInput value="" name="{{ item.name }}" formControlName="nombre">
                 </mat-form-field>
               </td>
               <td>  
@@ -288,7 +288,7 @@
         <div class="container">
           <mat-card>Simple card</mat-card>
           <div class="container" *ngFor="let item of fieldActoresContrato">
-            <h2 class="title-form">Informacion de {{ titleActor }}</h2>
+            <h2 class="title-form">Informacion de {{ item.titleActor }}</h2>
             <mat-divider style="margin-bottom: 10px;"></mat-divider>
             <mat-accordion class="example-headers-align">
               <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>

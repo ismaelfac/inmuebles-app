@@ -58,6 +58,7 @@ interface DeudorSolidario {
 }
 interface ActoresContrato {
   id: string;
+  titleActor: string;
   name: string;
   value: string;
 }
@@ -208,7 +209,8 @@ export class CreateContractIndicationsComponent implements OnInit {
     if(action === '+'){
       this.fieldActoresContrato.push({
         id: ''+numActores,
-        name: 'Arrendatario '+numActores,
+        titleActor: this.titleActor,
+        name: this.titleActor+numActores,
         value: 'A'+numActores
       });
     }else{
