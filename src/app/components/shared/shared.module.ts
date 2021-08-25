@@ -22,7 +22,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -53,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     MatListModule,
     MatChipsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCheckboxModule
   ],
   exports: [
     MatTableModule,
@@ -77,7 +78,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     MatListModule,
     MatChipsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCheckboxModule
   ]
 })
 export class SharedModule { }
