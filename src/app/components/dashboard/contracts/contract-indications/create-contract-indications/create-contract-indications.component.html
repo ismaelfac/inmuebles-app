@@ -285,9 +285,9 @@
             </td>
           </tr>
         </table>
-        <div class="container">
+        <div class="container" style="margin-top: 8%;">
           <mat-card>Simple card</mat-card>
-          <div class="container" *ngFor="let item of fieldActoresContrato">
+          <div *ngFor="let item of fieldActoresContrato">
             <h2 class="title-form">Informacion de {{ item.titleActor }}</h2>
             <mat-divider style="margin-bottom: 10px;"></mat-divider>
             <mat-accordion class="example-headers-align">
@@ -317,7 +317,7 @@
                     <td>
                       <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Tipo de Persona</mat-label>
-                        <mat-select [(value)]="selectedValueGarage" name="garage">
+                        <mat-select [(value)]="selectedValueTypePersonConvenio" formControlName="typePersonConvenio">
                           <mat-option value="Natural">Natural</mat-option>
                           <mat-option value="Juridica">Juridica</mat-option>
                         </mat-select>

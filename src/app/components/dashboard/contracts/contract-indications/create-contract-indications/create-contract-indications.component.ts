@@ -96,6 +96,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   numDeudores: number = 0;
   selectedValueGarage: any = '';
   selectedValueContractType: any = '';
+  selectedValueTypePersonConvenio: any = '';
   selectedValueAccountType:any = '';
   selectedValueBankConsign:any = '';
 
@@ -211,12 +212,11 @@ export class CreateContractIndicationsComponent implements OnInit {
         id: ''+numActores,
         titleActor: this.titleActor,
         name: this.titleActor+numActores,
-        value: 'A'+numActores
+        value: this.titleActor+numActores
       });
     }else{
       this.fieldActoresContrato.pop();
     }
-    this.titleActor = (this.fieldActoresContrato.length === 1 ? 'Propietario' : 'Usufructuario');
   }
 
   setNumArrendatario($event:any) {
