@@ -33,7 +33,7 @@ export class ListContractIndicationsComponent implements OnInit {
 
   LIST_CONTRACT_INDICATIONS: ContractIndications[] = [];
 
-  displayedColumns: string[] = ['contrato','arrendatario', 'deudorSolidario', 'addressInmueble', 'isActive','options'];
+  displayedColumns: string[] = ['select','contrato','arrendatario', 'deudorSolidario', 'addressInmueble', 'isActive','options'];
   dataSource = new MatTableDataSource<ContractIndications>(this.LIST_CONTRACT_INDICATIONS);
   selection = new SelectionModel<ContractIndications>(true, []);
 
@@ -74,7 +74,7 @@ export class ListContractIndicationsComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.contrato + 1}`;
   }
 
 }

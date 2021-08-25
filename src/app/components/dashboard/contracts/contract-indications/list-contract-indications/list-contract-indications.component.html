@@ -1,7 +1,12 @@
 <div class="container">
     <mat-toolbar>
-        <div class="example-spacer"></div>        
-        <button mat-raised-button color="primary" routerLink="/dashboard/contractos/crear-indicaciones-contrato">Agregar</button>
+        <div class="example-spacer"></div>    
+        <button mat-raised-button color="warn" routerLink="/dashboard/contractos/crear-indicaciones-contrato">
+          <span class="material-icons">fact_check</span>&nbsp; Lista de Chequeo</button><br>    
+        <button mat-raised-button color="warn" routerLink="/dashboard/contractos/crear-indicaciones-contrato">
+          <span class="material-icons">print</span>&nbsp;Imprimir</button><br>
+        <button mat-raised-button color="primary" routerLink="/dashboard/contractos/crear-indicaciones-contrato">
+          <span class="material-icons">article</span>&nbsp;Agregar</button><br>
     </mat-toolbar>
     <div *ngIf="LIST_CONTRACT_INDICATIONS.length > 0">
       <mat-form-field appearance="standard">
@@ -27,7 +32,7 @@
                   </mat-checkbox>
                 </td>
               </ng-container>
-              <!-- Position Column -->
+              <!-- contrato Column -->
               <ng-container matColumnDef="contrato">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Contrato </th>
                 <td mat-cell *matCellDef="let element"> {{element.contrato}} </td>
