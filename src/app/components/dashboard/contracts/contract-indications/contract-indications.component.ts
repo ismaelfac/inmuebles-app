@@ -10,6 +10,14 @@ export class ContractIndicationsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.downloadPDF();
+  }
+
+  public downloadPDF(): void {
+    //const doc = new jsPDF();
+
+    //doc.text('Hello world!', 10, 10);
+    //doc.save('hello-world.pdf');
   }
 
 }
