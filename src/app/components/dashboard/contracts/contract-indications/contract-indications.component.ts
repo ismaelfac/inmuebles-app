@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contract-indications.component.css']
 })
 export class ContractIndicationsComponent implements OnInit {
-
+  showFiller = false;
   constructor() { }
 
   ngOnInit(): void {
