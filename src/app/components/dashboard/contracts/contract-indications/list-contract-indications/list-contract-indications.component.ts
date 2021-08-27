@@ -4,10 +4,13 @@ import {MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSidenavContainer } from '@angular/material/sidenav';
 
-
+//*Services */
 import { ContractIndicationsService } from 'src/app/services/contracts/contract-indications.service';
+import { CheckListContractService } from 'src/app/services/contracts/check-list-contract.service';
 import { ContractIndications } from 'src/app/interfaces/contractIndications';
+
 
 @Component({
   selector: 'list-contract-indications',
@@ -15,15 +18,18 @@ import { ContractIndications } from 'src/app/interfaces/contractIndications';
   styleUrls: ['./list-contract-indications.component.css']
 })
 export class ListContractIndicationsComponent implements OnInit {
-
+  //@ViewChild(MatSidenavContainer) sidenavContainer: MatSidenavContainer;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  showFiller = false;
 
+  constructor(private _contractsIndicationsService: ContractIndicationsService, private _snackBar: MatSnackBar) {
 
-  constructor(private _contractsIndicationsService: ContractIndicationsService, private _snackBar: MatSnackBar) { }
+   }
 
   ngOnInit(): void {
     this.loadContractIndications();
+    //this.sidenavContainer.scrollable.elementScrolled().subscribe(() => {});
   }
 
   ngAfterViewInit() {

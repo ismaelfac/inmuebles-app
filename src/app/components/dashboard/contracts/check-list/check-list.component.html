@@ -1,1 +1,62 @@
-<p>check-list works!</p>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Del Arrendatario
+        </mat-panel-title>
+        <mat-panel-description>
+            <b>75%</b> de terminación 
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <mat-list>
+            <mat-selection-list #checkList [multiple]="false">
+                <mat-list-option *ngFor="let item of checksList" [value]="item.id">
+                    {{item.name}}
+                </mat-list-option>
+            </mat-selection-list>    
+            <p>
+                Option selected: {{checkList.selectedOptions.selected[0]?.value}}
+            </p>
+        </mat-list>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Del Propietario
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+            <mat-selection-list #checkList [multiple]="false">
+                <mat-list-option *ngFor="let item of checksList" [value]="item.id">
+                    {{item.name}}
+                </mat-list-option>
+            </mat-selection-list>    
+            <p>
+                Option selected: {{checkList.selectedOptions.selected[0]?.value}}
+            </p>
+        </mat-list>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            DOCUMENTOS INDISPENSABLES PARA REVISION DE CONTRATO
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+            <mat-selection-list #checkList [multiple]="false">
+                <mat-list-option *ngFor="let item of checksList" [value]="item.id">
+                    {{item.name}}
+                </mat-list-option>
+            </mat-selection-list>    
+            <p>
+                Option selected: {{checkList.selectedOptions.selected[0]?.value}}
+            </p>
+        </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
