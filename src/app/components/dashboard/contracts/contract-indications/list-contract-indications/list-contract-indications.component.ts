@@ -4,7 +4,6 @@ import {MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSidenavContainer } from '@angular/material/sidenav';
 
 //*Services */
 import { ContractIndicationsService } from 'src/app/services/contracts/contract-indications.service';

@@ -4,20 +4,14 @@ import {ProgressBarMode} from '@angular/material/progress-bar';
 
 //**Services */
 import { CheckListContractService } from 'src/app/services/contracts/check-list-contract.service';
+import { PropertiesContractService } from 'src/app/services/contracts/properties-contract.service';
 interface CheckList {
   id: string;
   name: string;
   state: string;
 }
 
-interface PropertiesCheckList {
-    contractId: string,
-    actorId: string,
-    color: ThemePalette,
-    mode: ProgressBarMode,
-    value: number,
-    bufferValue: number
-}
+
 @Component({
   selector: 'check-list',
   templateUrl: './check-list.component.html',
@@ -26,32 +20,7 @@ interface PropertiesCheckList {
 export class CheckListComponent implements OnInit {
   panelOpenState = false;
 
-  progressList: PropertiesCheckList[] = [
-    {
-      contractId: '1',
-      actorId: 'Arrendatario',
-      color : 'accent',
-      mode: 'buffer',
-      value: 50,
-      bufferValue: 10
-    },
-    {
-      contractId: '1',
-      actorId: 'Propietario',
-      color : 'primary',
-      mode: 'buffer',
-      value: 80,
-      bufferValue: 10
-    },
-    {
-      contractId: '1',
-      actorId: 'Arrendatario',
-      color : 'warn',
-      mode: 'buffer',
-      value: 40,
-      bufferValue: 10
-    }
-  ]
+  progressList: any;
   color: ThemePalette = 'warn';
   mode: ProgressBarMode = 'buffer';
   value = 50;
@@ -77,9 +46,17 @@ export class CheckListComponent implements OnInit {
     {id: '17', name:'Rut del arrendatario y/o codeudores (P.Juridica) actualizado año corriente', state: 'Pendiente'},
     {id: '18', name:'Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.', state: 'Pendiente'}
   ];
-  constructor() { }
+  constructor(private _propertyContract: PropertiesContractService) { }
 
   ngOnInit(): void {
+    this.getPropertiesContract('253070');
+  }
+
+  getPropertiesContract(contractId: string) {
+    this._propertyContract.getPropertiesContract(contractId).subscribe(data => {
+      this.progressList = data;
+      console.log(this.progressList);
+    });
   }
 
 
