@@ -1,9 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
+import {ProgressBarMode} from '@angular/material/progress-bar';
+
+//**Services */
 import { CheckListContractService } from 'src/app/services/contracts/check-list-contract.service';
 interface CheckList {
   id: string;
   name: string;
   state: string;
+}
+
+interface PropertiesCheckList {
+    contractId: string,
+    actorId: string,
+    color: ThemePalette,
+    mode: ProgressBarMode,
+    value: number,
+    bufferValue: number
 }
 @Component({
   selector: 'check-list',
@@ -12,6 +25,38 @@ interface CheckList {
 })
 export class CheckListComponent implements OnInit {
   panelOpenState = false;
+
+  progressList: PropertiesCheckList[] = [
+    {
+      contractId: '1',
+      actorId: 'Arrendatario',
+      color : 'accent',
+      mode: 'buffer',
+      value: 50,
+      bufferValue: 10
+    },
+    {
+      contractId: '1',
+      actorId: 'Propietario',
+      color : 'primary',
+      mode: 'buffer',
+      value: 80,
+      bufferValue: 10
+    },
+    {
+      contractId: '1',
+      actorId: 'Arrendatario',
+      color : 'warn',
+      mode: 'buffer',
+      value: 40,
+      bufferValue: 10
+    }
+  ]
+  color: ThemePalette = 'warn';
+  mode: ProgressBarMode = 'buffer';
+  value = 50;
+  bufferValue = 10;
+
   checksList: CheckList[] = [
     {id: '1', name:'Indicaciones de contrato con VoBo Gerencia', state: 'Pendiente'},
     {id: '2', name:'Convenio Administracion firmado o Carta de condiciones', state: 'Pendiente'},
@@ -36,5 +81,6 @@ export class CheckListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

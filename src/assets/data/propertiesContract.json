@@ -1,0 +1,136 @@
+[
+    {
+        "contractId": "253070",
+        "CheckListContract": [
+            {
+                "PersonId": "72288959",
+                "typeRolContract": "Arrendatario",
+                "typePerson": "Juridica",
+                "DocumentsContract": [
+                    {
+                        "id": "1",
+                        "name": "Indicaciones de contrato",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "2",
+                        "name": "Solicitudes de arrendamiento",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "3",
+                        "name": "Asegurable o aprobado según el caso (direccion y valor deben coincidir con contrato)",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "4",
+                        "name": "Rut del arrendatario y/o codeudores (P.Juridica) año corriente",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "5",
+                        "name": "Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.",
+                        "state": "Pendiente"
+                    }
+                ],
+                "progressList": [
+                    {
+                        "color" : "accent",
+                        "mode": "buffer",
+                        "value": 50,
+                        "bufferValue": 10
+                    }
+                ]
+            },
+            {
+                "PersonId": "1140830980",
+                "typeRolContract": "Usuafructuario",
+                "typePerson": "Juridica",
+                "DocumentsContract": [
+                    {
+                        "id": "1",
+                        "name": "Convenio Administracion firmado ",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "2",
+                        "name": "Cuenta de cobro Canon y Derechos de Contrato",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "3",
+                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "4",
+                        "name": "Contrato firmado por las partes",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "5",
+                        "name": "Inventario de entrega.",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "6",
+                        "name": "Paz y salvo de administracion",
+                        "state": "Pendiente"
+                    }
+                ],
+                "progressList": [
+                    {
+                        "color" : "primary",
+                        "mode": "buffer",
+                        "value": 80,
+                        "bufferValue": 10
+                    }
+                ]
+            },
+            {
+                "DocumentsContract": [
+                    {
+                        "id": "1",
+                        "name": "Novedad de Ingreso Seguro o Fianza",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "2",
+                        "name": "Cuenta de cobro Canon y Derechos de Contrato",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "3",
+                        "name": "Soporte de Consignación o transferencia de canon y derechos de contrato",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "4",
+                        "name": "Contrato firmado por las partes",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "5",
+                        "name": "Inventario de entrega.",
+                        "state": "Pendiente"
+                    },
+                    {
+                        "id": "6",
+                        "name": "Paz y salvo de administracion",
+                        "state": "Pendiente"
+                    }
+                ],
+                "progressList": [
+                    {
+                        "color" : "primary",
+                        "mode": "buffer",
+                        "value": 80,
+                        "bufferValue": 10
+                    }
+                ]
+                
+            }
+            
+        ]
+    }
+]
