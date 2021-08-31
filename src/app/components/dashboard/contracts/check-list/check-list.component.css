@@ -3,11 +3,11 @@
   }
   
   .example-section {
-    width: 500px;
+    width: 300px;
     align-content: right;
     align-items: right;
   }
   
   .example-margin {
-    margin: 0 10px;
+    margin: 0 5px;
   }
