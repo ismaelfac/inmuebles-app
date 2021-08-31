@@ -9,9 +9,9 @@ export class PropertiesContractService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPropertiesContract(contractId: string) {
+  getPropertiesContractId(contractId: string) {
     console.log('desde el servicio'+contractId);
-    return this.httpClient.get('../../assets/data/propertiesContract.json', {
+    return this.httpClient.get(`http://localhost:3000/propertiesContract/${contractId}`, {
       params: {
         contractId
       }

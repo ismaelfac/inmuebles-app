@@ -1,9 +1,10 @@
-<mat-accordion>
+<div *ngIf="progressList.length > 0">
+  <mat-accordion *ngFor="let CheckList of progressList[0].CheckListContract">
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Del Arrendatario
+          {{ CheckList.typeRolContract}}
         </mat-panel-title>
         <mat-panel-description>
           <mat-card>
@@ -23,7 +24,7 @@
       </mat-expansion-panel-header>
         <mat-list>
             <mat-selection-list #checkList [multiple]="false">
-                <mat-list-option *ngFor="let item of checksList" [value]="item.id">
+                <mat-list-option *ngFor="let item of progressList[0].CheckListContract.DocumentsContract[1]" [value]="item.id">
                     {{item.name}}
                 </mat-list-option>
             </mat-selection-list>    
@@ -33,4 +34,6 @@
         </mat-list>
     </mat-expansion-panel>
   </mat-accordion>
+</div>
+<h2 *ngIf="progressList.length == 0" style="margin: auto;">Sin Listado de proceso de contrato para mostrar</h2>
   

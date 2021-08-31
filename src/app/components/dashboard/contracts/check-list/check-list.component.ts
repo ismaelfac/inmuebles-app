@@ -3,7 +3,6 @@ import {ThemePalette} from '@angular/material/core';
 import {ProgressBarMode} from '@angular/material/progress-bar';
 
 //**Services */
-import { CheckListContractService } from 'src/app/services/contracts/check-list-contract.service';
 import { PropertiesContractService } from 'src/app/services/contracts/properties-contract.service';
 interface CheckList {
   id: string;
@@ -20,7 +19,7 @@ interface CheckList {
 export class CheckListComponent implements OnInit {
   panelOpenState = false;
 
-  progressList: any;
+  progressList: Array<any> = [];
   color: ThemePalette = 'warn';
   mode: ProgressBarMode = 'buffer';
   value = 50;
@@ -53,8 +52,8 @@ export class CheckListComponent implements OnInit {
   }
 
   getPropertiesContract(contractId: string) {
-    this._propertyContract.getPropertiesContract(contractId).subscribe(data => {
-      this.progressList = data;
+    this._propertyContract.getPropertiesContractId(contractId).subscribe(data => {
+      this.progressList.push(data);
       console.log(this.progressList);
     });
   }
