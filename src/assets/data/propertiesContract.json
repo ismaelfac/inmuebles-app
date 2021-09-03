@@ -454,5 +454,47 @@
                 
             ]
         }
+    ],
+    "contracts":[
+        {
+            "id": 1,
+            "contrato": "253065",
+            "arrendatario": "ISMAEL LASTRE ALVAREZ",
+            "deudorSolidario": "2",
+            "addressInmueble": "Cll 84c 82-27",
+            "isActive": true
+        },
+        {
+            "id": 2,
+            "contrato": "253066",
+            "arrendatario": "SINFORSO GUMERSINDO",
+            "deudorSolidario": "1",
+            "addressInmueble": "Cll 24 2-2",
+            "isActive": true
+        },
+        {
+            "id": 3,
+            "contrato": "253070",
+            "arrendatario": "RODOLFO UCROS MORALES",
+            "deudorSolidario": "2",
+            "addressInmueble": "Cll 100 57-12",
+            "isActive": false
+        },
+        {
+            "id": 4,
+            "contrato": "253071",
+            "arrendatario": "EMPRESA XYZ LTDA",
+            "deudorSolidario": "0",
+            "addressInmueble": "Cll 100 57-12",
+            "isActive": false
+        },
+        {
+            "id": 3,
+            "contrato": "253073",
+            "arrendatario": "RODOLFO UCROS MORALES",
+            "deudorSolidario": "1",
+            "addressInmueble": "Cll 100 57-12",
+            "isActive": false
+        }
     ]
 }

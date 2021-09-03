@@ -11,6 +11,6 @@ export class ContractIndicationsService {
   constructor(private httpClient: HttpClient) { }
 
   getContractIndications(): Observable<ContractIndications[]> {
-    return this.httpClient.get<ContractIndications[]>('../../assets/data/contractIndications.json');
+    return this.httpClient.get<ContractIndications[]>('http://localhost:3000/contracts');
   }
 }

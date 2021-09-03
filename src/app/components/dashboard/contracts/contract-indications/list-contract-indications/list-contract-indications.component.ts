@@ -9,7 +9,6 @@ import html2canvas from 'html2canvas';
 
 //*Services */
 import { ContractIndicationsService } from 'src/app/services/contracts/contract-indications.service';
-import { CheckListContractService } from 'src/app/services/contracts/check-list-contract.service';
 import { ContractIndications } from 'src/app/interfaces/contractIndications';
 
 
@@ -85,10 +84,9 @@ export class ListContractIndicationsComponent implements OnInit {
   }
 
   public downloadPDF(contrato: string): void {
-    console.log('downloadPDF');
     const doc = new jsPDF();
 
     doc.text('Hello world!', 10, 10);
-    doc.save(`${contrato}.pdf`);
+    doc.save(`Contrato ${contrato}.pdf`);
   }
 }
