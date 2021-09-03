@@ -39,7 +39,7 @@ export class ListContractIndicationsComponent implements OnInit {
 
   LIST_CONTRACT_INDICATIONS: ContractIndications[] = [];
 
-  displayedColumns: string[] = ['select','contrato','arrendatario', 'deudorSolidario', 'addressInmueble', 'isActive','options'];
+  displayedColumns: string[] = ['select','contrato','arrendatario', 'deudorSolidario', 'addressInmueble', 'state', 'adviser','options'];
   dataSource = new MatTableDataSource<ContractIndications>(this.LIST_CONTRACT_INDICATIONS);
   selection = new SelectionModel<ContractIndications>(true, []);
 

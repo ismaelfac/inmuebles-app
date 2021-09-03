@@ -462,7 +462,8 @@
             "arrendatario": "ISMAEL LASTRE ALVAREZ",
             "deudorSolidario": "2",
             "addressInmueble": "Cll 84c 82-27",
-            "isActive": true
+            "adviser": "PAULA MARIA BETANCOUR",
+            "state": "Por Revision"
         },
         {
             "id": 2,
@@ -470,7 +471,8 @@
             "arrendatario": "SINFORSO GUMERSINDO",
             "deudorSolidario": "1",
             "addressInmueble": "Cll 24 2-2",
-            "isActive": true
+            "adviser": "RICARDO ESTRADA ROBLES",
+            "state": "Finalizado"
         },
         {
             "id": 3,
@@ -478,7 +480,8 @@
             "arrendatario": "RODOLFO UCROS MORALES",
             "deudorSolidario": "2",
             "addressInmueble": "Cll 100 57-12",
-            "isActive": false
+            "adviser": "PAULA MARIA BETANCOUR",
+            "state": "Por corrección"
         },
         {
             "id": 4,
@@ -486,7 +489,8 @@
             "arrendatario": "EMPRESA XYZ LTDA",
             "deudorSolidario": "0",
             "addressInmueble": "Cll 100 57-12",
-            "isActive": false
+            "adviser": "PAULA MARIA BETANCOUR",
+            "state": "Finalizado"
         },
         {
             "id": 3,
@@ -494,7 +498,8 @@
             "arrendatario": "RODOLFO UCROS MORALES",
             "deudorSolidario": "1",
             "addressInmueble": "Cll 100 57-12",
-            "isActive": false
+            "adviser": "MONICA PIÑA",
+            "state": "En proceso"
         }
     ]
 }

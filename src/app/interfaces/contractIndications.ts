@@ -4,5 +4,6 @@ export interface ContractIndications {
     arrendatario: string;
     deudorSolidario: string;
     addressInmueble: string;
-    isActive: boolean;
+    adviser: string;
+    state: string;
 }
