@@ -40,7 +40,7 @@
                         {
                             "color" : "accent",
                             "mode": "buffer",
-                            "value": 50,
+                            "value": 80,
                             "bufferValue": 10
                         }
                     ]

@@ -4,6 +4,8 @@ import {MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+declare var jsPDF: any;
+import html2canvas from 'html2canvas';
 
 //*Services */
 import { ContractIndicationsService } from 'src/app/services/contracts/contract-indications.service';
@@ -82,4 +84,11 @@ export class ListContractIndicationsComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.contrato + 1}`;
   }
 
+  public downloadPDF(contrato: string): void {
+    console.log('downloadPDF');
+    const doc = new jsPDF();
+
+    doc.text('Hello world!', 10, 10);
+    doc.save(`${contrato}.pdf`);
+  }
 }

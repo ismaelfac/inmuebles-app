@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import {ProgressBarMode} from '@angular/material/progress-bar';
 
+
 //**Services */
 import { PropertiesContractService } from 'src/app/services/contracts/properties-contract.service';
 interface CheckList {
@@ -9,7 +10,6 @@ interface CheckList {
   name: string;
   state: string;
 }
-
 
 @Component({
   selector: 'check-list',
@@ -57,6 +57,5 @@ export class CheckListComponent implements OnInit {
       console.log(this.progressList);
     });
   }
-
 
 }

@@ -1,5 +1,5 @@
 <div *ngIf="progressList.length > 0">
-  
+  <mat-card>Simple card</mat-card>
   <mat-accordion *ngFor="let CheckList of progressList[0].CheckListContract">
     <div class="phaseTitle" >
       <h2>{{ CheckList.contractPhase }}</h2>
@@ -11,10 +11,6 @@
           {{ CheckList.typeRolContract }}
         </mat-panel-title>
         <mat-panel-description>
-          <mat-card>
-            <mat-card-content>          
-            </mat-card-content>
-          </mat-card>
           <section class="example-section" *ngFor="let item of CheckList.progressList">
             <mat-progress-bar
                 class="example-margin"
