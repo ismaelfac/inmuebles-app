@@ -493,8 +493,37 @@
             "state": "Finalizado"
         },
         {
-            "id": 3,
+            "id": 5,
             "contrato": "253073",
+            "arrendatario": "RODOLFO UCROS MORALES",
+            "deudorSolidario": "1",
+            "addressInmueble": "Cll 100 57-12",
+            "adviser": "MONICA PIÑA",
+            "state": "En proceso"
+        },
+        {
+            "id": 6,
+            "contrato": "253074",
+            "arrendatario": "RODOLFO UCROS MORALES",
+            "deudorSolidario": "1",
+            "addressInmueble": "Cll 100 57-12",
+            "adviser": "MONICA PIÑA",
+            "state": "En proceso"
+        }
+        ,
+        {
+            "id": 7,
+            "contrato": "253075",
+            "arrendatario": "RODOLFO UCROS MORALES",
+            "deudorSolidario": "1",
+            "addressInmueble": "Cll 100 57-12",
+            "adviser": "MONICA PIÑA",
+            "state": "En proceso"
+        }
+        ,
+        {
+            "id": 8,
+            "contrato": "253076",
             "arrendatario": "RODOLFO UCROS MORALES",
             "deudorSolidario": "1",
             "addressInmueble": "Cll 100 57-12",
