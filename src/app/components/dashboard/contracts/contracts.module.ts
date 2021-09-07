@@ -11,6 +11,7 @@ import { HomeContractComponent } from './home-contract/home-contract.component';
 import { ListContractIndicationsComponent } from './contract-indications/list-contract-indications/list-contract-indications.component';
 import { CreateContractIndicationsComponent } from './contract-indications/create-contract-indications/create-contract-indications.component';
 import { CheckListComponent } from './check-list/check-list.component';
+import { ViewContractIndicationsComponent } from './contract-indications/view-contract-indications/view-contract-indications.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CheckListComponent } from './check-list/check-list.component';
     HomeContractComponent,
     ListContractIndicationsComponent,
     CreateContractIndicationsComponent,
-    CheckListComponent
+    CheckListComponent,
+    ViewContractIndicationsComponent
   ],
   imports: [
     CommonModule,

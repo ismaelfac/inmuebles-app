@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContractIndicationsService } from 'src/app/services/contracts/contract-indications.service';
 import { ContractIndications } from 'src/app/interfaces/contractIndications';
 import { PdfService } from 'src/app/services/pdf.service';
+import { PropertiesContractService } from 'src/app/services/contracts/properties-contract.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ListContractIndicationsComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   showFiller = false;
 
-  constructor(private pdfService: PdfService, private _contractsIndicationsService: ContractIndicationsService, private _snackBar: MatSnackBar) {
+  constructor(private pdfService: PdfService, private _propertiesContract : PropertiesContractService, private _contractsIndicationsService: ContractIndicationsService, private _snackBar: MatSnackBar) {
 
    }
 
@@ -82,8 +83,17 @@ export class ListContractIndicationsComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.contrato + 1}`;
   }
 
-  generatePDF(contratoId: string) {  
-    this.pdfService.generatePdf(contratoId);
+  generatePDF(contractId: string) {  
+    this._propertiesContract.getPropertiesContractId(contractId).subscribe(data => {
+      this.pdfService.generatePdf(data);
+    });
+    
   }  
+
+  viewContract(contractId: string) {
+    this._propertiesContract.getPropertiesContractId(contractId).subscribe(data => {
+      
+    });
+  }
   
 }
