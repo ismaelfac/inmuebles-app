@@ -1,12 +1,56 @@
 <div class="container">
     <mat-toolbar>
         <div class="example-spacer"></div>        
-        <button mat-raised-button color="warn" routerLink="/">
+        <button mat-raised-button color="warn" (click)="downloadPDF()">
           <span class="material-icons">print</span>&nbsp;Imprimir</button><br>
         <button mat-raised-button color="primary" routerLink="/dashboard/contractos/indicaciones-contratos">
           <span class="material-icons">article</span>&nbsp;Regresar</button><br>
     </mat-toolbar>
     <div class="content">
-        Pdf
+        <form class="example-form" style="background-color: #187159;">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Company (disabled)</mat-label>
+            <input matInput disabled value="Google">
+          </mat-form-field>
+        
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>First name</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Long Last Name That Will Be Truncated</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+          </tr></table>
+        
+          <p>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Address</mat-label>
+              <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Address 2</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </p>
+        
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Ex. San Francisco">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Ex. California">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Postal Code</mat-label>
+              <input matInput #postalCode maxlength="5" placeholder="{{ contractId }}" value="{{ contractId }}">
+              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field></td>
+          </tr></table>
+        </form>
+        
     </div>
 </div>

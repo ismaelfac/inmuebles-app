@@ -8,8 +8,8 @@ import { HomeContractComponent } from './home-contract/home-contract.component';
 const routes: Routes = [
   { path: '', component: HomeContractComponent, children: [
     { path: 'indicaciones-contratos', component: ContractIndicationsComponent},
+    { path: 'indicaciones-contratos/:id', component: ViewContractIndicationsComponent},
     { path: 'crear-indicaciones-contrato', component: CreateContractIndicationsComponent},
-    { path: 'view-indicaciones-contrato', component: ViewContractIndicationsComponent}
   ]}
 ];
 

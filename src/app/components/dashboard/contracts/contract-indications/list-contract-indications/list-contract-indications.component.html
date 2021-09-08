@@ -68,7 +68,7 @@
               <ng-container matColumnDef="options">
                   <th mat-header-cell *matHeaderCellDef>Opciones</th>
                   <td mat-cell *matCellDef="let element"> 
-                    <a class="pointer" style="color: #187159" matTooltip="Ver Contrato" (click)="viewContract(element.contrato)">
+                    <a class="pointer" style="color: #187159" matTooltip="Ver Contrato" [routerLink]="['/dashboard/contractos/indicaciones-contratos/', element.contrato]">
                       <mat-icon>search</mat-icon>
                     </a>
                     <a class="pointer" style="color: #1f516f" matTooltip="Editar Contrato">
