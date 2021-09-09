@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeContractComponent, children: [
     { path: 'indicaciones-contratos', component: ContractIndicationsComponent},
     { path: 'indicaciones-contratos/:id', component: ViewContractIndicationsComponent},
-    { path: 'crear-indicaciones-contrato', component: CreateContractIndicationsComponent},
+    { path: 'crear-indicaciones-contrato.html', component: CreateContractIndicationsComponent},
   ]}
 ];
 

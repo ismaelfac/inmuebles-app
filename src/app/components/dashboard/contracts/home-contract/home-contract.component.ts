@@ -24,7 +24,6 @@ export class HomeContractComponent implements OnInit {
   }
 
   setModuleActive($event:any): void {
-    console.log($event);
     this.panel_title = $event;
     this.moduleActive = true;
   }

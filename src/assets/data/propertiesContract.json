@@ -6,9 +6,11 @@
             "CheckListContract": [
                 {
                     "PersonId": "72288959",
+                    "arrendatario": "ISMAEL LASTRE ALVAREZ",
                     "contractPhase": "PeopleContract",
                     "typeRolContract": "Arrendatario",
                     "typePerson": "Juridica",
+                    "rut": "72288959-6",
                     "DocumentsContract": [
                         {
                             "id": "1",

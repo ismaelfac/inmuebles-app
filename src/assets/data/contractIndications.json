@@ -5,7 +5,34 @@
         "arrendatario": "ISMAEL LASTRE ALVAREZ",
         "deudorSolidario": "2",
         "addressInmueble": "Cll 84c 82-27",
-        "isActive": true
+        "isActive": true,
+        "DocumentsContract": [
+            {
+                "id": "1",
+                "name": "Indicaciones de contrato",
+                "state": "Pendiente"
+            },
+            {
+                "id": "2",
+                "name": "Solicitudes de arrendamiento",
+                "state": "Pendiente"
+            },
+            {
+                "id": "3",
+                "name": "Asegurable o aprobado según el caso (direccion y valor deben coincidir con contrato)",
+                "state": "Pendiente"
+            },
+            {
+                "id": "4",
+                "name": "Rut del arrendatario y/o codeudores (P.Juridica) año corriente",
+                "state": "Pendiente"
+            },
+            {
+                "id": "5",
+                "name": "Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.",
+                "state": "Pendiente"
+            }
+        ]
     },
     {
         "id": 2,
