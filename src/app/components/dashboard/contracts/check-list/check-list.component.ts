@@ -54,7 +54,6 @@ export class CheckListComponent implements OnInit {
   getPropertiesContract(contractId: string) {
     this._propertyContract.getPropertiesContractId(contractId).subscribe(data => {
       this.progressList.push(data);
-      console.log(this.progressList);
     });
   }
 

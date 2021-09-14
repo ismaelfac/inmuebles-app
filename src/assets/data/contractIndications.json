@@ -1,442 +1,444 @@
-[
-    {
-        "id": 1,
-        "isActive": true,
-        "NoAsegurable": "",
-        "codDomus": "",
-        "contrato": "253070",
-        "arrendatarios": [
-            {
-                "tipoPersona": "Juridica",
-                "title": "EMPRESA XYZ LTDA",
-                "dni": "809162197-7",
-                "phone": "3600000",
-                "email": "info@empresaxyz.com",
-                "DocumentsContract": [
-                    {
-                        "id": "1",
-                        "name": "Indicaciones de contrato",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "2",
-                        "name": "Solicitudes de arrendamiento",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "3",
-                        "name": "Asegurable o aprobado según el caso (direccion y valor deben coincidir con contrato)",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "4",
-                        "name": "Rut del arrendatario y/o codeudores (P.Juridica) año corriente",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "5",
-                        "name": "Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.",
-                        "state": "Pendiente"
-                    }
-                ],
-                "representanteLegal": [
-                    {
-                        "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
-                        "dni": "72288959",
-                        "rut": true,
-                        "phone": "3113258468",
-                        "email": "ismaelfac@mail.com",
-                        "DocumentsContract": [
-                            {
-                                "id": "1",
-                                "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                                "state": "Pendiente"
-                            }
-                            
-                        ]
-                    }
-                ]
-            }
-        ],
-        "deudorSolidario": [
-            {
-                "tipoPersona": "Natural",
-                "title": "SINFOROSO GUMERSINDO",
-                "dni": "1142365980",
-                "phone": "3112568956",
-                "email": "sinforoso123@mail.com",
-                "DocumentsContract": [
-                    {
-                        "id": "1",
-                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                        "state": "Pendiente"
-                    }
-                    
-                ]
-            },
-            {
-                "tipoPersona": "Natural",
-                "title": "DEMETRIO GONZALEZ MARTINEZ",
-                "dni": "1115849562",
-                "DocumentsContract": [
-                    {
-                        "id": "1",
-                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                        "state": "Pendiente"
-                    }
-                    
-                ]
-            }
-        ],
-        "datosInmueble": {
-            "tipoInmueble": "Comercial",
-            "addressInmueble": "Cll 84c 82-27",
-            "garajes": ["5A"],
-            "cuartoUtil": ["1"],
-            "cannonArriendo": "1600000",
-            "valorAdmin": "350000"
-        },
-        "ConfiguracionContrato": {
-            "tipoContrato": "",
-            "duracionContrato": "",
-            "IncrementoContrato": "",
-            "derechosContrato": "",
-            "fechaSolicitudEntrega": "",
-            "periodoGracia": "",
-            "clausulasAdicionales": ""
-        },
-        "convenio": [
-            {
-                "actoresConvenio": [
-                    {
-                        "propietario1": {
-                            "tipoPersona": "Juridica",
-                            "title": "EMPRESA ABC LTDA",
-                            "dni": "814254123-1",
-                            "phone": "3254698",
-                            "email": "info@empresaabc.com",
+{
+    "contractIndications": [
+        {
+            "id": 1,
+            "isActive": true,
+            "NoAsegurable": "",
+            "codDomus": "",
+            "contrato": "253070",
+            "arrendatarios": [
+                {
+                    "tipoPersona": "Juridica",
+                    "title": "EMPRESA XYZ LTDA",
+                    "dni": "809162197-7",
+                    "phone": "3600000",
+                    "email": "info@empresaxyz.com",
+                    "DocumentsContract": [
+                        {
+                            "id": "1",
+                            "name": "Indicaciones de contrato",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "2",
+                            "name": "Solicitudes de arrendamiento",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "3",
+                            "name": "Asegurable o aprobado según el caso (direccion y valor deben coincidir con contrato)",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "4",
+                            "name": "Rut del arrendatario y/o codeudores (P.Juridica) año corriente",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "5",
+                            "name": "Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.",
+                            "state": "Pendiente"
+                        }
+                    ],
+                    "representanteLegal": [
+                        {
+                            "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
+                            "dni": "72288959",
+                            "rut": true,
+                            "phone": "3113258468",
+                            "email": "ismaelfac@mail.com",
                             "DocumentsContract": [
                                 {
                                     "id": "1",
-                                    "name": "Convenio Administracion firmado ",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "2",
-                                    "name": "Cuenta de cobro Canon y Derechos de Contrato",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "3",
                                     "name": "Rut del propietario (P.Natural o Juridica) año corriente",
                                     "state": "Pendiente"
-                                },
-                                {
-                                    "id": "4",
-                                    "name": "Contrato firmado por las partes",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "5",
-                                    "name": "Inventario de entrega.",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "6",
-                                    "name": "Paz y salvo de administracion",
-                                    "state": "Pendiente"
                                 }
-                            ],
-                            "representanteLegal": [
-                                {
-                                    "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
-                                    "dni": "72288959",
-                                    "phone": "3113258468",
-                                    "email": "ismaelfac@mail.com",
-                                    "DocumentsContract": [
-                                        {
-                                            "id": "1",
-                                            "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                                            "state": "Pendiente"
-                                        }
-                                        
-                                    ]
-                                }
-                            ],
-                            "datosBancarios": {
-                                "banco": "Bancolombia",
-                                "tipoCuenta": "Ahorros",
-                                "numeroCuenta": "407-2052689-9"
-                            }
+                                
+                            ]
                         }
-                    },
-                    {
-                        "comodatario1": {
-                            "tipoPersona": "Natural",
-                            "title": "BLANCA INES MURILLO TORO",
-                            "dni": "22564789",
-                            "phone": "3012545252",
-                            "email": "blanca@mail.com",
-                            "DocumentsContract": [],
-                            "datosBancarios": {
-                                "banco": "Bancolombia",
-                                "tipoCuenta": "Ahorros",
-                                "numeroCuenta": "407-2052689-9"
-                            }
+                    ]
+                }
+            ],
+            "deudorSolidario": [
+                {
+                    "tipoPersona": "Natural",
+                    "title": "SINFOROSO GUMERSINDO",
+                    "dni": "1142365980",
+                    "phone": "3112568956",
+                    "email": "sinforoso123@mail.com",
+                    "DocumentsContract": [
+                        {
+                            "id": "1",
+                            "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                            "state": "Pendiente"
                         }
-                    }
-                ]
-            },
-            {
-                "garantiaConvenio": {
-                    "garantizado": true,
-                    "amparoBasico": "0",
-                    "amparoIntegral": "0"
-                }
-            },
-            {
-                "configuracionComisionConvenio": {
-                    "comision": "",
-                    "mercadeo": "",
-                    "observaciones": ""
-                }
-            }
-        ],
-        "revision": [
-            {
-                "revisor1": {
-                    "usuario": "asesora1",
-                    "nombres": "Lourdes Arroyo",
-                    "estadoAprobacion": "revisado",
-                    "ordenRevision": "1"
+                        
+                    ]
                 },
-                "revisor2": {
-                    "usuario": "auxiliarJuridico",
-                    "nombres": "Angelica Gonzalez",
-                    "estadoAprobacion": "en revision",
-                    "ordenRevision": "2"
+                {
+                    "tipoPersona": "Natural",
+                    "title": "DEMETRIO GONZALEZ MARTINEZ",
+                    "dni": "1115849562",
+                    "DocumentsContract": [
+                        {
+                            "id": "1",
+                            "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                            "state": "Pendiente"
+                        }
+                        
+                    ]
                 }
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "isActive": true,
-        "NoAsegurable": "",
-        "codDomus": "",
-        "contrato": "253071",
-        "arrendatarios": [
-            {
-                "tipoPersona": "Juridica",
-                "title": "EMPRESA XYZ LTDA",
-                "dni": "809162197-7",
-                "phone": "3600000",
-                "email": "info@empresaxyz.com",
-                "DocumentsContract": [
-                    {
-                        "id": "1",
-                        "name": "Indicaciones de contrato",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "2",
-                        "name": "Solicitudes de arrendamiento",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "3",
-                        "name": "Asegurable o aprobado según el caso (direccion y valor deben coincidir con contrato)",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "4",
-                        "name": "Rut del arrendatario y/o codeudores (P.Juridica) año corriente",
-                        "state": "Pendiente"
-                    },
-                    {
-                        "id": "5",
-                        "name": "Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.",
-                        "state": "Pendiente"
-                    }
-                ],
-                "representanteLegal": [
-                    {
-                        "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
-                        "dni": "72288959",
-                        "rut": true,
-                        "phone": "3113258468",
-                        "email": "ismaelfac@mail.com",
-                        "DocumentsContract": [
-                            {
-                                "id": "1",
-                                "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                                "state": "Pendiente"
-                            }
-                            
-                        ]
-                    }
-                ]
-            }
-        ],
-        "deudorSolidario": [
-            {
-                "tipoPersona": "Natural",
-                "title": "SINFOROSO GUMERSINDO",
-                "dni": "1142365980",
-                "phone": "3112568956",
-                "email": "sinforoso123@mail.com",
-                "DocumentsContract": [
-                    {
-                        "id": "1",
-                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                        "state": "Pendiente"
-                    }
-                    
-                ]
+            ],
+            "datosInmueble": {
+                "tipoInmueble": "Comercial",
+                "addressInmueble": "Cll 84c 82-27",
+                "garajes": ["5A"],
+                "cuartoUtil": ["1"],
+                "cannonArriendo": "1600000",
+                "valorAdmin": "350000"
             },
-            {
-                "tipoPersona": "Natural",
-                "title": "DEMETRIO GONZALEZ MARTINEZ",
-                "dni": "1115849562",
-                "DocumentsContract": [
-                    {
-                        "id": "1",
-                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                        "state": "Pendiente"
+            "ConfiguracionContrato": {
+                "tipoContrato": "",
+                "duracionContrato": "",
+                "IncrementoContrato": "",
+                "derechosContrato": "",
+                "fechaSolicitudEntrega": "",
+                "periodoGracia": "",
+                "clausulasAdicionales": ""
+            },
+            "convenio": [
+                {
+                    "actoresConvenio": [
+                        {
+                            "propietario1": {
+                                "tipoPersona": "Juridica",
+                                "title": "EMPRESA ABC LTDA",
+                                "dni": "814254123-1",
+                                "phone": "3254698",
+                                "email": "info@empresaabc.com",
+                                "DocumentsContract": [
+                                    {
+                                        "id": "1",
+                                        "name": "Convenio Administracion firmado ",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "2",
+                                        "name": "Cuenta de cobro Canon y Derechos de Contrato",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "3",
+                                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "4",
+                                        "name": "Contrato firmado por las partes",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "name": "Inventario de entrega.",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "6",
+                                        "name": "Paz y salvo de administracion",
+                                        "state": "Pendiente"
+                                    }
+                                ],
+                                "representanteLegal": [
+                                    {
+                                        "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
+                                        "dni": "72288959",
+                                        "phone": "3113258468",
+                                        "email": "ismaelfac@mail.com",
+                                        "DocumentsContract": [
+                                            {
+                                                "id": "1",
+                                                "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                                                "state": "Pendiente"
+                                            }
+                                            
+                                        ]
+                                    }
+                                ],
+                                "datosBancarios": {
+                                    "banco": "Bancolombia",
+                                    "tipoCuenta": "Ahorros",
+                                    "numeroCuenta": "407-2052689-9"
+                                }
+                            }
+                        },
+                        {
+                            "comodatario1": {
+                                "tipoPersona": "Natural",
+                                "title": "BLANCA INES MURILLO TORO",
+                                "dni": "22564789",
+                                "phone": "3012545252",
+                                "email": "blanca@mail.com",
+                                "DocumentsContract": [],
+                                "datosBancarios": {
+                                    "banco": "Bancolombia",
+                                    "tipoCuenta": "Ahorros",
+                                    "numeroCuenta": "407-2052689-9"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "garantiaConvenio": {
+                        "garantizado": true,
+                        "amparoBasico": "0",
+                        "amparoIntegral": "0"
                     }
-                    
-                ]
-            }
-        ],
-        "datosInmueble": {
-            "tipoInmueble": "Comercial",
-            "addressInmueble": "Cll 84c 82-27",
-            "garajes": ["5A"],
-            "cuartoUtil": ["1"],
-            "cannonArriendo": "1600000",
-            "valorAdmin": "350000"
+                },
+                {
+                    "configuracionComisionConvenio": {
+                        "comision": "",
+                        "mercadeo": "",
+                        "observaciones": ""
+                    }
+                }
+            ],
+            "revision": [
+                {
+                    "revisor1": {
+                        "usuario": "asesora1",
+                        "nombres": "Lourdes Arroyo",
+                        "estadoAprobacion": "revisado",
+                        "ordenRevision": "1"
+                    },
+                    "revisor2": {
+                        "usuario": "auxiliarJuridico",
+                        "nombres": "Angelica Gonzalez",
+                        "estadoAprobacion": "en revision",
+                        "ordenRevision": "2"
+                    }
+                }
+            ]
         },
-        "ConfiguracionContrato": {
-            "tipoContrato": "",
-            "duracionContrato": "",
-            "IncrementoContrato": "",
-            "derechosContrato": "",
-            "fechaSolicitudEntrega": "",
-            "periodoGracia": "",
-            "clausulasAdicionales": ""
-        },
-        "convenio": [
-            {
-                "actoresConvenio": [
-                    {
-                        "propietario1": {
-                            "tipoPersona": "Juridica",
-                            "title": "EMPRESA ABC LTDA",
-                            "dni": "814254123-1",
-                            "phone": "3254698",
-                            "email": "info@empresaabc.com",
+        {
+            "id": 2,
+            "isActive": true,
+            "NoAsegurable": "",
+            "codDomus": "",
+            "contrato": "253071",
+            "arrendatarios": [
+                {
+                    "tipoPersona": "Juridica",
+                    "title": "EMPRESA XYZ LTDA",
+                    "dni": "809162197-7",
+                    "phone": "3600000",
+                    "email": "info@empresaxyz.com",
+                    "DocumentsContract": [
+                        {
+                            "id": "1",
+                            "name": "Indicaciones de contrato",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "2",
+                            "name": "Solicitudes de arrendamiento",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "3",
+                            "name": "Asegurable o aprobado según el caso (direccion y valor deben coincidir con contrato)",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "4",
+                            "name": "Rut del arrendatario y/o codeudores (P.Juridica) año corriente",
+                            "state": "Pendiente"
+                        },
+                        {
+                            "id": "5",
+                            "name": "Camara de comercio arrendatario y/o codeudores (P.juridica). Vigencia 30 días.",
+                            "state": "Pendiente"
+                        }
+                    ],
+                    "representanteLegal": [
+                        {
+                            "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
+                            "dni": "72288959",
+                            "rut": true,
+                            "phone": "3113258468",
+                            "email": "ismaelfac@mail.com",
                             "DocumentsContract": [
                                 {
                                     "id": "1",
-                                    "name": "Convenio Administracion firmado ",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "2",
-                                    "name": "Cuenta de cobro Canon y Derechos de Contrato",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "3",
                                     "name": "Rut del propietario (P.Natural o Juridica) año corriente",
                                     "state": "Pendiente"
-                                },
-                                {
-                                    "id": "4",
-                                    "name": "Contrato firmado por las partes",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "5",
-                                    "name": "Inventario de entrega.",
-                                    "state": "Pendiente"
-                                },
-                                {
-                                    "id": "6",
-                                    "name": "Paz y salvo de administracion",
-                                    "state": "Pendiente"
                                 }
-                            ],
-                            "representanteLegal": [
-                                {
-                                    "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
-                                    "dni": "72288959",
-                                    "phone": "3113258468",
-                                    "email": "ismaelfac@mail.com",
-                                    "DocumentsContract": [
-                                        {
-                                            "id": "1",
-                                            "name": "Rut del propietario (P.Natural o Juridica) año corriente",
-                                            "state": "Pendiente"
-                                        }
-                                        
-                                    ]
-                                }
-                            ],
-                            "datosBancarios": {
-                                "banco": "Bancolombia",
-                                "tipoCuenta": "Ahorros",
-                                "numeroCuenta": "407-2052689-9"
-                            }
+                                
+                            ]
                         }
-                    },
-                    {
-                        "comodatario1": {
-                            "tipoPersona": "Natural",
-                            "title": "BLANCA INES MURILLO TORO",
-                            "dni": "22564789",
-                            "phone": "3012545252",
-                            "email": "blanca@mail.com",
-                            "DocumentsContract": [],
-                            "datosBancarios": {
-                                "banco": "Bancolombia",
-                                "tipoCuenta": "Ahorros",
-                                "numeroCuenta": "407-2052689-9"
-                            }
+                    ]
+                }
+            ],
+            "deudorSolidario": [
+                {
+                    "tipoPersona": "Natural",
+                    "title": "SINFOROSO GUMERSINDO",
+                    "dni": "1142365980",
+                    "phone": "3112568956",
+                    "email": "sinforoso123@mail.com",
+                    "DocumentsContract": [
+                        {
+                            "id": "1",
+                            "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                            "state": "Pendiente"
                         }
-                    }
-                ]
-            },
-            {
-                "garantiaConvenio": {
-                    "garantizado": true,
-                    "amparoBasico": "0",
-                    "amparoIntegral": "0"
-                }
-            },
-            {
-                "configuracionComisionConvenio": {
-                    "comision": "",
-                    "mercadeo": "",
-                    "observaciones": ""
-                }
-            }
-        ],
-        "revision": [
-            {
-                "revisor1": {
-                    "usuario": "asesora1",
-                    "nombres": "Lourdes Arroyo",
-                    "estadoAprobacion": "revisado",
-                    "ordenRevision": "1"
+                        
+                    ]
                 },
-                "revisor2": {
-                    "usuario": "auxiliarJuridico",
-                    "nombres": "Angelica Gonzalez",
-                    "estadoAprobacion": "en revision",
-                    "ordenRevision": "2"
+                {
+                    "tipoPersona": "Natural",
+                    "title": "DEMETRIO GONZALEZ MARTINEZ",
+                    "dni": "1115849562",
+                    "DocumentsContract": [
+                        {
+                            "id": "1",
+                            "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                            "state": "Pendiente"
+                        }
+                        
+                    ]
                 }
-            }
-        ]
-    }
-]
+            ],
+            "datosInmueble": {
+                "tipoInmueble": "Comercial",
+                "addressInmueble": "Cll 84c 82-27",
+                "garajes": ["5A"],
+                "cuartoUtil": ["1"],
+                "cannonArriendo": "1600000",
+                "valorAdmin": "350000"
+            },
+            "ConfiguracionContrato": {
+                "tipoContrato": "",
+                "duracionContrato": "",
+                "IncrementoContrato": "",
+                "derechosContrato": "",
+                "fechaSolicitudEntrega": "",
+                "periodoGracia": "",
+                "clausulasAdicionales": ""
+            },
+            "convenio": [
+                {
+                    "actoresConvenio": [
+                        {
+                            "propietario1": {
+                                "tipoPersona": "Juridica",
+                                "title": "EMPRESA ABC LTDA",
+                                "dni": "814254123-1",
+                                "phone": "3254698",
+                                "email": "info@empresaabc.com",
+                                "DocumentsContract": [
+                                    {
+                                        "id": "1",
+                                        "name": "Convenio Administracion firmado ",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "2",
+                                        "name": "Cuenta de cobro Canon y Derechos de Contrato",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "3",
+                                        "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "4",
+                                        "name": "Contrato firmado por las partes",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "name": "Inventario de entrega.",
+                                        "state": "Pendiente"
+                                    },
+                                    {
+                                        "id": "6",
+                                        "name": "Paz y salvo de administracion",
+                                        "state": "Pendiente"
+                                    }
+                                ],
+                                "representanteLegal": [
+                                    {
+                                        "title": "ISMAEL ENRIQUE LASTRE ALVAREZ",
+                                        "dni": "72288959",
+                                        "phone": "3113258468",
+                                        "email": "ismaelfac@mail.com",
+                                        "DocumentsContract": [
+                                            {
+                                                "id": "1",
+                                                "name": "Rut del propietario (P.Natural o Juridica) año corriente",
+                                                "state": "Pendiente"
+                                            }
+                                            
+                                        ]
+                                    }
+                                ],
+                                "datosBancarios": {
+                                    "banco": "Bancolombia",
+                                    "tipoCuenta": "Ahorros",
+                                    "numeroCuenta": "407-2052689-9"
+                                }
+                            }
+                        },
+                        {
+                            "comodatario1": {
+                                "tipoPersona": "Natural",
+                                "title": "BLANCA INES MURILLO TORO",
+                                "dni": "22564789",
+                                "phone": "3012545252",
+                                "email": "blanca@mail.com",
+                                "DocumentsContract": [],
+                                "datosBancarios": {
+                                    "banco": "Bancolombia",
+                                    "tipoCuenta": "Ahorros",
+                                    "numeroCuenta": "407-2052689-9"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "garantiaConvenio": {
+                        "garantizado": true,
+                        "amparoBasico": "0",
+                        "amparoIntegral": "0"
+                    }
+                },
+                {
+                    "configuracionComisionConvenio": {
+                        "comision": "",
+                        "mercadeo": "",
+                        "observaciones": ""
+                    }
+                }
+            ],
+            "revision": [
+                {
+                    "revisor1": {
+                        "usuario": "asesora1",
+                        "nombres": "Lourdes Arroyo",
+                        "estadoAprobacion": "revisado",
+                        "ordenRevision": "1"
+                    },
+                    "revisor2": {
+                        "usuario": "auxiliarJuridico",
+                        "nombres": "Angelica Gonzalez",
+                        "estadoAprobacion": "en revision",
+                        "ordenRevision": "2"
+                    }
+                }
+            ]
+        }
+    ]
+}

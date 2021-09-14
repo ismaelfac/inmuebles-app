@@ -51,12 +51,12 @@ export class ListContractIndicationsComponent implements OnInit {
   loadContractIndications() {
     this._contractsIndicationsService.getContractIndications().subscribe(data => {
       this.LIST_CONTRACT_INDICATIONS = data;
+      console.log(data);
       this.dataSource = new MatTableDataSource(this.LIST_CONTRACT_INDICATIONS);
     });
   }
 
   isActive(index:number): void {
-    console.log(index);
   }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
