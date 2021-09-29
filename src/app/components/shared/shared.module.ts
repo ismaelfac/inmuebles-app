@@ -22,10 +22,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatStepperModule} from '@angular/material/stepper';
+
+
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -56,10 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatChipsModule,
     MatButtonToggleModule,
-    MatCheckboxModule,
-    MatTreeModule,
-    MatSliderModule,
-    MatProgressBarModule
+    MatStepperModule
   ],
   exports: [
     MatTableModule,
@@ -84,10 +80,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatChipsModule,
     MatButtonToggleModule,
-    MatCheckboxModule,
-    MatTreeModule,
-    MatSliderModule,
-    MatProgressBarModule
+    MatStepperModule
   ]
 })
 export class SharedModule { }
