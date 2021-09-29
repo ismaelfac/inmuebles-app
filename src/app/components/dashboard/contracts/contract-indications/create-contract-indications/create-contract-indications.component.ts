@@ -96,7 +96,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   totalDivisionValue: boolean = true;
   OptdeudorSolidario: boolean = false;
   IsAdministracion: boolean = false;
-  esAmparado: boolean = true;
+  esAmparado: boolean = false;
   esValorIntegral: boolean = false;
   typesOfShoes: string[] = ['Boots'];
   selectedValueTypePerson: string = '';
