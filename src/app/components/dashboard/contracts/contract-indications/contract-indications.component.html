@@ -1,1 +1,12 @@
-<list-contract-indications></list-contract-indications>
+<div class="container">
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <check-list></check-list>
+        </mat-drawer>
+          
+        <button type="button" mat-raised-button color="warn" (click)="drawer.toggle()">
+          <span class="material-icons">fact_check</span>&nbsp; Lista de Chequeo
+        </button>
+        <list-contract-indications></list-contract-indications> 
+    </mat-drawer-container>    
+</div>

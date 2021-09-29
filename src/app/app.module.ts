@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //:APPLICATION
@@ -13,6 +13,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { StatesComponent } from './components/states/states.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TemplatePdfComponent } from './components/template-pdf/template-pdf.component';
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     AppComponent,
     ListStatesComponent,
     StatesComponent,
-    LoginComponent
+    LoginComponent,
+    TemplatePdfComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     SharedModule

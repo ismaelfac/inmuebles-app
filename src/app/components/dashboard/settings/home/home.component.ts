@@ -7,11 +7,11 @@ export interface Tile {
   text: string;
 }
 @Component({
-  selector: 'app-home-contract',
-  templateUrl: './home-contract.component.html',
-  styleUrls: ['./home-contract.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class HomeContractComponent implements OnInit {
+export class HomeComponent implements OnInit {
   moduleActive : boolean = false;
   panel_title: string = 'Panel de Contratos';
   tiles: Tile[] = [
@@ -24,6 +24,7 @@ export class HomeContractComponent implements OnInit {
   }
 
   setModuleActive($event:any): void {
+    console.log($event);
     this.panel_title = $event;
     this.moduleActive = true;
   }

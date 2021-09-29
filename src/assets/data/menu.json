@@ -18,5 +18,9 @@
     {
         "name": "Inventarios",
         "redirect": "/dashboard/inventarios"
+    },
+    {
+        "name": "Configuracion",
+        "redirect": "/dashboard/configuracion"
     }
 ]

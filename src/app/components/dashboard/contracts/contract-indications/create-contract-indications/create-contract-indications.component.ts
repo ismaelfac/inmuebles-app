@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {COMMA, ENTER, F} from '@angular/cdk/keycodes';
 import {MatAccordion} from '@angular/material/expansion';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -56,6 +56,12 @@ interface DeudorSolidario {
   name: string;
   value: string;
 }
+interface ActoresContrato {
+  id: string;
+  titleActor: string;
+  name: string;
+  value: string;
+}
 interface Owners {
   name: string;
   value: string;
@@ -78,16 +84,19 @@ interface Owners {
   ],
 })
 export class CreateContractIndicationsComponent implements OnInit {
+  formulario: FormGroup;
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   
   date = new FormControl(moment());
   titleDeudor: string = 'Deudor';
   titleArrendatario: string = 'Arrendatario';
+  titleActor: string = '';
   panelOpenState = false;
   numArrentararios: number = 0;
   numDeudores: number = 0;
   selectedValueGarage: any = '';
   selectedValueContractType: any = '';
+  selectedValueTypePersonConvenio: any = '';
   selectedValueAccountType:any = '';
   selectedValueBankConsign:any = '';
 
@@ -118,10 +127,16 @@ export class CreateContractIndicationsComponent implements OnInit {
   
   constructor() { 
       this.numArrentararios = this.fieldArrendatario.length;
+      this.formulario = new FormGroup({
+        nombre: new FormControl('', [
+          Validators.required
+        ]),
+    });
       
    }
 
   ngOnInit(): void {
+    console.log(this.formulario.value);
   }
   garage: Garage[] = [
     {value: '0', viewValue: 'No Aplica'},
@@ -152,6 +167,10 @@ export class CreateContractIndicationsComponent implements OnInit {
   ]
   fieldArrendatario: FieldArrendatario[] = [
     { id: '1', name: 'Arrendatario 1', value: 'A1'}
+  ]
+
+  fieldActoresContrato: ActoresContrato[] = [
+    
   ]
   fieldDeudores: DeudorSolidario[] = [
   ]
@@ -185,15 +204,37 @@ export class CreateContractIndicationsComponent implements OnInit {
     this.titleArrendatario = (this.fieldArrendatario.length === 1 ? 'Arrendatario' : 'Arrendatarios');
   }
 
+  setActoresContrato(action: string) {
+    let numActores = this.fieldActoresContrato.length;
+     numActores++;
+    if(action === '+'){
+      this.fieldActoresContrato.push({
+        id: ''+numActores,
+        titleActor: this.titleActor,
+        name: this.titleActor+numActores,
+        value: this.titleActor+numActores
+      });
+    }else{
+      this.fieldActoresContrato.pop();
+    }
+  }
+
   setNumArrendatario($event:any) {
     
   }
+  setTypePersonJuridica(value:string){
 
-  setTypePersonJuridica(value:string) {
-    if(value === 'Juridica') {
-      this.IsPersonaJuridica = true;
+  }
+
+  setTypeActorContrato(value:string) {
+    if(value === 'Propietario') {
+      this.titleActor = 'Propietario';
+    }else if(value === 'Usuafructuario'){
+      this.titleActor = 'Usuafructuario';
+    }else if(value === 'Comodatario'){
+      this.titleActor = 'Comodatario';
     }else{
-      this.IsPersonaJuridica = false;
+      this.titleActor = 'Apoderado';
     }
   }
   

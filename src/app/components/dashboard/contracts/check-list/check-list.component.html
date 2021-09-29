@@ -1,0 +1,38 @@
+<div *ngIf="progressList.length > 0">
+  <mat-card>Simple card</mat-card>
+  <mat-accordion *ngFor="let CheckList of progressList[0].CheckListContract">
+    <div class="phaseTitle" >
+      <h2>{{ CheckList.contractPhase }}</h2>
+    </div>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ CheckList.typeRolContract }}
+        </mat-panel-title>
+        <mat-panel-description>
+          <section class="example-section" *ngFor="let item of CheckList.progressList">
+            <mat-progress-bar
+                class="example-margin"
+                [color]="item.color"
+                [mode]="item.mode"
+                [value]="item.value"
+                [bufferValue]="item.bufferValue">
+            </mat-progress-bar>
+          </section>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <div mat-subheader>Folders</div>
+        <mat-list-item *ngFor="let item of CheckList.DocumentsContract">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <div mat-line>{{item.name}}}</div>
+          <div mat-line> {{item.name}} </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<h2 *ngIf="progressList.length == 0" style="margin: auto;">Sin Listado de proceso de contrato para mostrar</h2>
+  
