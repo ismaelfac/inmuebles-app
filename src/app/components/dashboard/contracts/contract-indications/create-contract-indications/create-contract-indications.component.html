@@ -2,6 +2,7 @@
   <mat-step>
     <ng-template matStepLabel>Información del Inmueble</ng-template>
     <ng-template matStepContent>
+      <form (ngSubmit)="onSubmitInfoContrato()">
         <div class="container">
           <table class="example-full-width" cellspacing="0"><tr>
             <td>
@@ -54,7 +55,8 @@
             <input matInput>
           </mat-form-field></td>          
         </tr></table>
-      <button mat-button matStepperNext>Siguiente</button>
+      <button mat-button matStepperNext click="setInmueble($event)">Siguiente</button>
+      </form>
     </ng-template>
   </mat-step>
   <mat-step>
