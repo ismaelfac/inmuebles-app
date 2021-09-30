@@ -54,7 +54,7 @@
             <input matInput>
           </mat-form-field></td>          
         </tr></table>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperNext>Siguiente</button>
     </ng-template>
   </mat-step>
   <mat-step>
@@ -129,18 +129,114 @@
         </td>
         </tr>
         </table>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Atras</button>
+      <button mat-button matStepperNext>Sguiente</button>
     </ng-template>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Información del Arrendatario y Deudor</ng-template>
-    <p>This content was rendered eagerly</p>
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button matStepperNext>Next</button>
+    <ng-template matStepLabel>Información del Arrendatario</ng-template>
+      <div class="container">
+        <span>
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+              remove
+              </span></mat-button-toggle>
+            <h2 class="title-form">{{ fieldArrendatario.length }} {{ titleArrendatario }} </h2>
+            <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+              add
+              </span></mat-button-toggle>
+          </mat-button-toggle-group>
+        </span>
+        <table class="example-full-width" cellspacing="0" *ngFor="let item of fieldArrendatario">
+          <tr >
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ item.name }}</mat-label>
+              <input matInput value="" name="{{ item.name }}">
+            </mat-form-field>
+          </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Identificación del Arrendatario</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tipo de Persona</mat-label>
+              <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" formControlName="juridica" (selectionChange)="setTypePersonJuridica($event.value)" >
+                <mat-option value="Natural">Natural</mat-option>
+                <mat-option value="Juridica">Juridica</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+              <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+          </td>
+          </tr>
+          <tr *ngIf="IsPersonaJuridica">
+            <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombres Completos Representante Legal</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td>
+              <button mat-raised-button color="primary">Cedula del Representante</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <button mat-button matStepperPrevious>Atras</button>
+    <button mat-button matStepperNext>Siguiente</button>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Propiedades del convenio</ng-template>
+    <ng-template matStepLabel>Información del Deudor</ng-template>
+      <div class="container">
+        <span>
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="-" (click)="setDeudorSolidario('-')"><span class="material-icons">
+              remove
+              </span></mat-button-toggle>
+            <h2 class="title-form">{{ fieldDeudores.length }} {{ titleDeudor }} </h2>
+            <mat-button-toggle value="+" (click)="setDeudorSolidario('+')"><span class="material-icons">
+              add
+              </span></mat-button-toggle>
+          </mat-button-toggle-group>
+        </span>
+      <table class="example-full-width" cellspacing="0">
+        <tr *ngFor="let item of fieldDeudores">
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{ item.name }}</mat-label>
+            <input matInput value="{{item.value}}">
+          </mat-form-field>
+        </td>
+        <td>  
+          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Identificación Arrendatario</mat-label>
+          <input matInput></mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Tipo de Persona</mat-label>
+            <mat-select [(value)]="selectedValueGarage" name="garage">
+              <mat-option value="Natural">Natural</mat-option>
+              <mat-option value="Juridica">Juridica</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+            <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+        </td>
+        </tr>
+      </table>
+      </div>
+    <button mat-button matStepperPrevious>Atras</button>
+    <button mat-button matStepperNext>Siguiente</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Convenio</ng-template>
     <div class="container">
       <table class="example-full-width" cellspacing="0">
         <tr>
