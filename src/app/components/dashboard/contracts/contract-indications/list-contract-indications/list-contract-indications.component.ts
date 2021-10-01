@@ -11,7 +11,6 @@ import { ContractIndications } from 'src/app/interfaces/contractIndications';
 import { PdfService } from 'src/app/services/pdf.service';
 import { PropertiesContractService } from 'src/app/services/contracts/properties-contract.service';
 
-
 @Component({
   selector: 'list-contract-indications',
   templateUrl: './list-contract-indications.component.html',
@@ -22,6 +21,7 @@ export class ListContractIndicationsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   showFiller = false;
+  
 
   constructor(private pdfService: PdfService, private _propertiesContract : PropertiesContractService, private _contractsIndicationsService: ContractIndicationsService, private _snackBar: MatSnackBar) {
 
