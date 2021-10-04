@@ -14,6 +14,8 @@ import { StatesComponent } from './components/states/states.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TemplatePdfComponent } from './components/template-pdf/template-pdf.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { TemplatePdfComponent } from './components/template-pdf/template-pdf.com
     MatDatepickerModule,
     SharedModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
