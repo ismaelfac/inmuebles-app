@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) { 
     this.form = this.fb.group({
-      usuario: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(): void {
-    const usuario = this.form.value.usuario;
+    const email = this.form.value.email;
     const password = this.form.value.password;
-    if(usuario === 'ismaelfac' && password === '123'){
+    if(email === 'ismaelfac@gmail.com' && password === '123'){
       this.loading = true;
       this._snackBar.open('Usuario correcto', '', {
         duration: 5000,

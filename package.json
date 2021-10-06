@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "servicesHttp": "json-server --watch ./src/assets/data/propertiescontract.json"
+    "servicesHttp": "json-server --watch --port 3001 ./src/assets/data/propertiescontract.json"
   },
   "private": true,
   "dependencies": {

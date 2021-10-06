@@ -27,9 +27,9 @@ export class UsersComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  LIST_USERS: Users[] = [];
+  LIST_USERS: any = [];
 
-  displayedColumns: string[] = ['id','user', 'names', 'lastName', 'isActive','options'];
+  displayedColumns: string[] = ['name', 'email', 'roles', 'isActive'];
   dataSource = new MatTableDataSource(this.LIST_USERS);
 
   applyFilter(event: Event) {
@@ -39,8 +39,10 @@ export class UsersComponent implements OnInit {
 
   loadUsers() {
     this._usersService.getUsers().subscribe(data => {
-      this.LIST_USERS = data;
-      this.dataSource = new MatTableDataSource(this.LIST_USERS);
+      this.LIST_USERS.push(data);
+      this.dataSource = new MatTableDataSource(this.LIST_USERS[0].data);
+      
+      console.log(this.LIST_USERS[0].data)
     });
   }
 

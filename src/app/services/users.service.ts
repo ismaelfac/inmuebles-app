@@ -7,17 +7,18 @@ import { Users } from '../interfaces/users';
   providedIn: 'root'
 })
 export class UsersService {
+  API_URL = 'http://localhost:3000/api/1.0/users';
   private options = [];
   // delete(url: string, options: { headers?: HttpHeaders | { [header: string]: string | string[]; }; context?: HttpContext; observe?: "body" | "events" | "response"; params?: HttpParams | { [param: string]: string | number | boolean | ReadonlyArray<string | ... 1 more ... | boolean>; }; reportProgress?: boolean; responseType?: "arraybuffer" | ... 2... = {}): Observable<any>
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<Users[]> {
-    return this.httpClient.get<Users[]>('./assets/data/users.json');
+  getUsers() {
+    return this.http.get(`${this.API_URL}`);
   }
 
   deleteUser(id: number) {
-    return this.httpClient.delete('./assets/data/users.json', ).forEach(user => {
+    return this.http.delete('./assets/data/users.json', ).forEach(user => {
       console.log(id);
     });
   }

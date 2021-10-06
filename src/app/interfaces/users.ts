@@ -1,7 +1,6 @@
 export interface Users {
     id: number;
-    user: string;
-    names: string;
-    lastName: string;
+    name: string;
+    email: string;
     isActive: boolean;
 }
