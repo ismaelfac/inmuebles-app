@@ -17,9 +17,12 @@ export class UsersService {
     return this.http.get(`${this.API_URL}`);
   }
 
-  deleteUser(id: number) {
-    return this.http.delete('./assets/data/users.json', ).forEach(user => {
-      console.log(id);
-    });
+  deleteUser(id: string) {
+    return this.http.delete(`${this.API_URL}/${id}`);
+  }
+
+  setActive(id: string) {
+    console.log(`${this.API_URL}/${id}`)
+    return this.http.post(`${this.API_URL}/${id}`, id);
   }
 }

@@ -46,18 +46,24 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  DeleteUser(index:number): void {
-    this._usersService.deleteUser(index);
-    this.loadUsers();
+  async DeleteUser(id:string) {
+    await this._usersService.deleteUser(id);
     this._snackBar.open('El usuario fue elminado con exito', '', {
       duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
+    this.loadUsers();
   }
 
-  isActive(index:number): void {
-    console.log(index);
+  async setActive(id:string) {
+    await this._usersService.setActive(id);
+    this._snackBar.open('El usuario fue elminado con exito', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+    this.loadUsers();
   }
 
   
