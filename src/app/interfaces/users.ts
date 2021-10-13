@@ -1,6 +1,6 @@
-export interface Users {
-    id: number;
-    name: string;
-    email: string;
-    isActive: boolean;
+export interface IUsers {
+    id: number,
+    name: string,
+    email: string,
+    isActive: boolean
 }
