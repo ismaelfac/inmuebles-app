@@ -1,18 +1,21 @@
 <div class="body">
     <div class="login">
         <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
-        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)=ingresar()>
+        <form #frmLogin="ngForm" (ngSubmit)="onLogin(frmLogin)">
             <img class="img" src="./assets/images/profile.png" alt="">
-            <h1>Login</h1>
-            <mat-form-field class="width-form" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput autocomplete="off" formControlName="email">
-            </mat-form-field>
-            <mat-form-field class="width-form" appearance="fill">
-                <mat-label>Contraseña</mat-label>
-                <input matInput autocomplete="off" formControlName="password" type="password">
+            <h1 style="color: maroon;">Acceso al Sistema</h1>
+            <mat-form-field appearance="fill" class="width-form">
+                <mat-label>correo electronico</mat-label>
+                <input matInput placeholder="correo@example.com" name="email" ngModel required>
             </mat-form-field><br>
-            <button type="submit" class="button-form" mat-raised-button color="primary" [disabled]="form.invalid">Iniciar</button>
+            <mat-form-field appearance="fill" class="width-form">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            <button type="submit" class="button-form" mat-raised-button color="primary">Iniciar</button>
         </form>
     </div>
 </div>

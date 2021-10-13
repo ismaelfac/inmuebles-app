@@ -8,18 +8,20 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable()
 
 export class AuthService {
-  AUTH_SERVER: string = 'http://localhost:3000/api/1.0/';
+  AUTH_SERVER: string = 'http://localhost:3000/api/1.0';
   authSubject = new BehaviorSubject(false);
   private token: any = '';
 
   constructor(private http: HttpClient) { }
 
   login(user: IUsers): Observable<IJwtResponse> {
-    return this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/signin`, user).pipe(tap(
+    return this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
       (res: IJwtResponse) => {
-        this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
-      }
-    ));
+        if(res) {
+          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+        }
+      })
+    );
   }
 
   logout(): void {

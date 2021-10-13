@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { IUsers } from "../../interfaces/users";
 
 @Component({
   selector: 'login',
@@ -10,41 +12,38 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
  
-  form: FormGroup;
   public loading: boolean = false;
+  hide = true;
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) { 
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+  constructor(private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { 
+  
   }
 
   ngOnInit(): void {
   }
 
-  ingresar(): void {
-    const email = this.form.value.email;
-    const password = this.form.value.password;
-    if(email === 'ismaelfac@gmail.com' && password === '123'){
-      this.loading = true;
-      this._snackBar.open('Usuario correcto', '', {
-        duration: 5000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      this.loading = false;
-      this.router.navigate(['dashboard']);
-    }else{
-      this.loading = true;
-      this._snackBar.open('Usuario Incorrecto', '', {
-        duration: 5000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      this.loading = false;
-      this.form.reset();
-    }
+  onLogin(form:any): void {
+    this.authService.login(form.value).subscribe(res => {
+      console.log(res);
+      if(res) {
+        this.loading = true;
+        this._snackBar.open('Usuario correcto', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+        this.loading = false;
+        this.router.navigate(['dashboard']);
+      }else {
+        this.loading = true;
+        this._snackBar.open('Usuario Incorrecto', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+        this.loading = false;
+      }
+    })
   }
 
 }
