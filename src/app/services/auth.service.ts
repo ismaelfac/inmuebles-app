@@ -18,6 +18,7 @@ export class AuthService {
     return this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
       (res: IJwtResponse) => {
         if(res) {
+          console.log('res: ',res)
           this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
         }
       })

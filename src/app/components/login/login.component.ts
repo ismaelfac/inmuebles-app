@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(form:any): void {
     this.authService.login(form.value).subscribe(res => {
-      console.log(res);
+      console.log('res desde login',res);
       if(res) {
         this.loading = true;
         this._snackBar.open('Usuario correcto', '', {
