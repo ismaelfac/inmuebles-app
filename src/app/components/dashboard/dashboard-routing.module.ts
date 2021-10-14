@@ -5,12 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { ReportsComponent } from './reports/reports.component';
 import { UsersCreateComponent } from './users/users-create/users-create.component';
 import { UsersComponent } from './users/users.component';
-import { UserGuardGuard } from '../../user-guard.guard';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children: [
     { path: '', component: HomeComponent},
-    { path: 'usuarios', component: UsersComponent, canActivate: [UserGuardGuard]},
+    { path: 'usuarios', component: UsersComponent },
     { path: 'reportes', component: ReportsComponent},
     { path: 'crear-usuario', component: UsersCreateComponent},
     { path: 'contractos', loadChildren: () => import('../dashboard/contracts/contracts.module').then(x => x.ContractsModule)},

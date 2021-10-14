@@ -8,12 +8,16 @@ import { IUsers } from '../interfaces/users';
 })
 export class UsersService {
   API_URL = 'http://localhost:3000/api/1.0/users';
-  private options = [];
-  // delete(url: string, options: { headers?: HttpHeaders | { [header: string]: string | string[]; }; context?: HttpContext; observe?: "body" | "events" | "response"; params?: HttpParams | { [param: string]: string | number | boolean | ReadonlyArray<string | ... 1 more ... | boolean>; }; reportProgress?: boolean; responseType?: "arraybuffer" | ... 2... = {}): Observable<any>
+  client = new XMLHttpRequest();
+  cookie = localStorage.getItem("ACCESS_TOKEN");
 
   constructor(private http: HttpClient) { }
 
   getUsers() {
+    this.client.open("GET", this.API_URL, false);//This Post will become put 
+    this.client.setRequestHeader("Accept", "application/json");
+    this.client.setRequestHeader("Content-Type","application/json");
+    //this.client.setRequestHeader("token", this.cookie);
     return this.http.get(`${this.API_URL}`);
   }
 

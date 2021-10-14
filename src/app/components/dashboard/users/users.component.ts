@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { IUsers } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +17,7 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _usersService: UsersService, private _snackBar: MatSnackBar) { }
+  constructor(private cookieService: CookieService, private _usersService: UsersService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loadUsers();

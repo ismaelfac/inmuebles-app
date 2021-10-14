@@ -15,14 +15,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(user: IUsers): Observable<IJwtResponse> {
-    return this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
-      (res: IJwtResponse) => {
-        if(res) {
-          console.log('res: ',res)
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+    const resultLogin = this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
+        (res: IJwtResponse) => {
+          this.saveToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjYxNTFkNjU3NTg2MTc1NDM5YjdkNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYzNDIzMDA1NCwiZXhwIjoxNjM0MzE2NDU0fQ.RD1Zf52JtBDWhwZa1PxmMEzT6bq0Tr1CPh005w1XYvw','86400')
         }
-      })
+      )
     );
+
+    return resultLogin;
   }
 
   logout(): void {
