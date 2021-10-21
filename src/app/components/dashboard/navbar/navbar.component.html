@@ -4,7 +4,7 @@
         <mat-icon>menu</mat-icon>
     </button>
     <span class="example-spacer"></span>
-        <button mat-button *ngFor="let item of menu" [routerLink]="item.redirect" >{{ item.name }}</button>
+        <button mat-button *ngFor="let item of menu" [routerLink]="item.link" >{{ item.names }}</button>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>logout</mat-icon>

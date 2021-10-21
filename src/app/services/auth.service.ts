@@ -16,12 +16,11 @@ export class AuthService {
 
   login(user: IUsers): Observable<IJwtResponse> {
     const resultLogin = this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
-        (res: IJwtResponse) => {
-          this.saveToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjYxNTFkNjU3NTg2MTc1NDM5YjdkNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYzNDIzMDA1NCwiZXhwIjoxNjM0MzE2NDU0fQ.RD1Zf52JtBDWhwZa1PxmMEzT6bq0Tr1CPh005w1XYvw','86400')
-        }
-      )
-    );
-
+           (res: IJwtResponse) => {
+            this.saveToken(res.accessToken, res.expiresIn);
+          }
+         )
+       );
     return resultLogin;
   }
 

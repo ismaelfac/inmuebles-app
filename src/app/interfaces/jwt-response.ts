@@ -1,9 +1,9 @@
 export interface IJwtResponse {
-    dataUser: {
-        id: number,
-        name: string,
-        email: string,
-        accessToken: string,
-        expiresIn: string
-    }
+    id: number,
+    name: string,
+    email: string,
+    accessToken: string,
+    expiresIn: string,
+    avatar: string,
+    role: string
 }

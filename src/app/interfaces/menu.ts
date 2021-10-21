@@ -1,4 +1,10 @@
 export interface Menu {
-    name: string;
-    redirect: string;
+    _id: String,
+    names: string,
+    description: string,
+    methods: string,
+    level: String,
+    order: String,
+    parent: string,
+    link: string
 }

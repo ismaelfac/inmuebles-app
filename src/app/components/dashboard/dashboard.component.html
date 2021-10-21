@@ -7,8 +7,8 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-selection-list #shoes [multiple]="false">
-        <mat-list-option *ngFor="let item of menu" [routerLink]="item.redirect" [value]="item.name">
-            {{ item.name }}
+        <mat-list-option *ngFor="let item of menu" [routerLink]="item.link" [value]="item.names">
+            {{ item.names }}
         </mat-list-option>
       </mat-selection-list>
   </mat-drawer>
