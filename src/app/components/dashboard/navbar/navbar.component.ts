@@ -9,6 +9,7 @@ import { MenuService } from 'src/app/services/menu.service';
 })
 export class NavbarComponent implements OnInit {
   menu: Menu[] = [];
+  public name: any = '';
 
   constructor(private _menuService: MenuService) { 
 
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
   
   ngOnInit(): void {
     this.loadMenu();
+    this.name = localStorage.getItem("NAME");
   }
 
   loadMenu(): void {

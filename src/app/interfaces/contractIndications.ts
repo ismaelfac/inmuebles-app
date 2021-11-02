@@ -1,6 +1,6 @@
 export interface ContractIndications {
     id: number;
-    contrato: string;
+    contractNum: string;
     arrendatario: string;
     deudorSolidario: string;
     addressInmueble: string;

@@ -17,7 +17,7 @@ export class AuthService {
   login(user: IUsers): Observable<IJwtResponse> {
     const resultLogin = this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
            (res: IJwtResponse) => {
-            this.saveToken(res.accessToken, res.expiresIn);
+            this.saveToken(res.accessToken, res.expiresIn, res.name, res.email, res.avatar);
           }
          )
        );
@@ -30,7 +30,10 @@ export class AuthService {
     localStorage.removeItem("EXPIRES_IN");
   }
 
-  private saveToken(token: string, expiresIn: string): void {
+  private saveToken(token: string, expiresIn: string, name: string, email: string, avatar: string): void {
+    localStorage.setItem("NAME", name);
+    localStorage.setItem("EMAIL", email);
+    localStorage.setItem("AVATAR", avatar);
     localStorage.setItem("ACCESS_TOKEN", token);
     localStorage.setItem("EXPIRES_IN", expiresIn);
     this.token = token;

@@ -39,7 +39,7 @@ export class ListContractIndicationsComponent implements OnInit {
 
   LIST_CONTRACT_INDICATIONS: ContractIndications[] = [];
 
-  displayedColumns: string[] = ['select','contrato','arrendatario', 'deudorSolidario', 'addressInmueble', 'state', 'adviser','options'];
+  displayedColumns: string[] = ['select','contractNum','arrendatario', 'deudorSolidario', 'addressInmueble', 'state', 'adviser','options'];
   dataSource = new MatTableDataSource<ContractIndications>(this.LIST_CONTRACT_INDICATIONS);
   selection = new SelectionModel<ContractIndications>(true, []);
 
@@ -80,7 +80,7 @@ export class ListContractIndicationsComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.contrato + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.contractNum}`;
   }
 
   generatePDF(contractId: string) {  
