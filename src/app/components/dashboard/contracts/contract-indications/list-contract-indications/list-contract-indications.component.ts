@@ -52,10 +52,9 @@ export class ListContractIndicationsComponent implements OnInit {
   loadContractIndications() {
     this._contractsIndicationsService.getContractIndications().subscribe(contract => {
       contract.map(item => {
-        console.log(item);
-      });
-      this.LIST_CONTRACT_INDICATIONS = contract;
-      //console.log(this.LIST_CONTRACT_INDICATIONS);
+        console.log(item)
+        this.LIST_CONTRACT_INDICATIONS.push(item);
+      })
       this.dataSource = new MatTableDataSource(this.LIST_CONTRACT_INDICATIONS);
     });
   }
