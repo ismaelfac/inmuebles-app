@@ -1,15 +1,15 @@
 <mat-stepper orientation="vertical">
+  <form action="">
   <mat-step>
     <ng-template matStepLabel>Información del Inmueble</ng-template>
     <ng-template matStepContent>
-      <form (ngSubmit)="onSubmitInfoContrato()">
         <div class="container">
           <table class="example-full-width" cellspacing="0"><tr>
             <td>
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Tipo de Contrato</mat-label>
-                <mat-select [(value)]="selectedValueContractType" name="garage">
-                  <mat-option *ngFor="let item of contractsType" [value]="item.value">
+                <mat-label>Tipo de Propiedad</mat-label>
+                <mat-select [(value)]="selectedValuePropertyType" name="propertyType">
+                  <mat-option *ngFor="let item of propertiesType" [value]="item.value">
                     {{item.viewValue}}
                   </mat-option>
                 </mat-select>
@@ -42,27 +42,23 @@
             </tr>
           </table>
         </div>
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Canon Arriendo</mat-label>
-              <input matInput>
-            </mat-form-field>
-          </td>
-          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion()">Valor Administracion</mat-slide-toggle></td>
-          <td *ngIf="IsAdministracion"><mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Cuota de Administracion</mat-label>
-            <input matInput>
-          </mat-form-field></td>          
-        </tr></table>
-      <button mat-button matStepperNext click="setInmueble($event)">Siguiente</button>
-      </form>
+        <button mat-button matStepperNext>Siguiente</button>
     </ng-template>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Información de Contrato</ng-template>
     <ng-template matStepContent>
         <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tipo de Contrato</mat-label>
+              <mat-select [(value)]="selectedValueContractType" name="contractType">
+                <mat-option *ngFor="let item of contractsType" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
           <td>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>No Asegurable</mat-label>
@@ -75,6 +71,19 @@
               <input matInput value="2345">
           </mat-form-field>
           </td>
+        </tr></table>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Canon Arriendo</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </td>
+          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion()">Valor Administracion</mat-slide-toggle></td>
+          <td *ngIf="IsAdministracion"><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Cuota de Administracion</mat-label>
+            <input matInput>
+          </mat-form-field></td>          
         </tr></table>
         <table class="example-full-width" cellspacing="0"><tr>          
         <td>
@@ -174,6 +183,21 @@
           <td>
               <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
           </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>address</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>phone</mat-label>
+            <input matInput></mat-form-field>
+          </td>
           </tr>
           <tr *ngIf="IsPersonaJuridica">
             <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
@@ -187,7 +211,7 @@
               <button mat-raised-button color="primary">Cedula del Representante</button>
             </td>
           </tr>
-        </table>
+        </table>  
       </div>
     <button mat-button matStepperPrevious>Atras</button>
     <button mat-button matStepperNext>Siguiente</button>
@@ -396,6 +420,7 @@
       </tr>
       </table>
     <button mat-button matStepperPrevious>Back</button>
-    <button mat-button matStepperNext>Next</button>
+    <button mat-button matStepperNext (click)="onSubmitInfoContract($event)">Crear y Guardar</button>
   </mat-step>
+</form>
 </mat-stepper>

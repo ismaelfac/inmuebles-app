@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   private token: any;
   public name: any = '';
   menu: Menu[] = [];
+  public name: any = '';
 
   constructor(private _menuService: MenuService) { 
 

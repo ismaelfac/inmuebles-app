@@ -99,6 +99,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   selectedValueTypePersonConvenio: any = '';
   selectedValueAccountType:any = '';
   selectedValueBankConsign:any = '';
+  selectedValuePropertyType:any = '';
 
   periodoGracia: boolean = false;
   IsPersonaJuridica: boolean = false;
@@ -138,6 +139,13 @@ export class CreateContractIndicationsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.formulario.value);
   }
+
+  propertiesType: any = [
+    {value: 'Casa', viewValue: 'Casa'},
+    {value: 'Apartamento', viewValue: 'Apartamento'},
+    {value: 'Bodega', viewValue: 'Bodega'}
+  ]
+
   garage: Garage[] = [
     {value: '0', viewValue: 'No Aplica'},
     {value: '1', viewValue: 'Uno'},
@@ -294,8 +302,8 @@ export class CreateContractIndicationsComponent implements OnInit {
     }
   }
 
-  onSubmitInfoContrato(): void {
-
+  onSubmitInfoContract($event: any) {
+    console.log($event)
   }
 
 }
