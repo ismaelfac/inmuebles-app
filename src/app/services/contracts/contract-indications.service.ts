@@ -14,7 +14,7 @@ export class ContractIndicationsService {
   getContractIndications(): Observable<ContractIndications[]> {
     let params = new HttpParams();
     params = params.append('token', `${this.getToken()}`)
-    return this.httpClient.get<ContractIndications[]>(`${this.AUTH_SERVER}/contracts`, {params});
+    return this.httpClient.get<ContractIndications[]>(`${this.AUTH_SERVER}/contract_indications`, {params});
   }
 
   private getToken(): string {

@@ -6,10 +6,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PropertiesContractService {
-
+  AUTH_SERVER: string = 'http://localhost:3000/api/1.0';
+  private token: any = '';
   constructor(private httpClient: HttpClient) { }
 
   getPropertiesContractId(contractId: string) {
-    return this.httpClient.get(`http://localhost:3000/propertiesContract/${contractId}`);
+    return this.httpClient.get(`${this.AUTH_SERVER}/${contractId}`);
   } 
 }

@@ -17,6 +17,7 @@ import { PropertiesContractService } from 'src/app/services/contracts/properties
   styleUrls: ['./list-contract-indications.component.css']
 })
 export class ListContractIndicationsComponent implements OnInit {
+  
   //@ViewChild(MatSidenavContainer) sidenavContainer: MatSidenavContainer;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

@@ -17,7 +17,7 @@ export class AuthService {
   login(user: IUsers): Observable<IJwtResponse> {
     const resultLogin = this.http.post<IJwtResponse>(`${this.AUTH_SERVER}/auth/signin`, user).pipe(tap(
            (res: IJwtResponse) => {
-            this.saveToken(res.accessToken, res.expiresIn);
+            this.saveToken(res.accessToken, res.expiresIn, res.email, res.name, res.avatar);
           }
          )
        );
@@ -27,12 +27,19 @@ export class AuthService {
   logout(): void {
     this.token = '';
     localStorage.removeItem("ACCESS_TOKEN");
-    localStorage.removeItem("EXPIRES_IN");
+      localStorage.removeItem("NAME");
+      localStorage.removeItem("AVATAR");
+      localStorage.removeItem("EXPIRES_IN");
+      localStorage.removeItem("EMAIL");
   }
 
-  private saveToken(token: string, expiresIn: string): void {
+  private saveToken(token: string, expiresIn: string, email: string, name: string, avatar: string): void {
     localStorage.setItem("ACCESS_TOKEN", token);
     localStorage.setItem("EXPIRES_IN", expiresIn);
+    localStorage.setItem("EMAIL", email);
+    localStorage.setItem("NAME", name);
+    localStorage.setItem("AVATAR", avatar);
+    
     this.token = token;
   }
 

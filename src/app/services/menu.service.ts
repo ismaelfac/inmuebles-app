@@ -17,7 +17,6 @@ export class MenuService {
     let params = new HttpParams();
     params = params.append('token', `${this.getToken()}`)
     const resultMenu = this.http.get<Menu[]>(`${this.AUTH_SERVER}/menu_roles`, {params});
-    console.log(resultMenu);
     return resultMenu;
   }
   private getToken(): string {
