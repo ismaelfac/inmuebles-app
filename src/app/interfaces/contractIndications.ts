@@ -3,7 +3,7 @@ export interface ContractIndications {
     contractNum: string;
     arrendatario: string;
     deudorSolidario: string;
-    addressInmueble: string;
+    address: string;
     adviser: string;
     state: string;
 }

@@ -39,7 +39,7 @@ export class ListContractIndicationsComponent implements OnInit {
 
   LIST_CONTRACT_INDICATIONS: ContractIndications[] = [];
 
-  displayedColumns: string[] = ['select','contractNum','arrendatario', 'deudorSolidario', 'addressInmueble', 'state', 'adviser','options'];
+  displayedColumns: string[] = ['select','contractNum','arrendatario', 'deudorSolidario', 'real_estate_data.address', 'state', 'adviser.name','options'];
   dataSource = new MatTableDataSource<ContractIndications>(this.LIST_CONTRACT_INDICATIONS);
   selection = new SelectionModel<ContractIndications>(true, []);
 
@@ -49,9 +49,12 @@ export class ListContractIndicationsComponent implements OnInit {
   }
 
   loadContractIndications() {
-    this._contractsIndicationsService.getContractIndications().subscribe(data => {
-      this.LIST_CONTRACT_INDICATIONS = data;
-      console.log(data);
+    this._contractsIndicationsService.getContractIndications().subscribe(contract => {
+      contract.map(item => {
+        console.log(item);
+      });
+      this.LIST_CONTRACT_INDICATIONS = contract;
+      //console.log(this.LIST_CONTRACT_INDICATIONS);
       this.dataSource = new MatTableDataSource(this.LIST_CONTRACT_INDICATIONS);
     });
   }
