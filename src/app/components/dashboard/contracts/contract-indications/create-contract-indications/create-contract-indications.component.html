@@ -1,5 +1,5 @@
 <mat-stepper orientation="vertical">
-  <form action="">
+  <form (ngSubmit)="sendData()">
   <mat-step>
     <ng-template matStepLabel>Información del Inmueble</ng-template>
     <ng-template matStepContent>
@@ -42,7 +42,7 @@
             </tr>
           </table>
         </div>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperNext (click)="onCreate($event)">Siguiente</button>
     </ng-template>
   </mat-step>
   <mat-step>
@@ -180,24 +180,49 @@
               </mat-select>
             </mat-form-field>
           </td>
-          <td>
+          </tr>
+          <tr>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>address</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>phone</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
-          </td>
-          <td>  
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput></mat-form-field>
-          </td>
-          <td>  
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>address</mat-label>
-            <input matInput></mat-form-field>
-          </td>
-          <td>  
-            <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>phone</mat-label>
-            <input matInput></mat-form-field>
-          </td>
+            </td>
+            <td>
+              <table class="default">
+
+                <tr>
+                  <th>No</th>              
+                  <th>LISTADO DOCUMENTOS ARRENDATARIO</th>              
+                </tr>              
+                <tr>
+                  <td>1</td>
+                  <td>RUT SINFOROSO GUMERSINDO</td>
+                </tr>    
+                <tr>
+                  <td>2</td>
+                  <td>RUT SINFOROSO GUMERSINDO</td>
+                </tr>    
+                <tr>
+                  <td>3</td>
+                  <td>RUT SINFOROSO GUMERSINDO</td>
+                </tr>              
+              </table>
+            </td>
           </tr>
           <tr *ngIf="IsPersonaJuridica">
             <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
@@ -230,8 +255,8 @@
               </span></mat-button-toggle>
           </mat-button-toggle-group>
         </span>
-      <table class="example-full-width" cellspacing="0">
-        <tr *ngFor="let item of fieldDeudores">
+      <table class="example-full-width" cellspacing="0" *ngFor="let item of fieldDeudores">
+        <tr>
         <td>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>{{ item.name }}</mat-label>
@@ -252,9 +277,61 @@
             </mat-select>
           </mat-form-field>
         </td>
-        <td>
+        </tr>
+        <tr>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>address</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>phone</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
-        </td>
+          </td>
+          <td>
+            <table class="default">
+
+              <tr>
+                <th>No</th>              
+                <th>LISTADO DOCUMENTOS ARRENDATARIO</th>              
+              </tr>              
+              <tr>
+                <td>1</td>
+                <td>RUT SINFOROSO GUMERSINDO</td>
+              </tr>    
+              <tr>
+                <td>2</td>
+                <td>RUT SINFOROSO GUMERSINDO</td>
+              </tr>    
+              <tr>
+                <td>3</td>
+                <td>RUT SINFOROSO GUMERSINDO</td>
+              </tr>              
+            </table>
+          </td>
+        </tr>
+        <tr *ngIf="IsPersonaJuridica">
+          <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nombres Completos Representante Legal</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-raised-button color="primary">Cedula del Representante</button>
+          </td>
         </tr>
       </table>
       </div>
@@ -420,7 +497,7 @@
       </tr>
       </table>
     <button mat-button matStepperPrevious>Back</button>
-    <button mat-button matStepperNext (click)="onSubmitInfoContract($event)">Crear y Guardar</button>
+    <button mat-button type="submit">Crear y Guardar</button>
   </mat-step>
 </form>
 </mat-stepper>

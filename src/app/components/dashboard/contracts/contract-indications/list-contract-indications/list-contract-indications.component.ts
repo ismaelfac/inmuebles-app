@@ -22,7 +22,7 @@ export class ListContractIndicationsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   showFiller = false;
-  
+  moduleActive : boolean = false;
 
   constructor(private pdfService: PdfService, private _propertiesContract : PropertiesContractService, private _contractsIndicationsService: ContractIndicationsService, private _snackBar: MatSnackBar) {
 
@@ -97,6 +97,9 @@ export class ListContractIndicationsComponent implements OnInit {
     this._propertiesContract.getPropertiesContractId(contractId).subscribe(data => {
       
     });
+  }
+  setModuleActive($event:any): void {
+    this.moduleActive = true;
   }
   
 }

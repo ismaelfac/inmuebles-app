@@ -306,4 +306,12 @@ export class CreateContractIndicationsComponent implements OnInit {
     console.log($event)
   }
 
+  onCreate($event:any) {
+    console.log($event)
+  }
+
+  sendData(){
+    console.log('Enviando datos')
+  }
+
 }
