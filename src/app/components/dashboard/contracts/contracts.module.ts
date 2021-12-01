@@ -19,6 +19,9 @@ import { ListComponent } from './estates/list/list.component';
 import { ContractComponent } from './contract/contract.component';
 import { FormsContractComponent } from './contract/forms-contract/forms-contract.component';
 import { ListContractComponent } from './contract/list-contract/list-contract.component';
+import { ContractActorsComponent } from './contract-actors/contract-actors.component';
+import { FormContractActorsComponent } from './contract-actors/form-contract-actors/form-contract-actors.component';
+import { ListContractActorsComponent } from './contract-actors/list-contract-actors/list-contract-actors.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { ListContractComponent } from './contract/list-contract/list-contract.co
     ListComponent,
     ContractComponent,
     FormsContractComponent,
-    ListContractComponent
+    ListContractComponent,
+    ContractActorsComponent,
+    FormContractActorsComponent,
+    ListContractActorsComponent
   ],
   imports: [
     CommonModule,

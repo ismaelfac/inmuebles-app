@@ -1,0 +1,64 @@
+<form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
+    <div class="container">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        
+        <h2 class="title-form">{{ fieldArrendatario.length }} {{ titleArrendatario }} </h2>
+        
+        </mat-button-toggle-group>
+    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Tipo de Persona</mat-label>
+        <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
+        <mat-option value="Natural">Natural</mat-option>
+        <mat-option value="Juridica">Juridica</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nombres Completo / Razón Social</mat-label>
+        <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Identificación del Arrendatario</mat-label>
+        <input matInput name="txtDniActor" formControlName="txtDniActor">
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+        <input matInput name="txtEmailActor" formControlName="txtEmailActor">
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>address</mat-label>
+                <input matInput name="txtAddressActor" formControlName="txtAddressActor">
+            </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>phone</mat-label>
+                <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
+            </mat-form-field>
+        </td>
+        </tr>
+    </table>
+
+    <mat-slide-toggle class="example-margin" color="primary" formControlName="checkIfRut">Tiene RUT</mat-slide-toggle><br><br>
+    <mat-card *ngIf="IsPersonaJuridica">
+        <mat-card-title>Información Representante Legal</mat-card-title>
+        <mat-card-subtitle>End</mat-card-subtitle>
+        <mat-card-actions align="end">
+          <button mat-button>Like</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
+    <button mat-button mat-stroked-button matStepperPrevious color="accent">Atras</button>
+    <button mat-button mat-stroked-button matStepperNext color="primary" [disabled]="frmContractActors.invalid">Siguiente</button>
+</form>
+<pre>
+    {{ frmContractActors.value | json }}
+</pre>
+<pre>
+    {{ frmContractActors.status}}
+</pre>

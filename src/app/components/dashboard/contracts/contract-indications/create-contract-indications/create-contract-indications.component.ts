@@ -46,11 +46,7 @@ interface BankConsign {
   viewValue: string;
 }
 
-interface FieldArrendatario {
-  id: string;
-  name: string;
-  value: string;
-}
+
 interface DeudorSolidario {
   id: string;
   name: string;
@@ -91,7 +87,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   
   date = new FormControl(moment());
   titleDeudor: string = 'Deudor';
-  titleArrendatario: string = 'Arrendatario';
+  
   titleActor: string = '';
   panelOpenState = false;
   numArrentararios: number = 0;
@@ -103,14 +99,14 @@ export class CreateContractIndicationsComponent implements OnInit {
   selectedValuePropertyType:any = '';
 
   periodoGracia: boolean = false;
-  IsPersonaJuridica: boolean = false;
+  
   totalDivisionValue: boolean = true;
   OptdeudorSolidario: boolean = false;
   
   esAmparado: boolean = false;
   esValorIntegral: boolean = false;
   typesOfShoes: string[] = ['Boots'];
-  selectedValueTypePerson: string = '';
+  
   typePerson: string[] = ['Natural', 'Juridica'];
   cmdEstateType: string = '';
   step = 0;
@@ -128,7 +124,6 @@ export class CreateContractIndicationsComponent implements OnInit {
   }
   
   constructor(private formBuilder: FormBuilder) { 
-      this.numArrentararios = this.fieldArrendatario.length;
       this.frmEstate = this.formBuilder.group({
         propertyTypeSelected: new FormControl('',[Validators.required]),
         addressEstate: new FormControl('',[Validators.required]),
@@ -172,9 +167,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   owners: Owners[] = [
     { name: 'propietario1', value: '1'}
   ]
-  fieldArrendatario: FieldArrendatario[] = [
-    { id: '1', name: 'Arrendatario 1', value: 'A1'}
-  ]
+  
 
   fieldActoresContrato: ActoresContrato[] = [
     
@@ -196,20 +189,7 @@ export class CreateContractIndicationsComponent implements OnInit {
     console.log(this.owners);
   }
 
-  setArrendatario(action: string){
-    let numPerson = this.fieldArrendatario.length;
-     numPerson++;
-    if(action === '+'){
-      this.fieldArrendatario.push({
-        id: ''+numPerson,
-        name: 'Arrendatario '+numPerson,
-        value: 'A'+numPerson
-      });
-    }else{
-      this.fieldArrendatario.pop();
-    }
-    this.titleArrendatario = (this.fieldArrendatario.length === 1 ? 'Arrendatario' : 'Arrendatarios');
-  }
+  
 
   setActoresContrato(action: string) {
     let numActores = this.fieldActoresContrato.length;
@@ -229,9 +209,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   setNumArrendatario($event:any) {
     
   }
-  setTypePersonJuridica(value:string){
-
-  }
+  
 
   setTypeActorContrato(value:string) {
     if(value === 'Propietario') {
@@ -269,9 +247,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   }
   
 
-  haveRut(event:void) {
-    console.log("Tiene RUT")
-  }
+  
   
   selectable = true;
   removable = true;
