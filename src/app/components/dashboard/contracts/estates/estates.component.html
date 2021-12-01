@@ -1,14 +1,12 @@
-<div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
-        <div class="form">
-          <form-estate></form-estate>
-        </div>
-      </div>
-      <div [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
-        <div class="table">
-        <app-list></app-list>
-      </div>
-      </div>    
+<div fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+    <div class="form">
+      <form-estate></form-estate>
     </div>
   </div>
+  <div [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+    <div class="table">
+    <app-list></app-list>
+  </div>
+  </div>    
+</div>

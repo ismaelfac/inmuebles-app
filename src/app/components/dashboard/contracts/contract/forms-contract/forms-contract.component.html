@@ -1,97 +1,121 @@
 
-        <form [formGroup]="frmContract" (ngSubmit)="onCreateContract()">
-            <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Tipo de Contrato</mat-label>
-                <mat-select formControlName="selectedValueContractType" name="contractType">
+<form class="example-form" [formGroup]="frmContract" (ngSubmit)="onCreateContract()">
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Tipo de Propiedad</mat-label>
+                <mat-select name="selectedValueContractType" formControlName="selectedValueContractType">
                     <mat-option *ngFor="let item of contractsType" [value]="item.value">
                     {{item.viewValue}}
                     </mat-option>
                 </mat-select>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>No Asegurable</mat-label>
-                    <input matInput formControlName="txtAsegurable">
-                </mat-form-field>
-            </td>
-            <td>
+            </mat-form-field>
+            </td><td>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>No Asegurable</mat-label>
+                <input matInput formControlName="txtAsegurable">
+            </mat-form-field></td>
+        </tr>
+    </table>
+    
+    
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Cod Domus</mat-label>
                 <input matInput formControlName="txtDomus">
             </mat-form-field>
-            </td>
-            </tr></table>
-            <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Canon Arriendo</mat-label>
-                <input matInput formControlName="txtCannonLease">
-                </mat-form-field>
-            </td>
-            <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion()">Valor Administracion</mat-slide-toggle></td>
-            <td *ngIf="IsAdministracion"><mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Cuota de Administracion</mat-label>
-                <input matInput formControlName="txtAdminValue">
-            </mat-form-field></td>          
-            </tr></table>
-            <table class="example-full-width" cellspacing="0"><tr>          
-            <td>
+        </td>
+        <td>
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Duracion del Contrato</mat-label>
-                <input matInput type="number" placeholder="2" min="1">
-                <span matSuffix>Meses</span>
-                <mat-error>Minimo 1 Mes</mat-error>
+            <mat-label>Canon Arriendo</mat-label>
+            <input matInput formControlName="txtCannonLease">
             </mat-form-field>
-            </td>
-            <td>
-            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-                <mat-label>Incremento</mat-label>
-                <input matInput type="number" class="example-right-align" placeholder="0">
-                <span matPrefix>%&nbsp;</span>
-                <span matSuffix>.0</span>
-            </mat-form-field>
-            </td>
-            </tr></table>
-            <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
-                <mat-label>Derechos de Contrato</mat-label>
-                <input matInput type="number" class="example-right-align" placeholder="0">
-                <span matPrefix>%&nbsp;</span>
-                <span matSuffix>.0</span>
-            </mat-form-field>
-            </td>
-            <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Fecha Solicitada de Entrega</mat-label>
-                <input matInput [matDatepicker]="dp" formControlName="dateEntrega">
-                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                <mat-datepicker #dp></mat-datepicker>
-            </mat-form-field>                        
-            </td>
-            <td>
-            <mat-slide-toggle class="example-margin" color="primary" (click)="setPeriodoGracia()">Periodo de Gracia</mat-slide-toggle></td>
-            <td *ngIf="periodoGracia">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Periodo de Gracia</mat-label>
-                <input matInput type="number" placeholder="2" min="1">
-                <span matSuffix>Dias</span>
-                <mat-error>Minimo 30 Dias</mat-error>
-            </mat-form-field>
-            </td>
-            </tr></table>
-            <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Clausulas Adicionales</mat-label>
-                <textarea matInput></textarea>
-            </mat-form-field>
-            </td>
-            </tr>
-            </table>
-            <button mat-button matStepperPrevious>Atras</button>
-            <button mat-button matStepperNext>Sguiente</button>
-        </form>
+        </td>         
+        </tr>
+    </table>
+
+
+    <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion()">Valor Administracion</mat-slide-toggle></td>
+    <td *ngIf="IsAdministracion"><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Cuota de Administracion</mat-label>
+        <input matInput formControlName="txtAdminValue">
+    </mat-form-field></td> 
+    </tr>
+    </table>
+
+    <table class="example-full-width" cellspacing="0"><tr>          
+    <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Duracion del Contrato</mat-label>
+            <input matInput type="number" placeholder="2" min="1" formControlName="txtContractDuration">
+            <span matSuffix>Meses</span>
+            <mat-error>Minimo 1 Mes</mat-error>
+        </mat-form-field>
+    </td>
+    <td>
+        <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+            <mat-label>Incremento</mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" formControlName="txtIncrement">
+            <span matPrefix>%&nbsp;</span>
+            <span matSuffix>.0</span>
+        </mat-form-field>
+    </td>
+    </tr>
+    </table>
+    
+    <table class="example-full-width" cellspacing="0"><tr>
+    <td>
+        <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+            <mat-label>Derechos de Contrato</mat-label>
+            <input matInput type="number" class="example-right-align" placeholder="0" formControlName="txtContractRights">
+            <span matPrefix>%&nbsp;</span>
+            <span matSuffix>.0</span>
+        </mat-form-field>
+    </td>
+    <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Fecha Solicitada de Entrega</mat-label>
+        <input matInput [matDatepicker]="dp" formControlName="dateDeliveryDate">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>                        
+    </td>
+    </tr>
+    </table>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-slide-toggle class="example-margin" color="primary" (click)="setPeriodoGracia()">Periodo de Gracia</mat-slide-toggle></td>
+    <td *ngIf="periodoGracia">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Periodo de Gracia</mat-label>
+            <input matInput type="number" placeholder="2" min="1" formControlName="txtGradePeriod">
+            <span matSuffix>Dias</span>
+            <mat-error>Minimo 30 Dias</mat-error>
+        </mat-form-field>
+        </td></tr>
+    </table>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+    <td>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Clausulas Adicionales</mat-label>
+        <textarea matInput formControlName="txtClause"></textarea>
+    </mat-form-field>
+    </td>
+    </tr>
+    </table>
+    
+    <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
+    <button mat-button mat-stroked-button matStepperPrevious color="accent">Atras</button>
+    <button mat-button mat-stroked-button matStepperNext color="primary" [disabled]="frmContract.invalid">Siguiente</button>
+</form>
+        
+<pre>
+    {{ frmContract.value | json }}
+</pre>
+<pre>
+    {{ frmContract.status}}
+</pre>

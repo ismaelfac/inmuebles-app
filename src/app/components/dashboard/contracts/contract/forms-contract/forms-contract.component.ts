@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {MatChipInputEvent} from '@angular/material/chips';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
@@ -24,12 +23,6 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
-interface ContractType {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'forms-contract',
   templateUrl: './forms-contract.component.html',
@@ -53,15 +46,20 @@ export class FormsContractComponent implements OnInit {
   periodoGracia: boolean = false;
   
   frmContract = this.fb.group({
-    selectedValueContractType: [''],
+    selectedValueContractType: ['', Validators.required],
     txtDomus: [''],
     txtAsegurable: [''],
-    txtCannonLease: [''],
+    txtCannonLease: ['', Validators.required],
     txtAdminValue: [''],
-    dateEntrega: ['']
+    dateDeliveryDate: ['', Validators.required],
+    txtContractDuration: ['', Validators.required],
+    txtIncrement: ['', Validators.required],
+    txtContractRights: ['', Validators.required],
+    txtGradePeriod: [''],
+    txtClause: ['']
   })
 
-  contractsType: ContractType[] = [
+  contractsType: any = [
     {value: 'vivienda', viewValue: 'Vivienda'},
     {value: 'comercial', viewValue: 'Comercial'}
   ]
@@ -79,5 +77,10 @@ export class FormsContractComponent implements OnInit {
   onCreateContract() {
     console.log(this.frmContract.value);
   }
+
+  onReset():void {
+    this.frmContract.reset();
+  }
+
 
 }

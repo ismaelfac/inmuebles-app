@@ -2,23 +2,25 @@
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div [fxFlex]="100 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="100%">
       <mat-stepper orientation="vertical">
+
         <mat-step>
-          <form (formGroup)="frmEstate" (ngSubmit)="onCreateEstate()">
           <ng-template matStepLabel>Información del Inmueble</ng-template>
           <ng-template matStepContent>
               <div class="container">
                 <app-estates></app-estates>
               </div>
-              <button matStepperNext id="btnEstateSubmit" type="submit">Siguiente</button>
           </ng-template>
-          </form>
         </mat-step>
+
         <mat-step>
           <ng-template matStepLabel>Información de Contrato</ng-template>
           <ng-template matStepContent>
-            <app-contract></app-contract>
+            <div class="container">
+              <app-contract></app-contract>
+            </div>
           </ng-template>
         </mat-step>
+
       </mat-stepper>    
     </div>  
   </div>

@@ -31,8 +31,8 @@
     </mat-chip-list>
   </mat-form-field>
 
-  <button mat-stroked-button color="primary"[disabled]="frmEstate.invalid">Crear Inmueble</button>
-  <button mat-stroked-button color="accent" (click)="onReset()">Limpiar</button>
+  <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
+  <button mat-stroked-button matStepperNext  color="primary" [disabled]="frmEstate.invalid" id="btnEstateSubmit">Siguiente</button>
 </form>
 <pre>
   {{ frmEstate.value | json}}
