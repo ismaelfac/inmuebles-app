@@ -7,6 +7,12 @@ interface FieldArrendatario {
   value: string;
 }
 
+export interface Section {
+  name: string;
+  updated: Date;
+}
+
+
 @Component({
   selector: 'form-contract-actors',
   templateUrl: './form-contract-actors.component.html',
@@ -21,6 +27,21 @@ export class FormContractActorsComponent implements OnInit {
   fieldArrendatario: FieldArrendatario[] = [
     { id: '1', name: 'Arrendatario 1', value: 'A1'}
   ]
+  folders: Section[] = [
+    {
+      name: 'Photos',
+      updated: new Date('1/1/16'),
+    },
+    {
+      name: 'Recipes',
+      updated: new Date('1/17/16'),
+    },
+    {
+      name: 'Work',
+      updated: new Date('1/28/16'),
+    },
+  ];
+  
 
   frmContractActors = this.fb.group({
     selectedValueTypePerson: [''],
@@ -29,7 +50,12 @@ export class FormContractActorsComponent implements OnInit {
     txtEmailActor: [''],
     txtAddressActor: [''],
     txtPhoneActor: [''],
-    checkIfRut: ['']
+    selectedValueTypePersonJuridica: [''],
+    txtNamesActorJuridica: [''],
+    txtDniActorJuridica: [''],
+    txtEmailActorJuridica: [''],
+    txtAddressActorJuridica: [''],
+    txtPhoneActorJuridica: ['']
   })
   constructor(private fb: FormBuilder) { 
     

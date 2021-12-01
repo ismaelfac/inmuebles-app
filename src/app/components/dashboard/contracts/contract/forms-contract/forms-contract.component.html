@@ -11,17 +11,14 @@
                 </mat-select>
                 <mat-error>Debe seleccionar un tipo de Propiedad</mat-error>
             </mat-form-field>
-            </td><td>
+        </td>
+        <td>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>No Asegurable</mat-label>
                 <input matInput formControlName="txtAsegurable">
-            </mat-form-field></td>
-        </tr>
-    </table>
-    
-    
-    <table class="example-full-width" cellspacing="0"><tr>
+            </mat-form-field>
+        </td>
         <td>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Cod Domus</mat-label>
@@ -33,17 +30,26 @@
             <mat-label>Canon Arriendo</mat-label>
             <input matInput formControlName="txtCannonLease">
             </mat-form-field>
-        </td>         
+        </td> 
         </tr>
     </table>
-
 
     <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion()">Valor Administracion</mat-slide-toggle></td>
     <td *ngIf="IsAdministracion"><mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Cuota de Administracion</mat-label>
         <input matInput formControlName="txtAdminValue">
-    </mat-form-field></td> 
+    </mat-form-field>
+    </td>
+    <td><mat-slide-toggle class="example-margin" color="primary" (click)="setPeriodoGracia()">Periodo de Gracia</mat-slide-toggle></td>
+    <td *ngIf="periodoGracia">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Periodo de Gracia</mat-label>
+            <input matInput type="number" placeholder="2" min="1" formControlName="txtGradePeriod">
+            <span matSuffix>Dias</span>
+            <mat-error>Minimo 30 Dias</mat-error>
+        </mat-form-field>
+        </td> 
     </tr>
     </table>
 
@@ -64,10 +70,6 @@
             <span matSuffix>.0</span>
         </mat-form-field>
     </td>
-    </tr>
-    </table>
-    
-    <table class="example-full-width" cellspacing="0"><tr>
     <td>
         <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
             <mat-label>Derechos de Contrato</mat-label>
@@ -85,18 +87,6 @@
     </mat-form-field>                        
     </td>
     </tr>
-    </table>
-
-    <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-slide-toggle class="example-margin" color="primary" (click)="setPeriodoGracia()">Periodo de Gracia</mat-slide-toggle></td>
-    <td *ngIf="periodoGracia">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Periodo de Gracia</mat-label>
-            <input matInput type="number" placeholder="2" min="1" formControlName="txtGradePeriod">
-            <span matSuffix>Dias</span>
-            <mat-error>Minimo 30 Dias</mat-error>
-        </mat-form-field>
-        </td></tr>
     </table>
 
     <table class="example-full-width" cellspacing="0"><tr>
