@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 //:APPLICATION
@@ -28,6 +29,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule, 
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,

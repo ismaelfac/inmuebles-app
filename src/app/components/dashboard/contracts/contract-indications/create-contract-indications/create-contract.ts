@@ -85,7 +85,7 @@ interface Owners {
 })
 export class CreateContractIndicationsComponent implements OnInit {
   
-  frmEstate;
+  frmEstate: FormGroup;
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   
@@ -97,6 +97,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   numArrentararios: number = 0;
   numDeudores: number = 0;
   selectedValueGarage: any = '';
+  selectedValueContractType: any = '';
   selectedValueTypePersonConvenio: any = '';
   selectedValueAccountType:any = '';
   selectedValueBankConsign:any = '';
@@ -106,7 +107,7 @@ export class CreateContractIndicationsComponent implements OnInit {
   IsPersonaJuridica: boolean = false;
   totalDivisionValue: boolean = true;
   OptdeudorSolidario: boolean = false;
-  
+  IsAdministracion: boolean = false;
   esAmparado: boolean = false;
   esValorIntegral: boolean = false;
   typesOfShoes: string[] = ['Boots'];
@@ -134,6 +135,7 @@ export class CreateContractIndicationsComponent implements OnInit {
         addressEstate: new FormControl('',[Validators.required]),
         garagesEstate: new FormControl('',[Validators.required]),
       });
+      
    }
 
   ngOnInit(): void {
@@ -156,6 +158,10 @@ export class CreateContractIndicationsComponent implements OnInit {
     {value: '3', viewValue: 'Tres'}
   ];
 
+  contractsType: ContractType[] = [
+    {value: 'vivienda', viewValue: 'Vivienda'},
+    {value: 'comercial', viewValue: 'Comercial'}
+  ]
 
   accountType: AccountType[] = [
     {value: '0', viewValue: 'No Aplica'},
@@ -267,7 +273,9 @@ export class CreateContractIndicationsComponent implements OnInit {
   setValorIntegral($event:any) {
     this.esValorIntegral = !this.esValorIntegral;
   }
-  
+  setValorAdministracion() {
+    this.IsAdministracion = !this.IsAdministracion;
+  }
 
   haveRut(event:void) {
     console.log("Tiene RUT")

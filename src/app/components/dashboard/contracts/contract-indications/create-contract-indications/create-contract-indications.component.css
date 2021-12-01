@@ -1,27 +1,24 @@
-  .example-form {
-    min-width: 350px;
-    max-width: 100%;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
-  td {
-    padding-right: 8px;
-  }
-  
-  .example-headers-align .mat-expansion-panel-header-title,
-.example-headers-align .mat-expansion-panel-header-description {
-  flex-basis: 0;
-}
-
-.example-headers-align .mat-expansion-panel-header-description {
+mat-toolbar {
   justify-content: space-between;
-  align-items: center;
 }
 
-.example-headers-align .mat-form-field + .mat-form-field {
-  margin-left: 8px;
+.content {
+  padding: 16px;
 }
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+

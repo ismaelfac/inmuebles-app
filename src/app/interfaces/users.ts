@@ -3,6 +3,7 @@ export interface IUsers {
     name: string,
     email: string,
     avatar: string,
-    role: string,
-    isActive: boolean
+    roles: string,
+    isActive: boolean,
+    createdAt: string
 }

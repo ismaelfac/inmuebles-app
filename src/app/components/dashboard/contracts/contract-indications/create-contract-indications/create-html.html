@@ -1,0 +1,504 @@
+<mat-stepper orientation="vertical">
+    <mat-step>
+      <form (formGroup)="frmEstate" (ngSubmit)="onCreateEstate()">
+      <ng-template matStepLabel>Información del Inmueble</ng-template>
+      <ng-template matStepContent>
+          <div class="container">
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Tipo de Propiedad</mat-label>
+                  <mat-select name="propertyTypeSelected" formControlName="propertyTypeSelected">
+                    <mat-option *ngFor="let item of propertiesType" [value]="item.value">
+                      {{item.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Direccion Inmueble</mat-label>
+                  <input matInput placeholder="Cll # Cra # Tranversal #" name="addressEstate" formControlName="addressEstate">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-chip-list example-full-width" appearance="fill">
+                  <mat-label>Garaje(s) | Cuarto Util</mat-label>
+                  <mat-chip-list #chipList aria-label="Fruit selection" name="garagesEstate">
+                    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                            [removable]="removable" (removed)="remove(fruit)">
+                      {{fruit.name}}
+                      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Nuevo Cuarto o Garaje..."
+                          [matChipInputFor]="chipList"
+                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur"
+                          (matChipInputTokenEnd)="add($event)">
+                  </mat-chip-list>
+                </mat-form-field>
+                
+              </td>
+              </tr>
+            </table>
+          </div>
+          <button matStepperNext id="btnEstateSubmit" type="submit">Siguiente</button>
+      </ng-template>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Información de Contrato</ng-template>
+      <ng-template matStepContent>
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Tipo de Contrato</mat-label>
+                <mat-select [(value)]="selectedValueContractType" name="contractType">
+                  <mat-option *ngFor="let item of contractsType" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>No Asegurable</mat-label>
+                  <input matInput value="123456">
+              </mat-form-field>
+            </td>
+            <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Cod Domus</mat-label>
+                <input matInput value="2345">
+            </mat-form-field>
+            </td>
+          </tr></table>
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Canon Arriendo</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorAdministracion()">Valor Administracion</mat-slide-toggle></td>
+            <td *ngIf="IsAdministracion"><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Cuota de Administracion</mat-label>
+              <input matInput>
+            </mat-form-field></td>          
+          </tr></table>
+          <table class="example-full-width" cellspacing="0"><tr>          
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Duracion del Contrato</mat-label>
+              <input matInput type="number" placeholder="2" min="1">
+              <span matSuffix>Meses</span>
+              <mat-error>Minimo 1 Mes</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Incremento</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+              <span matSuffix>.0</span>
+            </mat-form-field>
+          </td>
+          </tr></table>
+          <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Derechos de Contrato</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+              <span matSuffix>.0</span>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Fecha Solicitada de Entrega</mat-label>
+              <input matInput [matDatepicker]="dp" [value]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>                        
+          </td>
+          <td>
+            <mat-slide-toggle class="example-margin" color="primary" (click)="setPeriodoGracia()">Periodo de Gracia</mat-slide-toggle></td>
+          <td *ngIf="periodoGracia">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Periodo de Gracia</mat-label>
+              <input matInput type="number" placeholder="2" min="1">
+              <span matSuffix>Dias</span>
+              <mat-error>Minimo 30 Dias</mat-error>
+            </mat-form-field>
+          </td>
+          </tr></table>
+          <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Clausulas Adicionales</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </td>
+          </tr>
+          </table>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button matStepperNext>Sguiente</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Información del Arrendatario</ng-template>
+        <div class="container">
+          <span>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+                remove
+                </span></mat-button-toggle>
+              <h2 class="title-form">{{ fieldArrendatario.length }} {{ titleArrendatario }} </h2>
+              <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+                add
+                </span></mat-button-toggle>
+            </mat-button-toggle-group>
+          </span>
+          <table class="example-full-width" cellspacing="0" *ngFor="let item of fieldArrendatario">
+            <tr >
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{ item.name }}</mat-label>
+                <input matInput value="" name="{{ item.name }}">
+              </mat-form-field>
+            </td>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Identificación del Arrendatario</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Tipo de Persona</mat-label>
+                <mat-select [(value)]="selectedValueTypePerson" id="{{ item.name }}" formControlName="juridica" (selectionChange)="setTypePersonJuridica($event.value)" >
+                  <mat-option value="Natural">Natural</mat-option>
+                  <mat-option value="Juridica">Juridica</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            </tr>
+            <tr>
+              <td>  
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput></mat-form-field>
+              </td>
+              <td>  
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>address</mat-label>
+                <input matInput></mat-form-field>
+              </td>
+              <td>  
+                <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>phone</mat-label>
+                <input matInput></mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+              </td>
+              <td>
+                <table class="default">
+  
+                  <tr>
+                    <th>No</th>              
+                    <th>LISTADO DOCUMENTOS ARRENDATARIO</th>              
+                  </tr>              
+                  <tr>
+                    <td>1</td>
+                    <td>RUT SINFOROSO GUMERSINDO</td>
+                  </tr>    
+                  <tr>
+                    <td>2</td>
+                    <td>RUT SINFOROSO GUMERSINDO</td>
+                  </tr>    
+                  <tr>
+                    <td>3</td>
+                    <td>RUT SINFOROSO GUMERSINDO</td>
+                  </tr>              
+                </table>
+              </td>
+            </tr>
+            <tr *ngIf="IsPersonaJuridica">
+              <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
+              <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Nombres Completos Representante Legal</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </td>
+              <td>
+                <button mat-raised-button color="primary">Cedula del Representante</button>
+              </td>
+            </tr>
+          </table>  
+        </div>
+      <button mat-button matStepperPrevious>Atras</button>
+      <button mat-button matStepperNext>Siguiente</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Información del Deudor</ng-template>
+        <div class="container">
+          <span>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+              <mat-button-toggle value="-" (click)="setDeudorSolidario('-')"><span class="material-icons">
+                remove
+                </span></mat-button-toggle>
+              <h2 class="title-form">{{ fieldDeudores.length }} {{ titleDeudor }} </h2>
+              <mat-button-toggle value="+" (click)="setDeudorSolidario('+')"><span class="material-icons">
+                add
+                </span></mat-button-toggle>
+            </mat-button-toggle-group>
+          </span>
+        <table class="example-full-width" cellspacing="0" *ngFor="let item of fieldDeudores">
+          <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ item.name }}</mat-label>
+              <input matInput value="{{item.value}}">
+            </mat-form-field>
+          </td>
+          <td>  
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Identificación Arrendatario</mat-label>
+            <input matInput></mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tipo de Persona</mat-label>
+              <mat-select [(value)]="selectedValueGarage" name="garage">
+                <mat-option value="Natural">Natural</mat-option>
+                <mat-option value="Juridica">Juridica</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          </tr>
+          <tr>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>address</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+            <td>  
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>phone</mat-label>
+              <input matInput></mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button mat-raised-button color="primary" (click)="haveRut()">RUT</button>
+            </td>
+            <td>
+              <table class="default">
+  
+                <tr>
+                  <th>No</th>              
+                  <th>LISTADO DOCUMENTOS ARRENDATARIO</th>              
+                </tr>              
+                <tr>
+                  <td>1</td>
+                  <td>RUT SINFOROSO GUMERSINDO</td>
+                </tr>    
+                <tr>
+                  <td>2</td>
+                  <td>RUT SINFOROSO GUMERSINDO</td>
+                </tr>    
+                <tr>
+                  <td>3</td>
+                  <td>RUT SINFOROSO GUMERSINDO</td>
+                </tr>              
+              </table>
+            </td>
+          </tr>
+          <tr *ngIf="IsPersonaJuridica">
+            <h2 class="title-form">Representante Legal de {{ item.name }}</h2>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombres Completos Representante Legal</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td>
+              <button mat-raised-button color="primary">Cedula del Representante</button>
+            </td>
+          </tr>
+        </table>
+        </div>
+      <button mat-button matStepperPrevious>Atras</button>
+      <button mat-button matStepperNext>Siguiente</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Convenio</ng-template>
+      <div class="container">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td><mat-slide-toggle class="example-margin" checked="true" color="primary" (change)="setTotalDivisionValue()">Division de Renta</mat-slide-toggle></td>
+            <td>
+              <span>
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle value="-" (click)="setArrendatario('-')"><span class="material-icons">
+                    remove
+                    </span></mat-button-toggle>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tipo de Persona</mat-label>
+                        <mat-select [(value)]="selectedValueTypePerson" formControlName="typePerson" (selectionChange)="setTypePersonJuridica($event.value)" >
+                          <mat-option value="Propietario">Propietario</mat-option>
+                          <mat-option value="Usuafructuario">Usuafructuario</mat-option>
+                          <mat-option value="Comodatario">Comodatario</mat-option>
+                          <mat-option value="Apoderado">Apoderado</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  <mat-button-toggle value="+" (click)="setArrendatario('+')"><span class="material-icons">
+                    add
+                    </span></mat-button-toggle>
+                </mat-button-toggle-group>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div class="container">
+          <h2 class="title-form">Informacion de </h2>
+          <mat-divider style="margin-bottom: 10px;"></mat-divider>
+          <mat-accordion class="example-headers-align" *ngFor="let item of fieldArrendatario">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos Personales
+                </mat-panel-title>
+                <mat-panel-description>
+                  Type your name and age
+                  <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput>
+              </mat-form-field>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Age</mat-label>
+                <input matInput type="number" min="1">
+              </mat-form-field>
+              <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos del convenio
+                </mat-panel-title>
+                <mat-panel-description>
+                  Type the country name
+                  <mat-icon>map</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Country</mat-label>
+                <input matInput>
+              </mat-form-field>
+          
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos Bancarios
+                </mat-panel-title>
+                <mat-panel-description>
+                  Inform the date you wish to travel
+                  <mat-icon>date_range</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+              </mat-form-field>
+              <mat-datepicker #picker></mat-datepicker>
+          
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">End</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+          
+        </div>
+      </div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Amparo del Contrato</ng-template>
+        <table class="example-full-width" cellspacing="0" ><tr>            
+          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setEsAmparado($event)">Garantizado</mat-slide-toggle></td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0" *ngIf="esAmparado"><tr>
+          <td><mat-slide-toggle class="example-margin" color="primary" [checked]="esAmparado">Amparo Basico</mat-slide-toggle></td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Valor Amparo Basico</mat-label>
+              <span matPrefix>$&nbsp;</span>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+            </mat-form-field>
+          </td>
+          <td><mat-slide-toggle class="example-margin" color="primary" (change)="setValorIntegral($event)">Amparo Integral</mat-slide-toggle></td>
+          <td *ngIf="esValorIntegral">
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Valor Amparo Integral</mat-label>
+              <span matPrefix>$&nbsp;</span>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+            </mat-form-field>
+          </td>
+          </tr>
+        </table>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Información Comercial</ng-template>
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Comisión</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill" floatLabel="always">
+              <mat-label>Mercadeo</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0">
+              <span matPrefix>%&nbsp;</span>
+            </mat-form-field>
+          </td>
+          <td><mat-slide-toggle class="example-margin" color="primary">Pago por Consignación</mat-slide-toggle></td>
+        </tr>
+        </table>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button type="submit">Crear y Guardar</button>
+    </mat-step>
+  </mat-stepper>
+  

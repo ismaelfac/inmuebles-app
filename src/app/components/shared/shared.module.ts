@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 //:ANGULAR MATERIAL
 import {MatTableModule} from '@angular/material/table';
@@ -25,6 +27,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -32,6 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     CommonModule,
     MatTableModule,
     MatTabsModule,
@@ -57,9 +63,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonToggleModule,
     MatStepperModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   exports: [
+    FlexLayoutModule,
     MatTableModule,
     MatTabsModule,
     MatFormFieldModule,
@@ -84,7 +92,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonToggleModule,
     MatStepperModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

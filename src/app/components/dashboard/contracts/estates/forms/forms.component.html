@@ -1,0 +1,42 @@
+<form [formGroup]="frmEstate" novalidate (ngSubmit)="createEstate()">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Tipo de Propiedad</mat-label>
+    <mat-select name="propertyTypeSelected" formControlName="propertyTypeSelected">
+      <mat-option *ngFor="let item of propertiesType" [value]="item.value">
+        {{item.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Direccion Inmueble</mat-label>
+    <input matInput placeholder="Cll # Cra # Tranversal #" name="addressEstate" formControlName="addressEstate">
+  </mat-form-field>
+
+  <mat-form-field class="example-chip-list example-full-width" appearance="fill">
+    <mat-label>Garaje(s) | Cuarto Util</mat-label>
+    <mat-chip-list #chipList aria-label="Garages"  >
+      <mat-chip *ngFor="let garage of garages" [selectable]="selectable"
+              [removable]="removable" (removed)="remove(garage)">
+        {{garage.name}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Nuevo Cuarto o Garaje..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+            name="garagesEstate" formControlName="garagesEstate">
+    </mat-chip-list>
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary"[disabled]="frmEstate.invalid">Crear Inmueble</button>
+  <button mat-stroked-button color="accent" (click)="onReset()">Limpiar</button>
+</form>
+<pre>
+  {{ frmEstate.value | json}}
+</pre>
+<pre>
+  {{ frmEstate.status }}
+</pre>

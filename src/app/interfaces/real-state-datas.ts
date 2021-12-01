@@ -1,10 +1,8 @@
 export interface RealStateDatas {
-    id: string;
-    garages: string;
-    usefulRoom: string;
+    id: number;
     propertyType: string;
     address: string;
-    cannonLease: string;
-    adminValue: string;
+    garaje: string;
+    isActive: string;
 }
 

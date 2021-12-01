@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
   LIST_USERS: any = [];
 
   displayedColumns: string[] = ['name', 'email', 'roles', 'isActive'];
-  dataSource = new MatTableDataSource(this.LIST_USERS);
+  dataSource = new MatTableDataSource(this.LIST_USERS[0]);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -41,15 +41,15 @@ export class UsersComponent implements OnInit {
   loadUsers() {
     this._usersService.getUsers().subscribe(data => {
       this.LIST_USERS.push(data);
-      this.dataSource = new MatTableDataSource(this.LIST_USERS[0].data);
+      this.dataSource = new MatTableDataSource(this.LIST_USERS[0]);
       
-      console.log(this.LIST_USERS[0].data)
+      console.log(this.LIST_USERS)
     });
   }
 
   async DeleteUser(id:string) {
     await this._usersService.deleteUser(id);
-    this._snackBar.open('El usuario fue elminado con exito', '', {
+    this._snackBar.open('El usuario fue eliminado con exito', '', {
       duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'

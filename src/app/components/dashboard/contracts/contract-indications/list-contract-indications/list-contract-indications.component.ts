@@ -30,7 +30,6 @@ export class ListContractIndicationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadContractIndications();
-    //this.sidenavContainer.scrollable.elementScrolled().subscribe(() => {});
   }
 
   ngAfterViewInit() {
