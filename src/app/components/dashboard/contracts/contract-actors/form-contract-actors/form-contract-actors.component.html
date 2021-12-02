@@ -1,99 +1,102 @@
-<form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
-    <div class="container">
-        <mat-button-toggle-group name="fontStyle">
-        
-        <h2 class="title-form">{{ fieldArrendatario.length }} {{ titleArrendatario }} </h2>
-        
-        </mat-button-toggle-group>
-    </div>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Tipo de Persona</mat-label>
-        <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
-        <mat-option value="Natural">Natural</mat-option>
-        <mat-option value="Juridica">Juridica</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Nombres Completo / Razón Social</mat-label>
-        <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Identificación del Arrendatario</mat-label>
-        <input matInput name="txtDniActor" formControlName="txtDniActor">
-    </mat-form-field>
-    
-    <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Email</mat-label>
-        <input matInput name="txtEmailActor" formControlName="txtEmailActor">
-    </mat-form-field>
-
-    <table class="example-full-width" cellspacing="0"><tr>
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>address</mat-label>
-                <input matInput name="txtAddressActor" formControlName="txtAddressActor">
-            </mat-form-field>
-        </td>
-        <td>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>phone</mat-label>
-                <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
-            </mat-form-field>
-        </td>
-        </tr>
-    </table>
-    <table class="example-full-width" cellspacing="0"><tr>
-        <td><button mat-button mat-stroked-button color="accent" type="files">Cargar Documentos</button></td>
-        <td><mat-list>
-        <div mat-subheader>Documentos</div>
-        <mat-list-item *ngFor="let folder of folders">
-            <mat-divider></mat-divider>
-            <mat-icon mat-list-icon>folder</mat-icon>
-            <div mat-line>{{folder.name}}</div>
-            <div mat-line> {{folder.updated | date}} </div>
-        </mat-list-item>
-    </mat-list></td>
-    </tr></table>
-    <mat-card *ngIf="IsPersonaJuridica">
-        <mat-card-title>Información Representante Legal</mat-card-title>
+<div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="space-around center" >
+    <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
+    <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+        <mat-card-title>Información del Arrendatario</mat-card-title>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Tipo de Persona</mat-label>
+            <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
+            <mat-option value="Natural">Natural</mat-option>
+            <mat-option value="Juridica">Juridica</mat-option>
+            </mat-select>
+        </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Nombres Completo / Razón Social</mat-label>
-            <input matInput value="" name="txtNamesActorJuridica" formControlName="txtNamesActorJuridica">
+            <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Identificación del Arrendatario</mat-label>
-            <input matInput name="txtDniActorJuridica" formControlName="txtDniActorJuridica">
+            <input matInput name="txtDniActor" formControlName="txtDniActor">
         </mat-form-field>
         
         <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
-            <input matInput name="txtEmailActorJuridica" formControlName="txtEmailActorJuridica">
+            <input matInput name="txtEmailActor" formControlName="txtEmailActor">
         </mat-form-field>
     
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>address</mat-label>
+            <input matInput name="txtAddressActor" formControlName="txtAddressActor">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>phone</mat-label>
+            <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
+        </mat-form-field>
+        
         <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>address</mat-label>
-                    <input matInput name="txtAddressActorJuridica" formControlName="txtAddressActorJuridica">
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>phone</mat-label>
-                    <input matInput name="txtPhoneActorJuridica" formControlName="txtPhoneActorJuridica">
-                </mat-form-field>
-            </td>
-            </tr>
+            <td><mat-list>
+            <div mat-subheader>Documentos</div>
+            <mat-list-item>
+                <button mat-button mat-stroked-button color="accent" type="button" mat-raised-button (click)="fileInput.click()">Cargar Documento</button>
+                <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+            </mat-list-item>
+            <mat-list-item *ngFor="let folder of folders">
+                <mat-divider><input type="file" /></mat-divider>
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <div mat-line>{{folder.name}}</div>
+                <div mat-line> {{folder.updated | date}} </div>
+            </mat-list-item>
+        </mat-list></td>
+        </tr>
         </table>
-        <mat-card-actions align="end">
-          <button mat-button mat-stroked-button color="warn">Limpiar</button>
-          <button mat-button mat-stroked-button color="primary">Guardar Representante</button>
-        </mat-card-actions>
-    </mat-card><br><br>
-    <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
-    <button mat-button mat-stroked-button matStepperPrevious color="accent">Atras</button>
-    <button mat-button mat-stroked-button matStepperNext color="primary" [disabled]="frmContractActors.invalid">Siguiente</button>
-</form>
+        <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
+        <button mat-button mat-stroked-button matStepperPrevious color="accent">Atras</button>
+        <button mat-button mat-stroked-button matStepperNext color="primary" [disabled]="frmContractActors.invalid">Siguiente</button>
+    </div>
+    <div class="form-lessee" [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%" *ngIf="IsPersonaJuridica">
+            <mat-card-title>Representante Legal</mat-card-title>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombres Completo del Representante</mat-label>
+                <input matInput value="" name="txtNamesActorJuridica" formControlName="txtNamesActorJuridica">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Identificación del Arrendatario</mat-label>
+                <input matInput name="txtDniActorJuridica" formControlName="txtDniActorJuridica">
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+                <input matInput name="txtEmailActorJuridica" formControlName="txtEmailActorJuridica">
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>address</mat-label>
+                <input matInput name="txtAddressActorJuridica" formControlName="txtAddressActorJuridica">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>phone</mat-label>
+                <input matInput name="txtPhoneActorJuridica" formControlName="txtPhoneActorJuridica">
+            </mat-form-field>
+            
+            <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-list>
+                    <div mat-subheader>Documentos</div>
+                <mat-list-item><button mat-button mat-stroked-button color="warn">Cargar Documento</button></mat-list-item>
+                <mat-list-item *ngFor="let folder of folders">
+                    <mat-divider><input type="file" /></mat-divider>
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line>{{folder.name}}</div>
+                    <div mat-line> {{folder.updated | date}} </div>
+                </mat-list-item>
+            </mat-list></td>
+            </tr>
+            </table>
+            <button mat-button mat-stroked-button color="warn">Limpiar</button>
+            <button mat-button mat-stroked-button color="primary">Guardar Representante</button>
+    </div>    
+    </form>
+</div>
 <pre>
     {{ frmContractActors.value | json }}
 </pre>

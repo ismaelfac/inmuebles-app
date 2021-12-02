@@ -7,6 +7,10 @@
   .example-full-width {
     width: 100%;
   }
+
+  .form-lessee {
+    padding-left: 5px;
+  }
   
   td {
     padding-right: 1px;

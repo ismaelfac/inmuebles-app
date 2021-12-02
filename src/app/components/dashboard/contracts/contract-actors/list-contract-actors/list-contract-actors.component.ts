@@ -79,6 +79,14 @@ export class ListContractActorsComponent implements AfterViewInit  {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  setArrendatario($event:any) {
+    console.log($event)
+  }
+
+  setRepresentante($event:any) {
+    console.log($event)
+  }
 }
 
 /** Builds and returns a new User. */

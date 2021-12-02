@@ -1,4 +1,5 @@
-<mat-form-field appearance="standard">
+  <mat-card-title>Registro de Personas</mat-card-title>
+  <mat-form-field appearance="standard">
     <mat-label>Filtro</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
   </mat-form-field>
@@ -22,11 +23,11 @@
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef>Opciones</th>
         <td mat-cell *matCellDef="let element"> 
-          <a class="pointer" style="color: #187159" matTooltip="Ver Contrato">
-            <mat-icon>search</mat-icon>
+          <a class="pointer" style="color: #1b552f" matTooltip="Aplicar como Arrendatario" (click)="setArrendatario($event)">
+            <mat-icon>fact_check</mat-icon>
           </a>
-          <a class="pointer" style="color: #1f516f" matTooltip="Aplicar como Arrendatario">
-            <mat-icon>Aplicar</mat-icon>
+          <a class="pointer" style="color: #7a1212" matTooltip="Aplicar como Representante" (click)="setRepresentante($event)">
+            <mat-icon>fact_check</mat-icon>
           </a>
         </td>
       </ng-container>

@@ -23,7 +23,7 @@ export class FormContractActorsComponent implements OnInit {
   numArrentararios: number = 0;
   titleArrendatario: string = 'Arrendatario';
   IsPersonaJuridica: boolean = false;
-
+  flexLayoutLeese: number = 100;
   fieldArrendatario: FieldArrendatario[] = [
     { id: '1', name: 'Arrendatario 1', value: 'A1'}
   ]
@@ -71,7 +71,9 @@ export class FormContractActorsComponent implements OnInit {
     )
   }
 
- 
+  onFileSelected() {
+    
+  }
 
   setArrendatario(action: string){
     let numPerson = this.fieldArrendatario.length;
@@ -86,10 +88,6 @@ export class FormContractActorsComponent implements OnInit {
       this.fieldArrendatario.pop();
     }
     this.titleArrendatario = (this.fieldArrendatario.length === 1 ? 'Arrendatario' : 'Arrendatarios');
-  }
-
-  setTypePersonJuridica(value:string){
-
   }
 
   haveRut(event:void) {
