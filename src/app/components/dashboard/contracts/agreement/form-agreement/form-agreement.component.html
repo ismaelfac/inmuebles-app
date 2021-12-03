@@ -1,1 +1,52 @@
-<p>form-agreement works!</p>
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Participantes del convenio</mat-label>
+    <mat-select [formControl]="actors" multiple>
+      <mat-select-trigger>
+        {{actors.value ? actors.value[0] : ''}}
+        <span *ngIf="actors.value?.length > 1" class="example-additional-selection">
+          (+{{actors.value.length}} {{actors.value?.length === 2 ? 'participante' : 'participantes'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let actors of actorsList" [value]="actors">{{actors}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Datos Personales</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <p>Go to a different step to see the error state</p>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Datos de Convenio</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+                 required>
+        </mat-form-field>
+        <div>
+          <p>Go to a different step to see the error state</p>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Datos Bancarios</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+</mat-stepper>
+  

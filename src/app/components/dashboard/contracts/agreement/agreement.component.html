@@ -1,1 +1,12 @@
-<p>agreement works!</p>
+<div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="70 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+      <div class="form">
+        <form-agreement></form-agreement>
+      </div>
+    </div>
+    <div [fxFlex]="30 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+      <div class="table">
+        <list-contract-actors></list-contract-actors>
+    </div>
+  </div>   
+  

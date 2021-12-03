@@ -85,7 +85,6 @@
                         <button mat-button mat-stroked-button color="accent" type="button" mat-raised-button (click)="fileInput.click()">Cargar Documento</button>
                         <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
                     </mat-list-item>
-                <mat-list-item><button mat-button mat-stroked-button color="warn">Cargar Documento</button></mat-list-item>
                 <mat-list-item *ngFor="let folder of folders">
                     <mat-divider><input type="file" /></mat-divider>
                     <mat-icon mat-list-icon>folder</mat-icon>
