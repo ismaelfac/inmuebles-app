@@ -22,6 +22,9 @@ import { ListContractComponent } from './contract/list-contract/list-contract.co
 import { ContractActorsComponent } from './contract-actors/contract-actors.component';
 import { FormContractActorsComponent } from './contract-actors/form-contract-actors/form-contract-actors.component';
 import { ListContractActorsComponent } from './contract-actors/list-contract-actors/list-contract-actors.component';
+import { AgreementComponent } from './agreement/agreement.component';
+import { FormAgreementComponent } from './agreement/form-agreement/form-agreement.component';
+import { ListAgreementComponent } from './agreement/list-agreement/list-agreement.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { ListContractActorsComponent } from './contract-actors/list-contract-act
     ListContractComponent,
     ContractActorsComponent,
     FormContractActorsComponent,
-    ListContractActorsComponent
+    ListContractActorsComponent,
+    AgreementComponent,
+    FormAgreementComponent,
+    ListAgreementComponent
   ],
   imports: [
     CommonModule,
