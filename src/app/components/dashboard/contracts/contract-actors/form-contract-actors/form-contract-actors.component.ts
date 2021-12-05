@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface FieldArrendatario {
   id: string;
@@ -9,7 +10,8 @@ interface FieldArrendatario {
 
 export interface Section {
   name: string;
-  updated: Date;
+  size: string;
+  type: Date;
 }
 
 
@@ -27,20 +29,8 @@ export class FormContractActorsComponent implements OnInit {
   fieldArrendatario: FieldArrendatario[] = [
     { id: '1', name: 'Arrendatario 1', value: 'A1'}
   ]
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    },
-  ];
+  public previsualizacion: string = '';
+  records: Section[] = [];
   
 
   frmContractActors = this.fb.group({
@@ -57,7 +47,7 @@ export class FormContractActorsComponent implements OnInit {
     txtAddressActorJuridica: [''],
     txtPhoneActorJuridica: ['']
   })
-  constructor(private fb: FormBuilder) { 
+  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder) { 
     
     this.numArrentararios = this.fieldArrendatario.length;
    }
@@ -71,8 +61,15 @@ export class FormContractActorsComponent implements OnInit {
     )
   }
 
-  onFileSelected() {
-    
+  onFileSelected($event: any) {
+    const capturedFile = $event.target.files[0]
+    this.extraerBase64(capturedFile).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen);
+
+    })
+    this.records.push(capturedFile)
+    console.log(this.records);
   }
 
   setArrendatario(action: string){
@@ -102,8 +99,32 @@ export class FormContractActorsComponent implements OnInit {
     this.frmContractActors.reset();
   }
 
-  setRUT() {
-
+  clearImage(): any {
+    this.previsualizacion = '';
+    this.records = [];
   }
+  
+
+  extraerBase64 = async ($event: any) => new Promise((resolve):any => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+
+    } catch (e) {
+      return null;
+    }
+  })
 
 }
