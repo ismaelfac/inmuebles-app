@@ -1,59 +1,11 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="space-around center" >
-    <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
-    <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
-        <mat-card-title>Información del Arrendatario</mat-card-title>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Tipo de Persona</mat-label>
-            <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
-            <mat-option value="Natural">Natural</mat-option>
-            <mat-option value="Juridica">Juridica</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Nombres Completo / Razón Social</mat-label>
-            <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Identificación del Arrendatario</mat-label>
-            <input matInput name="txtDniActor" formControlName="txtDniActor">
-        </mat-form-field>
-        
-        <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-            <input matInput name="txtEmailActor" formControlName="txtEmailActor">
-        </mat-form-field>
-    
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>address</mat-label>
-            <input matInput name="txtAddressActor" formControlName="txtAddressActor">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>phone</mat-label>
-            <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
-        </mat-form-field>
-        
-        <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-list>
-            <mat-list-item>
-                <button mat-button mat-stroked-button color="accent" type="button" mat-raised-button (click)="fileInput.click()">Cargar Documento</button>
-                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
-            </mat-list-item>
-            <mat-list-item *ngFor="let folder of records">
-                <mat-divider><input type="file" /></mat-divider>
-                <mat-icon mat-list-icon>assignment</mat-icon>
-                <div mat-line>{{ folder.name }}</div>
-                <div mat-line> {{ folder.size }} </div>
-                <div mat-line>{{ folder.type}}</div>
-            </mat-list-item>
-        </mat-list></td>
-        </tr>
-        </table>
-        <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
-        <button mat-button mat-stroked-button matStepperPrevious color="accent">Atras</button>
-        <button mat-button mat-stroked-button matStepperNext color="primary" [disabled]="frmContractActors.invalid">Siguiente</button>
-    </div>
-    <div class="form-lessee" [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%" *ngIf="IsPersonaJuridica">
+        <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+            <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
+                <shared-actors actorTitle="Arrendatario" ></shared-actors>
+            </form>
+        </div>
+        <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
+        <div class="form-lessee" [fxFlex]="50 + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%" *ngIf="IsPersonaJuridica">
             <mat-card-title>Representante Legal</mat-card-title>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Nombres Completo del Representante</mat-label>
@@ -63,12 +15,12 @@
                 <mat-label>Identificación del Arrendatario</mat-label>
                 <input matInput name="txtDniActorJuridica" formControlName="txtDniActorJuridica">
             </mat-form-field>
-            
+
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
                 <input matInput name="txtEmailActorJuridica" formControlName="txtEmailActorJuridica">
             </mat-form-field>
-            
+
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>address</mat-label>
                 <input matInput name="txtAddressActorJuridica" formControlName="txtAddressActorJuridica">
@@ -77,8 +29,8 @@
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>phone</mat-label>
                 <input matInput name="txtPhoneActorJuridica" formControlName="txtPhoneActorJuridica">
-            </mat-form-field>
-            
+            </mat-form-field>             
+                
             <table class="example-full-width" cellspacing="0"><tr>
                 <td><mat-list>
                     <mat-list-item>
@@ -92,12 +44,12 @@
                     <div mat-line> {{folder.size }} </div>
                     <div mat-line>{{ folder.type}}</div>
                 </mat-list-item>
-            </mat-list></td>
-            </tr>
+                </mat-list></td>
+                </tr>
             </table>
             <button mat-button mat-stroked-button color="warn">Limpiar</button>
             <button mat-button mat-stroked-button color="primary">Guardar Representante</button>
-    </div>    
+        </div>    
     </form>
 </div>
 <pre>
