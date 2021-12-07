@@ -1,26 +1,70 @@
-<mat-card-title>prueba {{ actorTitle }}</mat-card-title>
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>{{ lblNameActor }}</mat-label>
-    <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
-</mat-form-field>
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>{{ lblDniActor }}</mat-label>
-    <input matInput name="txtDniActor" formControlName="txtDniActor">
-</mat-form-field>
+<div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Tipo de Persona</mat-label>
+        <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
+        <mat-option value="Natural">Natural</mat-option>
+        <mat-option value="Juridica">Juridica</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nombres Completos / Razón Social</mat-label>
+        <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Dni</mat-label>
+        <input matInput name="txtDniActor" formControlName="txtDniActor">
+    </mat-form-field>
 
-<mat-form-field class="example-full-width" appearance="fill">
-<mat-label>{{ lblEmailActor}}</mat-label>
-    <input matInput name="txtEmailActor" formControlName="txtEmailActor">
-</mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+        <input matInput name="txtEmailActor" formControlName="txtEmailActor">
+    </mat-form-field>
 
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>{{ lblAddressActor }}</mat-label>
-    <input matInput name="txtAddressActor" formControlName="txtAddressActor">
-</mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Direccion de Residencia</mat-label>
+        <input matInput name="txtAddressActor" formControlName="txtAddressActor">
+    </mat-form-field>
 
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>{{ lblPhoneActor }}</mat-label>
-    <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
-</mat-form-field>
-<button mat-button mat-stroked-button color="warn">Limpiar</button>
-<button mat-button mat-stroked-button color="primary" (click)="onSendActor()">Guardar Representante</button>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Telefono de Contacto</mat-label>
+        <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
+    </mat-form-field>
+    <button mat-button mat-stroked-button color="warn">Limpiar</button>
+    <button mat-button mat-stroked-button color="primary" (click)="onSendActor()">Guardar Representante</button>
+</div>
+<div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%" *ngIf="IsPersonaJuridica">
+    <mat-card-title>Representante legal</mat-card-title>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Tipo de Persona</mat-label>
+        <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
+        <mat-option value="Natural">Natural</mat-option>
+        <mat-option value="Juridica">Juridica</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nombres Completos / Razón Social</mat-label>
+        <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Dni</mat-label>
+        <input matInput name="txtDniActor" formControlName="txtDniActor">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+        <input matInput name="txtEmailActor" formControlName="txtEmailActor">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Direccion de Residencia</mat-label>
+        <input matInput name="txtAddressActor" formControlName="txtAddressActor">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Telefono de Contacto</mat-label>
+        <input matInput name="txtPhoneActor" formControlName="txtPhoneActor">
+    </mat-form-field>
+    <button mat-button mat-stroked-button color="warn">Limpiar</button>
+    <button mat-button mat-stroked-button color="primary" (click)="onSendActor()">Guardar Representante</button>
+</div>

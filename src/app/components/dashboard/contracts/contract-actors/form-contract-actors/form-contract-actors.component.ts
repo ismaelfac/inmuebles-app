@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
 interface FieldArrendatario {
@@ -21,8 +21,6 @@ export interface Section {
   styleUrls: ['./form-contract-actors.component.css']
 })
 export class FormContractActorsComponent implements OnInit {
-  selectedValueTypePerson: string = '';
-  numArrentararios: number = 0;
   titleArrendatario: string = 'Arrendatario';
   IsPersonaJuridica: boolean = true;
   flexLayoutLeese: number = 100;
@@ -30,28 +28,39 @@ export class FormContractActorsComponent implements OnInit {
   titleActor: string = 'Arrendatario';
   public previsualizacion: string = '';
   records: Section[] = [];
+  selectedValueTypePerson: string = '';
+  selectedValueTypeActor: string = '';
 
   frmContractActors = this.fb.group({
-    selectedValueTypePerson: [''],
-    selectedValueTypeActor: [''],
-    
+    selectedValueTypeActor: ['', Validators.required],
+    person: this.fb.group({
+      actors: this.fb.array([
+        this.fb.control('')
+      ])
+    })
   })
+
+  
   constructor(private sanitizer: DomSanitizer, private fb: FormBuilder) { 
     
-   }
+  }
 
-  ngOnInit(): void {
-    this.frmContractActors.valueChanges.subscribe(
-      data => {
-        (data.selectedValueTypePerson === 'Juridica') ? this.IsPersonaJuridica = true : this.IsPersonaJuridica = false;
-        
-      }
-    )
+  get actors() {
+    return this.frmContractActors.get('actors') as FormArray;
   }
 
   addActors() {
-    
+    this.actors.push(this.fb.control(''))
   }
+
+
+  ngOnInit(): void {
+    
+        (this.selectedValueTypePerson === 'Juridica') ? this.IsPersonaJuridica = true : this.IsPersonaJuridica = false;        
+  }
+
+  
+  
   onFileSelected($event: any) {
     const capturedFile = $event.target.files[0]
     this.extraerBase64(capturedFile).then((imagen: any) => {

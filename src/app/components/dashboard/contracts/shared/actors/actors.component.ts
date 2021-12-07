@@ -8,6 +8,8 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class ActorsComponent implements OnInit {
 
+  flexLayoutLeese: number = 100;
+  IsPersonaJuridica: boolean = true;
   actorTitle: string = '';
   lblNameActor: string = '';
   lblDniActor: string = '';
@@ -17,17 +19,18 @@ export class ActorsComponent implements OnInit {
 
   isTypePerson: boolean = true;
   fmrActors = this.fb.group({
-    selectedValueTypePerson: [''],
-    txtNamesActor: [''],
-    txtDniActor: [''],
-    txtEmailActor: [''],
-    txtAddressActor: [''],
-    txtPhoneActor: ['']
+    selectedValueTypePerson: ['', Validators.required],
+    txtNamesActor: ['', Validators.required],
+    txtDniActor: ['', Validators.required],
+    txtEmailActor: ['', Validators.required],
+    txtAddressActor: ['', Validators.required],
+    txtPhoneActor: ['', Validators.required]
   })
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+
   }
 
   onSendActor(): void {

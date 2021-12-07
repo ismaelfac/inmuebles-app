@@ -1,66 +1,39 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="space-around center" >
-    <ng-container>
-        <table  class="example-full-width" cellspacing="0"><tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Escoga el rol de la Persona</mat-label>
-                    <mat-select id="selectedValueTypeActor" formControlName="selectedValueTypeActor">
-                    <mat-option value="arrendatario">Arrendatario</mat-option>
-                    <mat-option value="deudor">Deudor</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Tipo de Persona</mat-label>
-                    <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
-                    <mat-option value="Natural">Natural</mat-option>
-                    <mat-option value="Juridica">Juridica</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </td>
-            <td>
-                <button mat-raised-button color="primary" (click)="onCreateContractActors()"><mat-icon>assignment_ind</mat-icon> Crear</button>
-            </td>
-        </tr></table>
-    </ng-container>
+    <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
+        <ng-container>
+            <table  class="example-full-width" cellspacing="0"><tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Escoga el rol de la Persona</mat-label>
+                        <mat-select id="selectedValueTypeActor" formControlName="selectedValueTypeActor">
+                        <mat-option value="arrendatario">Arrendatario</mat-option>
+                        <mat-option value="deudor">Deudor</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="onCreateContractActors()"><mat-icon>assignment_ind</mat-icon> Crear</button>
+                </td>
+            </tr></table>
+        </ng-container>
     
-    <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                                (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-            <mat-panel-title>
-                Arrendatario
-            </mat-panel-title>
-            <mat-panel-description>
-                Currently I am {{panelOpenState ? 'open' : 'closed'}}
-            </mat-panel-description>
-            </mat-expansion-panel-header>
-            <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
-                <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
-                    <shared-actors></shared-actors>
-                </div>
-                <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%" *ngIf="IsPersonaJuridica">
-                    <shared-actors></shared-actors>
-                </div>
-            </form>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-            <mat-panel-title>
-                Deudor
-            </mat-panel-title>
-            </mat-expansion-panel-header>
-            <form class="example-form" [formGroup]="frmContractActors" (ngSubmit)="onCreateContractActors()">
-                <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%">
-                    <shared-actors></shared-actors>
-                </div>
-                <div class="form-lessee" [fxFlex]="[flexLayoutLeese] + '%'" fxFlex.xs="100%" fxFlex.sm="100%"  fxFlex.md="50%" *ngIf="IsPersonaJuridica">
-                    <shared-actors></shared-actors>
-                </div>
-            </form>
-        </mat-expansion-panel>
-    </mat-accordion>              
+        <mat-accordion formControlName="actors">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                    (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Arrendatario
+                </mat-panel-title>
+                <mat-panel-description>
+                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <ng-container *ngFor="let actor of actors; let i=index;">
+                        <shared-actors></shared-actors>
+                    </ng-container>
+            </mat-expansion-panel>
+        </mat-accordion> 
+    </form>             
 </div>
 <pre>
     {{ frmContractActors.value | json }}
