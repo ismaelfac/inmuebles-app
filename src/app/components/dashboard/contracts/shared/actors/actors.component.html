@@ -1,11 +1,4 @@
 <mat-card-title>prueba {{ actorTitle }}</mat-card-title>
-<mat-form-field class="example-full-width" appearance="fill" *ngIf="isTypePerson">
-    <mat-label>Tipo de Persona</mat-label>
-    <mat-select id="selectedValueTypePerson" formControlName="selectedValueTypePerson">
-    <mat-option value="Natural">Natural</mat-option>
-    <mat-option value="Juridica">Juridica</mat-option>
-    </mat-select>
-</mat-form-field>
 <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>{{ lblNameActor }}</mat-label>
     <input matInput value="" name="txtNamesActor" formControlName="txtNamesActor">

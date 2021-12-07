@@ -24,32 +24,20 @@ export class FormContractActorsComponent implements OnInit {
   selectedValueTypePerson: string = '';
   numArrentararios: number = 0;
   titleArrendatario: string = 'Arrendatario';
-  IsPersonaJuridica: boolean = false;
+  IsPersonaJuridica: boolean = true;
   flexLayoutLeese: number = 100;
-  fieldArrendatario: FieldArrendatario[] = [
-    { id: '1', name: 'Arrendatario 1', value: 'A1'}
-  ]
+  panelOpenState = false;
+  titleActor: string = 'Arrendatario';
   public previsualizacion: string = '';
   records: Section[] = [];
-  
 
   frmContractActors = this.fb.group({
     selectedValueTypePerson: [''],
-    txtNamesActor: [''],
-    txtDniActor: [''],
-    txtEmailActor: [''],
-    txtAddressActor: [''],
-    txtPhoneActor: [''],
-    selectedValueTypePersonJuridica: [''],
-    txtNamesActorJuridica: [''],
-    txtDniActorJuridica: [''],
-    txtEmailActorJuridica: [''],
-    txtAddressActorJuridica: [''],
-    txtPhoneActorJuridica: ['']
+    selectedValueTypeActor: [''],
+    
   })
   constructor(private sanitizer: DomSanitizer, private fb: FormBuilder) { 
     
-    this.numArrentararios = this.fieldArrendatario.length;
    }
 
   ngOnInit(): void {
@@ -61,6 +49,9 @@ export class FormContractActorsComponent implements OnInit {
     )
   }
 
+  addActors() {
+    
+  }
   onFileSelected($event: any) {
     const capturedFile = $event.target.files[0]
     this.extraerBase64(capturedFile).then((imagen: any) => {
@@ -70,25 +61,6 @@ export class FormContractActorsComponent implements OnInit {
     })
     this.records.push(capturedFile)
     console.log(this.records);
-  }
-
-  setArrendatario(action: string){
-    let numPerson = this.fieldArrendatario.length;
-     numPerson++;
-    if(action === '+'){
-      this.fieldArrendatario.push({
-        id: ''+numPerson,
-        name: 'Arrendatario '+numPerson,
-        value: 'A'+numPerson
-      });
-    }else{
-      this.fieldArrendatario.pop();
-    }
-    this.titleArrendatario = (this.fieldArrendatario.length === 1 ? 'Arrendatario' : 'Arrendatarios');
-  }
-
-  haveRut(event:void) {
-    console.log("Tiene RUT")
   }
 
   onCreateContractActors() {
