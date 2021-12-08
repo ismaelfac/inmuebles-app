@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthInterceptorService } from "../auth-interceptor.service";
 import { Observable, throwError } from 'rxjs';
 import { RealStateDatas } from '../../interfaces/real-state-datas';
 
@@ -12,10 +11,10 @@ export class RealStateDataService {
   private token: any = '';
   constructor(private httpClient: HttpClient) { }
 
-  getRealEstateData(): Observable<RealStateDatas[]> {
+  getRealEstateDataFreeProperty(): Observable<RealStateDatas[]> {
     let params = new HttpParams();
     params = params.append('token', `${this.getToken()}`)
-    return this.httpClient.get<RealStateDatas[]>(`${this.AUTH_SERVER}/real_estate_data`, {params});
+    return this.httpClient.get<RealStateDatas[]>(`${this.AUTH_SERVER}/real_estate_data/freeProperty`, {params});
   }
 
   private getToken(): string {

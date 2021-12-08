@@ -12,27 +12,22 @@
                     </mat-form-field>
                 </td>
                 <td>
-                    <button mat-raised-button color="primary" (click)="onCreateContractActors()"><mat-icon>assignment_ind</mat-icon> Crear</button>
+                    <button mat-raised-button color="primary" (click)="addActors()"><mat-icon>assignment_ind</mat-icon> Crear</button>
                 </td>
             </tr></table>
         </ng-container>
-    
-        <mat-accordion formControlName="actors">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                    (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Arrendatario
-                </mat-panel-title>
-                <mat-panel-description>
-                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                </mat-panel-description>
-                </mat-expansion-panel-header>
-                    <ng-container *ngFor="let actor of actors; let i=index;">
-                        <shared-actors></shared-actors>
-                    </ng-container>
-            </mat-expansion-panel>
-        </mat-accordion> 
+        <ng-container formArrayName="actors" >
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"><mat-expansion-panel-header>
+                    <mat-panel-title>Arrendatario</mat-panel-title>
+                    <mat-panel-description>Currently I am {{panelOpenState ? 'open' : 'closed'}}</mat-panel-description>
+                    </mat-expansion-panel-header>
+                        <ng-container>
+                            <shared-actors></shared-actors>
+                        </ng-container>
+                </mat-expansion-panel>
+            </mat-accordion> 
+        </ng-container>
     </form>             
 </div>
 <pre>

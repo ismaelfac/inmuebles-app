@@ -7,6 +7,9 @@ export interface Garage {
   name: string;
 }
 
+export interface UseFullRoom {
+  name: string;
+}
 @Component({
   selector: 'form-estate',
   templateUrl: './forms.component.html',
@@ -14,24 +17,30 @@ export interface Garage {
 })
 
 export class FormsComponent implements OnInit {
-    frmEstate = this.fb.group({
-      propertyTypeSelected: ['', Validators.required],
-      addressEstate: ['', Validators.required],
-      garagesEstate: ['', Validators.required]
-    });
-    selectable = true;
-    removable = true;
-    addOnBlur = true;
-    readonly separatorKeysCodes = [ENTER, COMMA] as const;
-    garages: Garage[] = [];
-    propertiesType: any = [
-      {value: 'Casa', viewValue: 'Casa'},
-      {value: 'Apartamento', viewValue: 'Apartamento'},
-      {value: 'Bodega', viewValue: 'Bodega'}
-    ]
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+
+  frmEstate = this.fb.group({
+    domus: ['', Validators.required],
+    propertyTypeSelected: ['', Validators.required],
+    addressEstate: ['', Validators.required],
+    garagesEstate: ['', Validators.required],
+    useFullRoom: ['', Validators.required],
+  });
+  
+  garages: Garage[] = [];
+  useFullRoom: UseFullRoom[] = [];
+  propertiesType: any = [
+    {value: 'CASA', viewValue: 'CASA'},
+    {value: 'APARTAMENTO', viewValue: 'APARTAMENTO'},
+    {value: 'BODEGA', viewValue: 'BODEGA'},
+    {value: 'OFICINA', viewValue: 'OFICINA'}
+  ]
   
   constructor(private fb: FormBuilder) { 
-   }
+  }
 
   ngOnInit(): void {
     

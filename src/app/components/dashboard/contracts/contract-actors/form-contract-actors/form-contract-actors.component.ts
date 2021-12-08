@@ -28,38 +28,31 @@ export class FormContractActorsComponent implements OnInit {
   titleActor: string = 'Arrendatario';
   public previsualizacion: string = '';
   records: Section[] = [];
-  selectedValueTypePerson: string = '';
   selectedValueTypeActor: string = '';
-
-  frmContractActors = this.fb.group({
-    selectedValueTypeActor: ['', Validators.required],
-    person: this.fb.group({
-      actors: this.fb.array([
-        this.fb.control('')
-      ])
-    })
-  })
-
+  frmContractActors!: FormGroup;
   
   constructor(private sanitizer: DomSanitizer, private fb: FormBuilder) { 
     
   }
 
-  get actors() {
-    return this.frmContractActors.get('actors') as FormArray;
+  ngOnInit(): void {
+    this.frmContractActors = this.fb.group({
+      selectedValueTypeActor: ['', Validators.required],
+      actors: this.fb.array([])
+    })      
   }
 
   addActors() {
-    this.actors.push(this.fb.control(''))
-  }
-
-
-  ngOnInit(): void {
-    
-        (this.selectedValueTypePerson === 'Juridica') ? this.IsPersonaJuridica = true : this.IsPersonaJuridica = false;        
-  }
-
-  
+    let actors = this.frmContractActors.get('actors') as FormArray;
+    actors.push(this.fb.group({
+      selectedValueTypePerson: ['', Validators.required],
+      txtNamesActor: ['', Validators.required],
+      txtDniActor: ['', Validators.required],
+      txtEmailActor: ['', Validators.required],
+      txtAddressActor: ['', Validators.required],
+      txtPhoneActor: ['', Validators.required]
+    }))
+  }  
   
   onFileSelected($event: any) {
     const capturedFile = $event.target.files[0]
@@ -71,9 +64,8 @@ export class FormContractActorsComponent implements OnInit {
     this.records.push(capturedFile)
     console.log(this.records);
   }
-
   onCreateContractActors() {
-    this.frmContractActors.value();
+    
   }
 
   onReset():void {

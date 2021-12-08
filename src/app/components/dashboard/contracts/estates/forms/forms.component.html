@@ -1,6 +1,11 @@
 <form [formGroup]="frmEstate" novalidate (ngSubmit)="createEstate()">
 
   <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Codigo DOMUS</mat-label>
+    <input matInput name="domus" formControlName="domus">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Tipo de Propiedad</mat-label>
     <mat-select name="propertyTypeSelected" formControlName="propertyTypeSelected">
       <mat-option *ngFor="let item of propertiesType" [value]="item.value">
