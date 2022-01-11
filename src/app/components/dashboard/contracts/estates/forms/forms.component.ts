@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {COMMA, ENTER, F} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { RealStateDataService } from 'src/app/services/contracts/real-state-data.service';
 
 export interface Garage {
   name: string;
@@ -26,8 +27,7 @@ export class FormsComponent implements OnInit {
     domus: ['', Validators.required],
     propertyTypeSelected: ['', Validators.required],
     addressEstate: ['', Validators.required],
-    garagesEstate: ['', Validators.required],
-    useFullRoom: ['', Validators.required],
+    garagesEstate: ['', Validators.required]
   });
   
   garages: Garage[] = [];
@@ -39,7 +39,7 @@ export class FormsComponent implements OnInit {
     {value: 'OFICINA', viewValue: 'OFICINA'}
   ]
   
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private realEstateDataService: RealStateDataService) { 
   }
 
   ngOnInit(): void {
@@ -66,7 +66,15 @@ export class FormsComponent implements OnInit {
   }
 
   createEstate(): any {
-    console.log(this.frmEstate.value)
+    if(this.frmEstate.valid){
+      const contract: any = {
+        domus: this.frmEstate.value.domus,
+        propertyType: this.frmEstate.value.propertyTypeSelected,
+        address: this.frmEstate.value.addressEstate,
+        garages: this.frmEstate.value.garagesEstate
+      }
+      this.realEstateDataService.createRealEstateData(contract);
+    }
   }
 
   onReset():void {

@@ -17,6 +17,15 @@ export class RealStateDataService {
     return this.httpClient.get<RealStateDatas[]>(`${this.AUTH_SERVER}/real_estate_data/freeProperty`, {params});
   }
 
+  createRealEstateData(formData: any) {
+    let params = new HttpParams();
+    params = params.append('token', `${this.getToken()}`)
+    console.log('desde RealService: ',formData);
+    const saveRealEstateData = this.httpClient.post(`${this.AUTH_SERVER}/real_estate_data`, {formData, params} )
+    console.log('Respuesta del servidor', saveRealEstateData);
+    return saveRealEstateData;
+  }
+
   private getToken(): string {
     if(!this.token) {
       this.token = localStorage.getItem("ACCESS_TOKEN");
