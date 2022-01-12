@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import {COMMA, ENTER, F} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { RealStateDataService } from 'src/app/services/contracts/real-state-data.service';
@@ -22,6 +22,13 @@ export class FormsComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  
+  constructor(private fb: FormBuilder, private realEstateDataService: RealStateDataService) { 
+  }
+
+  ngOnInit(): void {
+    
+  }
 
   frmEstate = this.fb.group({
     domus: ['', Validators.required],
@@ -37,14 +44,8 @@ export class FormsComponent implements OnInit {
     {value: 'APARTAMENTO', viewValue: 'APARTAMENTO'},
     {value: 'BODEGA', viewValue: 'BODEGA'},
     {value: 'OFICINA', viewValue: 'OFICINA'}
-  ]
-  
-  constructor(private fb: FormBuilder, private realEstateDataService: RealStateDataService) { 
-  }
+  ];
 
-  ngOnInit(): void {
-    
-  }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
@@ -67,13 +68,14 @@ export class FormsComponent implements OnInit {
 
   createEstate(): any {
     if(this.frmEstate.valid){
-      const contract: any = {
+      const estateData: any = {
         domus: this.frmEstate.value.domus,
         propertyType: this.frmEstate.value.propertyTypeSelected,
         address: this.frmEstate.value.addressEstate,
         garages: this.frmEstate.value.garagesEstate
       }
-      this.realEstateDataService.createRealEstateData(contract);
+      this.realEstateDataService.createRealEstateData(estateData);
+      this.realEstateDataService.getRealEstateDataFreeProperty();
     }
   }
 
