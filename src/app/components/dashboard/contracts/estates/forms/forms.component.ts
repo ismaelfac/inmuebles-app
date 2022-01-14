@@ -29,12 +29,12 @@ export class FormsComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
+
   frmEstate = this.fb.group({
-    txtDomus: ['', Validators.required],
-    SelectedPropertyType: ['', Validators.required],
-    txtAddressEstate: ['', Validators.required],
-    garages: [[], Validators.length > 0],
-    useFullRooms: [[], Validators.length > 0],
+    domus: ['', Validators.required],
+    propertyTypeSelected: ['', Validators.required],
+    addressEstate: ['', Validators.required],
+    garagesEstate: ['', Validators.required]
   });
   
   garages: Garage[] = [];
@@ -65,7 +65,7 @@ export class FormsComponent implements OnInit {
   dataSource = new MatTableDataSource<Transaction>(this.LIST_DOCUMENT_CONTRACT_ESTATE);
 
   loadDocumentEstateData() {
-    this._realEstateDataService.getDocumentEstate().subscribe(estate => {
+    this._realEstateDataService.getRealEstateDataFreeProperty().subscribe(estate => {
       estate.map(item => {
         this.LIST_DOCUMENT_CONTRACT_ESTATE.push(item)
       });
@@ -117,7 +117,16 @@ export class FormsComponent implements OnInit {
   }
 
   createEstate(): any {
-    console.log(this.frmEstate.value)
+    if(this.frmEstate.valid){
+      const estateData: any = {
+        domus: this.frmEstate.value.domus,
+        propertyType: this.frmEstate.value.propertyTypeSelected,
+        address: this.frmEstate.value.addressEstate,
+        garages: this.frmEstate.value.garagesEstate
+      }
+      this._realEstateDataService.createRealEstateData(estateData);
+      this._realEstateDataService.getRealEstateDataFreeProperty();
+    }
   }
 
   onReset():void {

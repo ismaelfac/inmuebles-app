@@ -17,10 +17,14 @@ export class RealStateDataService {
     return this.httpClient.get<RealStateDatas[]>(`${this.AUTH_SERVER}/real_estate_data/freeProperty`, {params});
   }
 
-  getDocumentEstate() {
+  createRealEstateData(estateData: any) : Observable<any>{
+    let realEstateJson = JSON.stringify(estateData);
     let params = new HttpParams();
-    params = params.append('token', `${this.getToken()}`);
-    return this.httpClient.get<any[]>(`${this.AUTH_SERVER}/real_estate_data/documentsEstate`, {params});
+    params = params.append('token', `${this.getToken()}`)
+    console.log('desde RealService: ',realEstateJson);
+    const saveRealEstateData = this.httpClient.post(`${this.AUTH_SERVER}/real_estate_data`, realEstateJson, {params} )
+    console.log('Respuesta del servidor', saveRealEstateData);
+    return saveRealEstateData;
   }
 
   private getToken(): string {
