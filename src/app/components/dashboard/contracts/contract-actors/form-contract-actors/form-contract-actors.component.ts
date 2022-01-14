@@ -37,7 +37,7 @@ export class FormContractActorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.frmContractActors = this.fb.group({
-      selectedValueTypeActor: ['', Validators.required],
+      selectedValueTypeActor: ['arrendatario', Validators.required],
       actors: this.fb.array([])
     })      
   }
@@ -45,12 +45,14 @@ export class FormContractActorsComponent implements OnInit {
   addActors() {
     let actors = this.frmContractActors.get('actors') as FormArray;
     actors.push(this.fb.group({
+      valuetypeActor: ['arrendatario', Validators.required],
       selectedValueTypePerson: ['', Validators.required],
       txtNamesActor: ['', Validators.required],
       txtDniActor: ['', Validators.required],
       txtEmailActor: ['', Validators.required],
       txtAddressActor: ['', Validators.required],
-      txtPhoneActor: ['', Validators.required]
+      txtPhoneActor: ['', Validators.required],
+      peoplelegalRepresentative: ['']
     }))
   }  
   

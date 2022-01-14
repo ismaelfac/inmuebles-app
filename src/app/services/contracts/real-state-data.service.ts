@@ -17,6 +17,12 @@ export class RealStateDataService {
     return this.httpClient.get<RealStateDatas[]>(`${this.AUTH_SERVER}/real_estate_data/freeProperty`, {params});
   }
 
+  getDocumentEstate() {
+    let params = new HttpParams();
+    params = params.append('token', `${this.getToken()}`);
+    return this.httpClient.get<any[]>(`${this.AUTH_SERVER}/real_estate_data/documentsEstate`, {params});
+  }
+
   private getToken(): string {
     if(!this.token) {
       this.token = localStorage.getItem("ACCESS_TOKEN");

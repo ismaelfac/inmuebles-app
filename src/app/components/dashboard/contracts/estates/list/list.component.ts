@@ -44,8 +44,6 @@ export class ListComponent implements OnInit  {
         this.LIST_REAL_ESTATE_DATA.push(item)
       })
     });
-    console.log(this.LIST_REAL_ESTATE_DATA);
-
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.LIST_REAL_ESTATE_DATA);
   }

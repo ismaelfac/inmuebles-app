@@ -2,12 +2,12 @@
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Codigo DOMUS</mat-label>
-    <input matInput name="domus" formControlName="domus">
+    <input matInput name="txtDomus" formControlName="txtDomus">
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Tipo de Propiedad</mat-label>
-    <mat-select name="propertyTypeSelected" formControlName="propertyTypeSelected">
+    <mat-select name="SelectedPropertyType" formControlName="SelectedPropertyType">
       <mat-option *ngFor="let item of propertiesType" [value]="item.value">
         {{item.viewValue}}
       </mat-option>
@@ -16,29 +16,70 @@
   
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Direccion Inmueble</mat-label>
-    <input matInput placeholder="Cll # Cra # Tranversal #" name="addressEstate" formControlName="addressEstate">
+    <input matInput placeholder="Cll # Cra # Tranversal #" name="txtAddressEstate" formControlName="txtAddressEstate">
   </mat-form-field>
 
   <mat-form-field class="example-chip-list example-full-width" appearance="fill">
-    <mat-label>Garaje(s) | Cuarto Util</mat-label>
-    <mat-chip-list #chipList aria-label="Garages"  >
+    <mat-label>Garaje(s)</mat-label>
+    <mat-chip-list #chipList aria-label="Garages" formControlName="garages" >
       <mat-chip *ngFor="let garage of garages" [selectable]="selectable"
-              [removable]="removable" (removed)="remove(garage)">
+              [removable]="removable" (removed)="removeGarage(garage)">
         {{garage.name}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
-      <input placeholder="Nuevo Cuarto o Garaje..."
+      <input placeholder="Nuevo Garaje..."
             [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)"
-            name="garagesEstate" formControlName="garagesEstate">
+            (matChipInputTokenEnd)="addGarage($event)">
     </mat-chip-list>
   </mat-form-field>
 
+  <mat-form-field class="example-chip-list example-full-width" appearance="fill">
+    <mat-label>Cuarto Util</mat-label>
+    <mat-chip-list #useFullRoomInput aria-label="UseFullRooms" formControlName="useFullRooms" >
+      <mat-chip *ngFor="let useFullRoom of useFullRooms" [selectable]="selectable"
+              [removable]="removable" (removed)="removeUseFullRoom(useFullRoom)">
+        {{useFullRoom.name}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Nuevo Cuarto..."
+            [matChipInputFor]="useFullRoomInput"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addUseFullRoom($event)">
+    </mat-chip-list>
+  </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <button mat-button color="primary" (click)="loadDocumentEstateData()">Cargar Archivos del Inmueble</button>
+      <table mat-table [dataSource]="dataSource" matSort>  
+        <!-- ID Column -->
+        <ng-container matColumnDef="filename">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Documentos</th>
+          <td mat-cell *matCellDef="let row"> {{row.filename}} </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="destination">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Archivo </th>
+          <td mat-cell *matCellDef="let row"> {{row.destination}} 
+            <span><button mat-stroked-button color="warn">Cargar Documento</button></span> 
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        
+      </table>
+    </div>
+  
+
   <button mat-stroked-button color="warn" (click)="onReset()">Limpiar</button>
-  <button mat-stroked-button matStepperNext  color="primary" [disabled]="frmEstate.invalid" id="btnEstateSubmit">Siguiente</button>
+  <button mat-stroked-button matStepperNext  color="primary" [disabled]="frmEstate.invalid" id="btnEstateSubmit">Guardar y Siguiente</button>
 </form>
+
 <pre>
   {{ frmEstate.value | json}}
 </pre>

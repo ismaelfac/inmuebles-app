@@ -47,7 +47,6 @@ export class FormsContractComponent implements OnInit {
   
   frmContract = this.fb.group({
     selectedValueContractType: ['', Validators.required],
-    txtDomus: [''],
     txtAsegurable: [''],
     txtCannonLease: ['', Validators.required],
     txtAdminValue: [''],
